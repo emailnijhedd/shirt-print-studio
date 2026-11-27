@@ -1,4 +1,4 @@
-# Shirt Print Studio
+# Phabrika
 
 Design shirt prints on a flat pattern and preview them on a 3D shirt. Runs entirely in the browser: designs and artwork never leave the user's device.
 
@@ -14,7 +14,7 @@ Styles: T-shirt Men, T-shirt Woman, Polo shirt Men, Polo shirt Women, V-neck Jer
 
 ## Install it as an app
 
-- **Windows / Mac (Chrome or Edge):** open the link, then click the install icon in the address bar (or menu → *Install Shirt Print Studio*). It gets its own window and desktop/Start-menu icon.
+- **Windows / Mac (Chrome or Edge):** open the link, then click the install icon in the address bar (or menu → *Install Phabrika*). It gets its own window and desktop/Start-menu icon.
 - **Android (Chrome):** menu ⋮ → *Install app* / *Add to Home screen*.
 - **iPhone / iPad (Safari):** Share → *Add to Home Screen*.
 

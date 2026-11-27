@@ -1,6 +1,6 @@
 {
-  "name": "Shirt Print Studio",
-  "short_name": "Shirt Studio",
+  "name": "Phabrika",
+  "short_name": "Phabrika",
   "description": "Design shirt prints on a flat pattern and preview them on a 3D shirt.",
   "start_url": "./",
   "scope": "./",

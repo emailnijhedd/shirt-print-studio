@@ -1,7 +1,7 @@
-// Shirt Print Studio — offline support.
+// Phabrika — offline support.
 // After editing any file, bump VERSION so every device picks up the change.
-const VERSION = 'v1-2026-11-26';
-const CACHE = 'shirt-studio-' + VERSION;
+const VERSION = 'v2-2026-11-27';
+const CACHE = 'phabrika-' + VERSION;
 const SHELL = [
   './', 'index.html', 'manifest.webmanifest',
   'lib/three.min.js', 'lib/OrbitControls.js', 'lib/jszip.min.js',
