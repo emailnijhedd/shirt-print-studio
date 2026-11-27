@@ -35,7 +35,7 @@ button:hover,.btn:hover{border-color:#5a5e63}
 :is(button,.btn,select,input):focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 .primary{background:var(--acc);border-color:var(--acc);color:#20100b;font-weight:600}
 .primary:hover{border-color:#ffb19f}
-.sw{width:30px;height:30px;min-height:0;padding:0;border-radius:50%;border:2px solid #0006}
+.sw{width:32px;height:32px;min-height:0;padding:0;border-radius:50%;border:2px solid #0006;flex:none}
 .sw[aria-pressed=true]{outline:2px solid var(--ink);outline-offset:2px}
 .pat{width:40px;height:40px;min-height:0;padding:0;background-size:cover;border-radius:8px}
 input[type=color]{width:40px;height:40px;padding:2px;border:1px solid var(--line);border-radius:10px;background:var(--panel2);cursor:pointer}
@@ -43,20 +43,25 @@ input[type=range]{accent-color:var(--acc);width:100%}
 .work{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;padding:4px max(3vw,14px)}
 .pane{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;position:relative;display:flex;flex-direction:column}
 .cap{padding:8px 12px;font-size:12px;color:var(--mute);border-bottom:1px solid var(--line)}
-#stage .cap{position:absolute;left:0;top:0;border:0;pointer-events:none;z-index:2}
+#stage .cap{position:absolute;left:10px;top:10px;border:0;pointer-events:none;z-index:2;background:#000000a6;color:#f1efea;border-radius:999px;padding:5px 11px;font-size:12px;line-height:1.3}
+#stage #loading{left:auto;right:10px}
 #ed{display:block;width:100%;touch-action:none;background:#1b1c1e}
 #stage{position:relative;flex:1;min-height:380px}
 #stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 #gl{touch-action:none}
-.vbar{display:flex;gap:6px;flex-wrap:wrap;padding:8px;border-top:1px solid var(--line);align-items:center}
-.vbar select{min-height:40px}
+.vbar{display:flex;flex-direction:column;gap:8px;padding:8px;border-top:1px solid var(--line)}
+.vrow{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.vrow select{font-size:13px;min-height:36px;flex:1 1 140px;max-width:220px}
+.vrow .push{margin-left:auto}
 
-.props{margin:12px max(3vw,14px) 32px;padding:14px;background:var(--panel);border:1px solid var(--line);border-radius:14px}
-.props h2{font:600 17px/1.2 'Inter Tight',Inter;margin:0 0 10px}
+.props{padding:14px;background:var(--panel);border:1px solid var(--line);border-radius:14px;grid-column:1/-1}
+.props h2{font:600 17px/1.2 'Inter Tight',Inter;margin:0}
+.phead{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 10px}
+.dockt{display:none}
 .row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
 .fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px 14px}
 .fields label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--mute)}
-.chip{font-size:13px;min-height:34px;padding:0 10px}
+.chip{font-size:13px;min-height:36px;padding:0 11px}
 .chip[aria-pressed=true]{border-color:var(--acc);color:#fff}
 .danger{color:#ff9c8a}
 .hint{color:var(--mute);margin:0 0 10px}
@@ -72,8 +77,12 @@ figure{margin:0}figcaption{font-size:13px;color:var(--mute);margin-top:4px}
 .x{position:absolute;right:12px;top:12px}
 .warn{color:#ffcf7a}
 pre{white-space:pre-wrap;background:#141516;border:1px solid var(--line);border-radius:10px;padding:12px;font-size:13px;max-height:320px;overflow:auto}
-.note{font-size:12px;color:var(--mute);padding:0 max(3vw,14px) 20px}
-@media(max-width:880px){.work{grid-template-columns:1fr}.view{order:-1}#stage{flex:none;min-height:300px;height:56vh}}
+.note{font-size:12px;color:var(--mute);padding:12px max(3vw,14px) 20px;margin:0}
+.trimlbl input{width:18px;height:18px;accent-color:var(--acc);margin:0}
+@media(min-width:1180px){.work{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 300px}.work>.pane{align-self:stretch}.props{grid-column:auto;align-self:stretch;contain:size;overflow:auto;min-height:0}.props .fields{grid-template-columns:1fr 1fr}}
+@media(pointer:coarse){.sw{width:40px;height:40px}.chip{min-height:42px;padding:0 13px}.vrow select{min-height:42px}input[type=color]{width:44px;height:44px}.trimlbl input{width:24px;height:24px}input[type=range]{height:36px}.pat{width:44px;height:44px}}
+@media(max-width:880px){.work{grid-template-columns:1fr}.view{order:-1}#stage{flex:none;min-height:280px;height:50vh}.props{order:3}.props.sel{position:sticky;bottom:0;z-index:20;max-height:46vh;overflow:auto;border-radius:14px 14px 0 0;box-shadow:0 -10px 30px #000a;margin:0 calc(-1 * max(3vw,14px));border-left:0;border-right:0}.props.sel .dockt{display:inline-flex}.props.sel.min{max-height:none;overflow:hidden}.props.sel.min>:not(.phead){display:none}.props.sel.min .phead{margin:0}}
+@media(max-width:520px){.cgrp{width:100%;flex-wrap:wrap}.cgrp>.lbl{width:100%}#colors{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;flex:1}#colors .sw{width:100%;height:auto;aspect-ratio:1;max-width:44px}.cgrp{display:grid;grid-template-columns:1fr auto;gap:6px;align-items:center}.cgrp>.lbl{grid-column:1/-1}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -85,8 +94,8 @@ pre{white-space:pre-wrap;background:#141516;border:1px solid var(--line);border-
     <select id="style" aria-label="Garment"><option value="tee">T-shirt Men</option><option value="wtee">T-shirt Woman</option><option value="polo">Polo shirt Men</option><option value="wpolo">Polo shirt Women</option><option value="vjersey">V-neck Jersey Men</option><option value="wvjersey">V-neck Jersey Women</option><option value="bjersey">Basketball Jersey</option></select>
   </div>
   <div class="grp" id="slenGrp"><label class="lbl" for="slen">Sleeve</label><input type="range" id="slen" min="8" max="62" step="1" value="24" style="width:140px"><span class="lbl" id="slenv">24 cm</span></div>
-  <div class="grp"><span class="lbl">Colour</span><span class="grp" id="colors"></span><input type="color" id="gcol" aria-label="Custom garment colour"></div>
-  <div class="grp"><label class="lbl" style="display:flex;gap:6px;align-items:center"><input type="checkbox" id="trimOn"> Contrast trim</label><input type="color" id="trim" value="#f2f1ec" aria-label="Trim colour"></div>
+  <div class="grp cgrp"><span class="lbl">Colour</span><span class="grp" id="colors"></span><input type="color" id="gcol" aria-label="Custom garment colour"></div>
+  <div class="grp"><label class="lbl trimlbl" style="display:flex;gap:8px;align-items:center;cursor:pointer"><input type="checkbox" id="trimOn"> Contrast trim</label><input type="color" id="trim" value="#f2f1ec" aria-label="Trim colour"></div>
 </div>
 <div class="bar">
   <div class="grp"><label class="btn primary">Add image<input type="file" id="file" accept="image/*" multiple hidden></label>
@@ -95,21 +104,21 @@ pre{white-space:pre-wrap;background:#141516;border:1px solid var(--line);border-
 </div>
 
 <main class="work">
-  <section class="pane sheet"><div class="cap">Flat pattern · cm · drag, corner = resize, top dot = rotate, Crop button = trim edges</div><canvas id="ed"></canvas></section>
+  <section class="pane sheet"><div class="cap">Flat pattern (cm) · drag to move · corners resize · top dot rotates</div><canvas id="ed"></canvas></section>
   <section class="pane view">
     <div id="stage"><canvas id="bg"></canvas><div id="loading" class="cap" style="left:auto;right:0" hidden>Loading garment…</div><div class="cap">Drag to orbit · pinch or scroll to zoom</div></div>
     <div class="vbar">
-      <button class="chip" data-v="front">Front</button><button class="chip" data-v="back">Back</button>
+      <div class="vrow"><button class="chip" data-v="front">Front</button><button class="chip" data-v="back">Back</button>
       <button class="chip" data-v="left">Left</button><button class="chip" data-v="right">Right</button>
-      <button class="chip" id="spin" aria-pressed="false">Spin</button>
-      <select id="backdrop" aria-label="Backdrop"></select>
+      <button class="chip" id="spin" aria-pressed="false">Spin</button></div>
+      <div class="vrow"><select id="backdrop" aria-label="Backdrop"></select>
       <button class="chip" id="shot">Snapshot</button>
-      <button class="chip primary" id="export">Export for printing</button>
+      <button class="chip primary push" id="export">Export for printing</button></div>
     </div>
   </section>
+  <section class="props" id="props" aria-label="Artwork settings"></section>
 </main>
-<section class="props" id="props"></section>
-<p class="note">Pattern sizes are a men's L reference, measured from the 3D shirt model.</p>
+<p class="note" id="sizeNote">Pattern sizes are a men's L reference, measured from the 3D shirt model.</p>
 
 <div class="ov" id="ov" hidden><div class="ovin"><button class="x" id="ovx">Close</button><div id="ovb"></div></div></div>
 
@@ -423,14 +432,16 @@ $('#backdrop').innerHTML=Object.entries(BD).map(([k,b])=>`<option value="${k}">$
 function setStyle(v){const old=PIECES.map(p=>({p,x:p.x,y:p.y,w:p.w,h:p.h}));
  const rel=layers.map(L=>{const o=old.find(q=>L.x>=q.x-2&&L.x<=q.x+q.w+2&&L.y>=q.y-2&&L.y<=q.y+q.h+2)||old[0];return{L,o,fx:(L.x-o.x)/o.w,fy:(L.y-o.y)/o.h,full:L.tile&&Math.abs(L.w-o.w)<.5&&Math.abs(L.h-o.h)<.5}});
  style=v;layout();rel.forEach(({L,o,fx,fy,full})=>{L.x=o.p.x+fx*o.p.w;L.y=o.p.y+fy*o.p.h;if(full){L.w=o.p.w;L.h=o.p.h}});
- fabric=G.fab;$('#slenGrp').hidden=!G.sleeve;if(G.sleeve){$('#slen').value=G.sleeve.l;$('#slenv').textContent=G.sleeve.l+' cm'}buildShirt();sizeEd();renderProps()}
+ fabric=G.fab;$('#sizeNote').textContent=`Pattern sizes are a ${/^w/.test(style)?"women's M":style==='bjersey'?'adult L':"men's L"} reference, measured from the 3D shirt model. Check your printer's size chart.`;$('#slenGrp').hidden=!G.sleeve;if(G.sleeve){$('#slen').value=G.sleeve.l;$('#slenv').textContent=G.sleeve.l+' cm'}buildShirt();sizeEd();renderProps()}
 $('#style').onchange=e=>{commit();setStyle(e.target.value);syncPhoto()};
 
 /* ---------- properties panel ---------- */
 const props=$('#props');
-function renderProps(){const L=cur();const list=layers.length?`<div class="row">${layers.map(l=>`<button class="chip" data-sel="${l.id}" aria-pressed="${l.id===selId}">${esc(l.name)}</button>`).join('')}</div>`:'';
- if(!L){props.innerHTML=`<h2>Artwork</h2><p class="hint">Tap artwork on the flat pattern to edit it, or add an image, text or pattern above.</p>${list}`;return}
- props.innerHTML=`<h2>${esc(L.name)}</h2><div class="row"><span class="lbl">Place on</span>${PRESETS().map((p,i)=>`<button class="chip" data-pre="${i}">${p[0]}</button>`).join('')}</div>
+let dockMin=false;
+const head=t=>`<div class="phead"><h2>${t}</h2><button class="chip dockt" data-a="min" aria-expanded="${!dockMin}">${dockMin?'Show settings':'Hide'}</button></div>`;
+function renderProps(){const L=cur();props.classList.toggle('sel',!!L);props.classList.toggle('min',!!L&&dockMin);const list=layers.length?`<div class="row">${layers.map(l=>`<button class="chip" data-sel="${l.id}" aria-pressed="${l.id===selId}">${esc(l.name)}</button>`).join('')}</div>`:'';
+ if(!L){props.innerHTML=`<div class="phead"><h2>Artwork</h2></div><p class="hint">Tap artwork on the flat pattern to edit it, or add an image, text or pattern above.</p>${list}`;return}
+ props.innerHTML=`${head(esc(L.name))}<div class="row"><span class="lbl">Place on</span>${PRESETS().map((p,i)=>`<button class="chip" data-pre="${i}">${p[0]}</button>`).join('')}</div>
  <div class="fields">
   <label>Width (cm)<input type="number" id="pw" step="0.5" min="1"></label><label>Height (cm)<input type="number" id="ph" step="0.5" min="1"></label>
   <label>Rotation <input type="range" id="pr" min="-180" max="180"></label><label>Opacity <input type="range" id="po" min="0" max="100"></label>
@@ -448,7 +459,7 @@ props.addEventListener('input',e=>{const L=cur();if(!L)return;const id=e.target.
  else if(id==='ptx'){L.text=v;L.name=v.slice(0,24)||'Text';retext(L)}else if(id==='pf'){L.font=v;retext(L)}else if(id==='pc'){L.color=v;retext(L)}
  else if(id==='pk'){L.tile=e.target.checked?Math.min(12,L.w):0;renderProps()}
  syncProps(id);dirty()});
-props.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.sel){cropping=false;selId=+b.dataset.sel;renderProps();dirty();return}
+props.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.a==='min'){dockMin=!dockMin;renderProps();return}if(b.dataset.sel){cropping=false;selId=+b.dataset.sel;renderProps();dirty();return}
  const L=cur();if(!L)return;if(b.dataset.pre){commit();place(L,PRESETS()[+b.dataset.pre]);syncProps();dirty();return}
  const a=b.dataset.a,i=layers.indexOf(L);if(!a)return;if(a==='crop'){cropping=!cropping;renderProps();dirty();return}commit();if(a==='uncrop'){L.cl=L.cr=L.ct=L.cb=0;renderProps();dirty();return}
  if(a==='dup'){const n={...L,id:uid++,x:L.x+3,y:L.y+3};layers.splice(i+1,0,n);selId=n.id}
