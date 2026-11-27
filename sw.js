@@ -1,6 +1,6 @@
 // Phabrika — offline support.
 // After editing any file, bump VERSION so every device picks up the change.
-const VERSION = 'v23-2026-11-28';
+const VERSION = 'v24-2026-11-28';
 const CACHE = 'phabrika-' + VERSION;
 const SHELL = [
   './', 'index.html', 'manifest.webmanifest',
@@ -14,6 +14,7 @@ const SHELL = [
   "fonts/inter-latin-600-normal.woff2",
   "fonts/inter-tight-latin-600-normal.woff2",
   "fonts/inter-tight-latin-700-normal.woff2",
+  "fonts/outfit-latin-600-normal.woff2",
   "fonts/permanent-marker-latin-400-normal.woff2",
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png', 'img/logo.png', 'img/logo-print.png',
   'p/drip.jpg', 'p/tri.jpg'
