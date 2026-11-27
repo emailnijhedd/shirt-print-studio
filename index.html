@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Phabrika</title>
+<title>PHabrika</title>
 <meta name="description" content="Design shirt prints on a flat pattern and preview them on a 3D shirt.">
 <meta name="theme-color" content="#151617">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Phabrika">
+<meta name="apple-mobile-web-app-title" content="PHabrika">
 <link rel="stylesheet" href="fonts/fonts.css">
 <style>
 /* VOICE: a quiet garment-tech studio, tools first, no fuss
@@ -18,29 +18,72 @@
    PICTURE: the live 3D shirt and the flat pattern sheet are the page
    COLOUR and TYPE: graphite workshop ground, chalk ink, tailor's-chalk coral accent; Inter Tight + Inter
    LAYOUT: controls strip, then sheet | shirt side by side; stacked shirt-first on phones */
-:root{color-scheme:dark;--bg:#151617;--panel:#1f2123;--panel2:#26292c;--line:#34373b;--ink:#eceae5;--mute:#9b9da1;--acc:#ff7a5c}
-*{box-sizing:border-box;min-width:0}
+:root{color-scheme:dark;--bg:#151617;--panel:#1f2123;--panel2:#26292c;--line:#34373b;--ink:#eceae5;--mute:#9b9da1;--acc:#2563eb;--ph-y:#ffd500;--ph-b:#1f63e6;--ph-r:#e8163c}
+*{box-sizing:border-box;min-width:0}[hidden]{display:none!important}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,sans-serif;overflow-x:clip}
-header{padding:16px max(3vw,14px) 4px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+header{padding:14px max(3vw,14px) 4px;display:flex;align-items:center;gap:6px 16px;flex-wrap:wrap}
 h1{font:700 28px/1.05 'Inter Tight',Inter,sans-serif;margin:0}
 header p{margin:0;color:var(--mute)}
 .bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:8px max(3vw,14px)}
-.grp{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.grp[hidden]{display:none}
+.grp{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.grp[hidden]{display:none}.seg{display:inline-flex;gap:0}.seg .chip{border-radius:0;margin-left:-1px}.seg .chip:first-child{border-radius:10px 0 0 10px;margin-left:0}.seg .chip:last-child{border-radius:0 10px 10px 0}.seg .chip[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:600;position:relative}
 .lbl{font-size:13px;color:var(--mute);margin-right:2px}
 button,.btn,select,input[type=text],input[type=number]{font:inherit;font-size:14px;color:var(--ink);background:var(--panel2);border:1px solid var(--line);border-radius:10px;min-height:40px;padding:0 12px}
 button,.btn{cursor:pointer;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
 input[type=text],input[type=number]{font-size:16px;width:100%}
 select{font-size:15px;cursor:pointer}
 button:hover,.btn:hover{border-color:#5a5e63}
+button:disabled{opacity:.45;cursor:default}button:disabled:hover{border-color:var(--line)}
 :is(button,.btn,select,input):focus-visible{outline:2px solid var(--acc);outline-offset:2px}
-.primary{background:var(--acc);border-color:var(--acc);color:#20100b;font-weight:600}
-.primary:hover{border-color:#ffb19f}
+.primary{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:600}
+.primary:hover{background:#3b74f0;border-color:#7fb0ff}
 .sw{width:32px;height:32px;min-height:0;padding:0;border-radius:50%;border:2px solid #0006;flex:none}
 .sw[aria-pressed=true]{outline:2px solid var(--ink);outline-offset:2px}
 .pat{width:40px;height:40px;min-height:0;padding:0;background-size:cover;border-radius:8px}
 input[type=color]{width:40px;height:40px;padding:2px;border:1px solid var(--line);border-radius:10px;background:var(--panel2);cursor:pointer}
 input[type=range]{accent-color:var(--acc);width:100%}
-.work{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;padding:4px max(3vw,14px)}
+.top{padding:4px 0 0;display:flex;align-items:center;gap:6px 16px;flex-wrap:wrap}.top{position:sticky;top:0;z-index:40;margin:0 max(2vw,12px);border-top-left-radius:0;border-top-right-radius:0;border-top:0;overflow:hidden;background:rgba(24,25,27,.86);border:1px solid var(--line);border-radius:14px;padding:10px 170px 10px 16px;-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+.top::after{content:'';position:absolute;top:0;bottom:0;right:-30px;width:190px;pointer-events:none;background:linear-gradient(116deg,transparent 0 22%,#2b2d31 22.5% 38%,var(--ph-y) 38.5% 54%,var(--ph-b) 54.5% 70%,var(--ph-r) 70.5% 86%,transparent 86.5%)}
+.top .acts{position:relative;z-index:1}
+.top .tag{margin:0;flex:1 1 300px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 0}
+.ttl,.steps{display:flex;align-items:center;border-left:1px solid #4a4d52;padding:2px 16px;min-height:34px}
+.ttl{gap:10px;font:700 20px/1.1 'Inter Tight',Inter,sans-serif;color:#fff;letter-spacing:-.01em;white-space:nowrap}.ttl em{font-style:normal;color:var(--ph-y)}.ttx{display:inline-block;line-height:1;padding-top:2px}
+.steps{gap:10px 12px;flex-wrap:wrap;font-size:14px;color:#e6e4df}.steps>span{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.steps i{width:5px;height:5px;border-radius:50%;background:var(--ph-y);flex:none}
+.top .tag svg{width:24px;height:24px;fill:none;stroke:var(--ph-y);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}.top .tag .tsh{width:30px;height:30px;stroke:#fff}.top .tag .tsh .py{stroke:var(--ph-y)}
+@media(max-width:899px){.top{position:relative;border-radius:0 0 14px 14px}}@media(max-width:620px){.top{padding:10px 70px 10px 12px}.top::after{width:96px;right:-34px}.ttl,.steps{border-left:0;padding:2px 0}.ttl{font-size:18px}.steps{font-size:13px;gap:4px 14px}.steps i{display:none}.top .acts{margin-left:0}}
+/* soft flag-colour sweep behind the workspace (grey, yellow, blue, red), from the PHabrika logo */
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+ background:linear-gradient(118deg,transparent 0 22%,rgba(255,255,255,.06) 22.2% 28%,rgba(255,213,0,.28) 28.2% 33%,rgba(15,91,216,.32) 33.2% 38%,rgba(232,22,60,.28) 38.2% 43%,transparent 43.2%),
+  linear-gradient(118deg,transparent 0 84%,rgba(255,255,255,.05) 84.2% 87%,rgba(255,213,0,.16) 87.2% 90%,rgba(15,91,216,.18) 90.2% 93%,rgba(232,22,60,.16) 93.2% 96%,transparent 96.2%),
+  radial-gradient(120% 80% at 50% 0%,#24262a 0,transparent 70%)}.acts{display:flex;gap:8px;margin-left:auto}.acts .primary{border:2px solid transparent;background:linear-gradient(var(--acc),var(--acc)) padding-box,linear-gradient(100deg,var(--ph-y) 0 33%,var(--ph-b) 33% 66%,var(--ph-r) 66%) border-box}.acts .primary:hover{background:linear-gradient(#3b74f0,#3b74f0) padding-box,linear-gradient(100deg,var(--ph-y) 0 33%,var(--ph-b) 33% 66%,var(--ph-r) 66%) border-box}
+.work{--pv:var(--pvw,clamp(340px,42vw,860px));display:grid;grid-template-columns:minmax(0,1fr) 14px var(--pv);align-items:start;padding:10px max(2vw,12px) 16px}
+.left{display:flex;flex-direction:column;gap:12px;min-width:0}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.bhead{display:flex;align-items:center;justify-content:space-between;gap:8px 12px;flex-wrap:wrap;margin:0 0 10px}.bhead h2{font:600 17px/1.2 'Inter Tight',Inter;margin:0}
+.gfields{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center}.gfields+.gfields{margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+.split{align-self:stretch;cursor:col-resize;position:relative;touch-action:none;outline:0}.split::after{content:'';position:sticky;top:45vh;display:block;margin:45vh auto 0;width:4px;height:56px;border-radius:2px;background:var(--line)}.split:hover::after,.split:focus-visible::after{background:var(--acc)}
+.pane.view{position:sticky;top:calc(var(--hh,64px) + 10px);height:calc(100vh - var(--hh,64px) - 20px);height:calc(100dvh - var(--hh,64px) - 20px);min-height:460px;max-height:1200px}
+.pane.view.full,.pane.view:fullscreen{position:fixed;inset:0;z-index:70;height:auto;max-height:none;border-radius:0}.pane.view:fullscreen{position:static;height:100vh}
+#stage.tp{background:repeating-conic-gradient(#2c2e31 0 25%,#232528 0 50%) 0 0/20px 20px}
+.sheet{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#1b1c1e}
+.etools{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin:0 0 8px}.tg{display:flex;gap:4px;align-items:center}
+.ib{min-height:36px;min-width:36px;padding:0 7px;justify-content:center}.ib svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ib[aria-pressed=true]{border-color:var(--acc);color:#fff;background:#16284a}.ib[aria-pressed=false]{color:var(--mute)}.ib.sel[aria-pressed=false]{color:var(--ink)}
+.zl{font-size:12px;min-width:42px;text-align:center;color:var(--mute);font-variant-numeric:tabular-nums}
+.dgrid{display:grid;grid-template-columns:minmax(230px,290px) minmax(0,1fr);gap:12px;margin-top:12px;align-items:start}
+.layers{border:1px solid var(--line);border-radius:12px;background:#1a1b1d;display:flex;flex-direction:column;max-height:460px;min-height:180px}
+.lhead{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line)}.lhead h3{margin:0;font:600 15px/1.2 'Inter Tight',Inter}
+.lyr{list-style:none;margin:0;padding:6px;overflow:auto;flex:1}
+.li{display:grid;grid-template-columns:16px 40px minmax(0,1fr) auto;gap:8px;align-items:center;padding:6px 6px 6px 4px;border-radius:10px;border:1px solid transparent;cursor:pointer;outline:0;margin-bottom:2px}
+.li:hover{background:#232528}.li:focus-visible{border-color:#5a5e63}.li[aria-selected=true]{background:#15233f;border-color:var(--acc)}
+.li canvas{width:40px;height:40px;border-radius:6px;background:#3a3d41;display:block}.li.hid canvas,.li.hid .lt{opacity:.45}
+.lt{display:flex;flex-direction:column;min-width:0;line-height:1.25}.ln{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.lty{font-size:12px;color:var(--mute)}
+.lb{display:flex;gap:0}.lb button,.lx button{min-height:32px;min-width:32px;padding:0;border:0;background:none;justify-content:center;color:var(--mute);border-radius:8px}.lb button:hover,.lx button:hover{background:#2f3236;color:var(--ink)}
+.lb svg,.lx svg,.grip svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.lb button[data-la=lock][aria-pressed=true]{color:var(--acc)}
+.lx{grid-column:2/-1;display:flex;gap:2px;flex-wrap:wrap}.lx button{min-width:0;padding:0 8px;gap:5px;font-size:13px}
+.grip{cursor:grab;color:#6d7075;touch-action:none;display:flex;justify-content:center;align-items:center;height:40px}.grip svg{fill:currentColor;stroke:none}
+.li.dragging{opacity:.4}.drop{height:2px;background:var(--acc);border-radius:1px;margin:0 4px;list-style:none}
+.lempty{color:var(--mute);font-size:13px;padding:10px;list-style:none}.lren{font:inherit;font-size:14px;min-height:30px;padding:0 6px;border-radius:6px}
 .pane{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;position:relative;display:flex;flex-direction:column}
 .cap{padding:8px 12px;font-size:12px;color:var(--mute);border-bottom:1px solid var(--line)}
 #stage .cap{position:absolute;left:10px;top:10px;border:0;pointer-events:none;z-index:2;background:#000000a6;color:#f1efea;border-radius:999px;padding:5px 11px;font-size:12px;line-height:1.3}
@@ -50,81 +93,137 @@ input[type=range]{accent-color:var(--acc);width:100%}
 #stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 #gl{touch-action:none}
 .vbar{display:flex;flex-direction:column;gap:8px;padding:8px;border-top:1px solid var(--line)}
-.vrow{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.vrow{display:flex;gap:6px;flex-wrap:wrap;align-items:center}.vrow .seg .chip[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:600}
 .vrow select{font-size:13px;min-height:36px;flex:1 1 140px;max-width:220px}
 .vrow .push{margin-left:auto}
 
-.props{padding:14px;background:var(--panel);border:1px solid var(--line);border-radius:14px;grid-column:1/-1}
+.props{padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#1a1b1d}.props .sub{font:600 13px/1.2 Inter;color:var(--mute);margin:12px 0 8px;text-transform:uppercase;letter-spacing:.04em}.props .nums{grid-template-columns:repeat(4,minmax(0,1fr))}@media(max-width:560px){.props .nums{grid-template-columns:1fr 1fr}}.pair{display:flex;gap:8px;align-items:center}.pair input[type=number]{width:76px;flex:none}.pair input[type=range]{flex:1}.small{font-size:12px}.phead .lty{white-space:nowrap}
 .props h2{font:600 17px/1.2 'Inter Tight',Inter;margin:0}
 .phead{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 10px}
 .dockt{display:none}
 .row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
-.fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px 14px}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px 14px}
 .fields label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--mute)}
+.fields input[type=range]{height:40px;margin:0}
+.txted{position:fixed;z-index:60;padding:6px 10px;border-radius:10px;border:2px solid var(--acc);background:#111;color:#fff;text-align:center;box-shadow:0 8px 24px #000a}
+.logo{display:flex;align-items:center;line-height:0}.logo img{height:48px;width:auto;display:block}@media(max-width:520px){.logo img{height:40px}}
+.hexrow{display:flex;gap:6px;align-items:center}.hexrow input[type=text]{flex:1;min-width:0;padding:0 8px;font:14px/1 ui-monospace,Menlo,Consolas,monospace;text-transform:uppercase;letter-spacing:0}.hexrow input[type=color]{width:38px;height:40px;flex:none;padding:2px}input[aria-invalid=true]{border-color:#e5484d;outline-color:#e5484d}
+.fields .chk{flex-direction:row;align-items:center;gap:8px;color:var(--ink);align-self:end;min-height:40px;cursor:pointer}.fields .chk input{width:18px;height:18px;accent-color:var(--acc);margin:0}
+.props .row{align-items:center}.props .row>.lbl{min-width:64px;font-size:13px}
 .chip{font-size:13px;min-height:36px;padding:0 11px}
 .chip[aria-pressed=true]{border-color:var(--acc);color:#fff}
-.danger{color:#ff9c8a}
+.danger{color:#ff6b81}
 .hint{color:var(--mute);margin:0 0 10px}
-.ov{position:fixed;inset:0;background:#000c;z-index:50;display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:16px}
+.ov{position:fixed;inset:0;background:#000d;z-index:50;display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:16px}
 .ov[hidden]{display:none}
 .ovin{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;width:min(1000px,100%);position:relative}
-.ovin h2{font:700 22px/1.1 'Inter Tight',Inter;margin:0 0 6px}
+.ovin h2{font:700 22px/1.1 'Inter Tight',Inter;margin:0 0 6px}#ovb>h2:first-child,#ovb>h2:first-child+p{padding-right:84px}
 .ovin p{color:var(--mute);margin:0 0 12px}
 .ovin img{display:block;max-width:100%;height:auto;border-radius:8px;background:repeating-conic-gradient(#2c2e31 0 25%,#232528 0 50%) 0 0/20px 20px}
 .dl{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 10px}a.btn{text-decoration:none}figure .btn{margin-top:6px}
 .files{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:10px}
 figure{margin:0}figcaption{font-size:13px;color:var(--mute);margin-top:4px}
-.x{position:absolute;right:12px;top:12px}
+.x{position:absolute;right:12px;top:12px}.ovin.wide{width:min(1180px,100%)}
 .warn{color:#ffcf7a}
+.exg{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;align-items:start}
+.exg fieldset{border:1px solid var(--line);border-radius:12px;padding:10px 12px 12px;margin:0 0 12px;display:flex;flex-direction:column;gap:8px}.exg legend{font-size:13px;color:var(--mute);padding:0 4px}
+.exg .chk{display:flex;gap:8px;align-items:center;cursor:pointer;font-size:14px}.exg .chk input{width:18px;height:18px;accent-color:var(--acc);margin:0;flex:none}.exg .chk small{color:var(--mute)}
+.exg label.fl{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--mute)}.exg h3{font:600 15px/1.2 'Inter Tight',Inter;margin:0 0 8px}
+.val{list-style:none;margin:0 0 14px;padding:0;display:flex;flex-direction:column;gap:6px}.val li{font-size:13px;line-height:1.4;padding:7px 10px 7px 12px;border-radius:8px;background:#1a1b1d;border-left:3px solid var(--line)}
+.val .err{border-left-color:#e5484d}.val .wrn{border-left-color:#ffb547}.val .ok{border-left-color:#46a758}.val .inf{border-left-color:#4c8df6}.val b{font-weight:600}
+.apv{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin-bottom:14px}.apv figure{background:#1a1b1d;border:1px solid var(--line);border-radius:10px;padding:8px}
+.apv canvas{display:block;max-width:100%;height:auto;margin:0 auto;background:repeating-conic-gradient(#2c2e31 0 25%,#232528 0 50%) 0 0/16px 16px}.apv figcaption b{color:var(--ink);font-weight:600}.apv figcaption span{display:block}
+.flist{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}.flist li{display:grid;grid-template-columns:52px 1fr auto;gap:10px;align-items:center;background:#1a1b1d;border:1px solid var(--line);border-radius:10px;padding:6px 8px}
+.flist img,.flist .fic{width:52px;height:52px;object-fit:contain;border-radius:6px;background:#2a2c2f;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--mute);text-transform:uppercase}.flist b{display:block;font-weight:600;font-size:14px}.flist small{color:var(--mute);font-size:12px}
 pre{white-space:pre-wrap;background:#141516;border:1px solid var(--line);border-radius:10px;padding:12px;font-size:13px;max-height:320px;overflow:auto}
+.foot{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px 10px;margin:4px max(2vw,12px) 18px;padding:12px 16px;border-top:1px solid var(--line);font-size:13px;color:var(--mute)}.foot .fsep{color:#55585d;margin:0 6px}
 .note{font-size:12px;color:var(--mute);padding:12px max(3vw,14px) 20px;margin:0}
 .trimlbl input{width:18px;height:18px;accent-color:var(--acc);margin:0}
-@media(min-width:1180px){.work{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 300px}.work>.pane{align-self:stretch}.props{grid-column:auto;align-self:stretch;contain:size;overflow:auto;min-height:0}.props .fields{grid-template-columns:1fr 1fr}}
 @media(pointer:coarse){.sw{width:40px;height:40px}.chip{min-height:42px;padding:0 13px}.vrow select{min-height:42px}input[type=color]{width:44px;height:44px}.trimlbl input{width:24px;height:24px}input[type=range]{height:36px}.pat{width:44px;height:44px}}
-@media(max-width:880px){.work{grid-template-columns:1fr}.view{order:-1}#stage{flex:none;min-height:280px;height:50vh}.props{order:3}.props.sel{position:sticky;bottom:0;z-index:20;max-height:46vh;overflow:auto;border-radius:14px 14px 0 0;box-shadow:0 -10px 30px #000a;margin:0 calc(-1 * max(3vw,14px));border-left:0;border-right:0}.props.sel .dockt{display:inline-flex}.props.sel.min{max-height:none;overflow:hidden}.props.sel.min>:not(.phead){display:none}.props.sel.min .phead{margin:0}}
+@media(max-width:1100px){.dgrid{grid-template-columns:1fr}.layers{max-height:340px}}
+@media(max-width:899px){.work{grid-template-columns:1fr;row-gap:12px}.left{display:contents}.top{order:-2}.split{display:none}.pane.view{order:-1;top:0;z-index:30;height:56vh;height:56dvh;min-height:380px;}#stage{min-height:0}.pane.view{margin:0 calc(-1 * max(2vw,12px));border-radius:0 0 14px 14px;border-left:0;border-right:0;box-shadow:0 10px 30px #0009}.vrow{flex-wrap:nowrap;overflow-x:auto}.vrow>*{flex:none}.vrow select{max-width:none}}
 @media(max-width:520px){.cgrp{width:100%;flex-wrap:wrap}.cgrp>.lbl{width:100%}#colors{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;flex:1}#colors .sw{width:100%;height:auto;aspect-ratio:1;max-width:44px}.cgrp{display:grid;grid-template-columns:1fr auto;gap:6px;align-items:center}.cgrp>.lbl{grid-column:1/-1}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
-<header><h1>Phabrika</h1><p>Lay artwork on the flat pattern. The 3D shirt updates as you go.</p></header>
 
-<div class="bar">
-  <div class="grp"><span class="lbl">Style</span>
-    <select id="style" aria-label="Garment"><option value="tee">T-shirt Men</option><option value="wtee">T-shirt Woman</option><option value="polo">Polo shirt Men</option><option value="wpolo">Polo shirt Women</option><option value="vjersey">V-neck Jersey Men</option><option value="wvjersey">V-neck Jersey Women</option><option value="bjersey">Basketball Jersey</option></select>
-  </div>
-  <div class="grp" id="slenGrp"><label class="lbl" for="slen">Sleeve</label><input type="range" id="slen" min="8" max="62" step="1" value="24" style="width:140px"><span class="lbl" id="slenv">24 cm</span></div>
-  <div class="grp cgrp"><span class="lbl">Colour</span><span class="grp" id="colors"></span><input type="color" id="gcol" aria-label="Custom garment colour"></div>
-  <div class="grp"><label class="lbl trimlbl" style="display:flex;gap:8px;align-items:center;cursor:pointer"><input type="checkbox" id="trimOn"> Contrast trim</label><input type="color" id="trim" value="#f2f1ec" aria-label="Trim colour"></div>
-</div>
-<div class="bar">
-  <div class="grp"><label class="btn primary">Add image<input type="file" id="file" accept="image/*" multiple hidden></label>
-    <button id="addText">Add text</button><button id="undo" title="Undo (Ctrl+Z)">Undo</button></div>
-  <div class="grp"><span class="lbl">Patterns</span><span class="grp" id="pats"></span></div>
-</div>
 
-<main class="work">
-  <section class="pane sheet"><div class="cap">Flat pattern (cm) · drag to move · corners resize · top dot rotates</div><canvas id="ed"></canvas></section>
-  <section class="pane view">
-    <div id="stage"><canvas id="bg"></canvas><div id="loading" class="cap" style="left:auto;right:0" hidden>Loading garment…</div><div class="cap">Drag to orbit · pinch or scroll to zoom</div></div>
-    <div class="vbar">
-      <div class="vrow"><button class="chip" data-v="front">Front</button><button class="chip" data-v="back">Back</button>
-      <button class="chip" data-v="left">Left</button><button class="chip" data-v="right">Right</button>
-      <button class="chip" id="spin" aria-pressed="false">Spin</button></div>
-      <div class="vrow"><select id="backdrop" aria-label="Backdrop"></select>
-      <button class="chip" id="shot">Snapshot</button>
-      <button class="chip primary push" id="export">Export for printing</button></div>
-    </div>
+<header class="top">
+  <h1 class="logo"><img src="img/logo.png" width="168" height="48" alt="PHabrika — Design, Layout, Print"></h1>
+  <p class="tag">
+   <span class="ttl"><svg class="tsh" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 3.5 4 5.8 2.5 10l3 1.3V20h8"/><path d="M15.5 3.5 20 5.8l1.5 4.2-3 1.3V13"/><path d="M8.5 3.5c.6 1.4 1.9 2.2 3.5 2.2s2.9-.8 3.5-2.2"/><path class="py" d="M20.6 14.2l1.2 1.2-5.6 5.6-2 .6.6-2z"/></svg><span class="ttx">Apparel Design <em>Studio</em></span></span>
+   <span class="steps"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3 7.5 12 12l9-4.5z"/><path d="M3 12l9 4.5 9-4.5"/><path d="M3 16.5 12 21l9-4.5"/></svg>Create your look</span><i aria-hidden="true"></i><span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="1.5"/><path d="M3.5 9h17M9.5 9v11.5M14.5 9v11.5"/></svg>Customize every detail</span><i aria-hidden="true"></i><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8V3.5h10V8"/><rect x="3.5" y="8" width="17" height="8" rx="2"/><path d="M7 13.5h10v7H7z"/><path d="M17 11h.01"/></svg>Bring it to print</span></span>
+  </p>
+  <div class="acts"><button class="primary" id="export">Export for printing</button></div>
+</header>
+<main class="work" id="work">
+ <div class="left">
+
+  <section class="box" aria-labelledby="hG">
+   <div class="bhead"><h2 id="hG">Garment</h2></div>
+   <div class="gfields">
+    <div class="grp"><label class="lbl" for="style">Style</label>
+     <select id="style"><option value="tee">T-shirt Men</option><option value="wtee">T-shirt Woman</option><option value="polo">Polo shirt Men</option><option value="wpolo">Polo shirt Women</option><option value="vjersey">V-neck Jersey Men</option><option value="wvjersey">V-neck Jersey Women</option><option value="bjersey">Basketball Jersey</option></select></div>
+    <div class="grp"><label class="lbl" for="size">Size</label><select id="size"><option value="kids">Kids</option><option>XS</option><option>S</option><option>M</option><option selected>L</option><option>XL</option><option>XXL</option><option>XXXL</option></select></div>
+    <div class="grp" id="fabGrp"><label class="lbl" for="fab">Fabric</label><select id="fab"><option value="cotton" selected>Cotton</option><option value="poly">Polyester</option><option value="drifit">Dri-FIT</option></select></div>
+    <div class="grp" id="slenGrp"><label class="lbl" for="slen">Sleeve</label><input type="range" id="slen" min="8" max="62" step="1" value="24" style="width:140px"><span class="lbl" id="slenv">24 cm</span></div>
+    <div class="grp" id="neckGrp" hidden><span class="lbl" id="neckLbl">Neckline</span><span class="seg" role="group" aria-labelledby="neckLbl"><button class="chip" data-neck="round" aria-pressed="false">Round Neck</button><button class="chip" data-neck="v" aria-pressed="true">V-Neck</button></span></div>
+    <div class="grp" id="strapGrp" hidden><label class="lbl" for="strapw">Shoulder strap</label><input type="range" id="strapw" min="0.5" max="2.5" step="0.05" value="1" style="width:150px"><span class="lbl" id="strapv">1.00× · 5.0 cm</span></div>
+   </div>
+   <div class="gfields">
+    <div class="grp cgrp"><span class="lbl">Main colour</span><span class="grp" id="colors"></span><input type="color" id="gcol" aria-label="Custom main colour"></div>
+    <div class="grp"><span class="lbl">Secondary colour</span><label class="lbl trimlbl" style="display:flex;gap:8px;align-items:center;cursor:pointer;color:var(--ink)"><input type="checkbox" id="trimOn"> Contrast trim</label><input type="color" id="trim" value="#f2f1ec" aria-label="Secondary colour for collar, hem and cuffs" title="Collar, hem and cuffs"></div>
+   </div>
+   <div class="gfields"><div class="grp"><span class="lbl">Pattern</span><span class="grp" id="pats"></span></div></div>
   </section>
-  <section class="props" id="props" aria-label="Artwork settings"></section>
+
+  <section class="box" aria-labelledby="hD">
+   <div class="bhead"><h2 id="hD">Design</h2>
+    <div class="grp"><label class="btn primary">Add image<input type="file" id="file" accept="image/*" multiple hidden></label>
+     <button id="addText">Add text</button><button id="addName" title="Player name on the upper back">Add name</button><button id="addNum" title="Jersey number on the back">Add number</button>
+     <button id="undo" title="Undo (Ctrl+Z)">Undo</button><button id="clearAll" title="Remove all artwork (Undo brings it back)" disabled>Clear all</button></div>
+   </div>
+   <div class="etools" role="toolbar" aria-label="Flat pattern tools">
+    <div class="tg" role="group" aria-label="View"><button class="ib" data-t="zout" data-ic="zout" aria-label="Zoom out" title="Zoom out"></button><span class="zl" id="zl">100%</span><button class="ib" data-t="zin" data-ic="zin" aria-label="Zoom in" title="Zoom in (Ctrl + scroll)"></button><button class="ib" data-t="fit" data-ic="fit" aria-label="Fit pattern to canvas" title="Fit pattern to canvas"></button><button class="ib" data-t="reset" data-ic="reset" aria-label="Reset canvas view" title="Reset canvas view"></button><button class="ib" data-t="grid" data-ic="grid" aria-pressed="true" aria-label="Grid" title="Grid (10 cm squares)"></button></div>
+    <div class="tg" role="group" aria-label="Snapping"><button class="ib" data-t="snapc" data-ic="snapc" aria-pressed="true" aria-label="Snap to centre" title="Snap to panel centre"></button><button class="ib" data-t="snapg" data-ic="snapg" aria-pressed="true" aria-label="Snap to guides" title="Snap to panel edges, print area and other artwork (hold Alt to drag freely)"></button></div>
+    <div class="tg" role="group" aria-label="Selected artwork"><button class="ib sel" data-t="lock" data-ic="unlock" aria-pressed="false" aria-label="Lock position" title="Lock or unlock position"></button><button class="ib sel" data-t="dup" data-ic="dup" aria-label="Duplicate" title="Duplicate (Ctrl+D)"></button><button class="ib sel" data-t="fwd" data-ic="fwd" aria-label="Bring forward" title="Bring forward"></button><button class="ib sel" data-t="bwd" data-ic="bwd" aria-label="Send backward" title="Send backward"></button><button class="ib sel danger" data-t="del" data-ic="del" aria-label="Delete" title="Delete"></button></div>
+    <div class="tg" role="group" aria-label="Align to print area"><button class="ib sel" data-t="al-l" data-ic="al-l" aria-label="Align left" title="Align left (print area)"></button><button class="ib sel" data-t="al-c" data-ic="al-c" aria-label="Centre horizontally" title="Centre horizontally"></button><button class="ib sel" data-t="al-r" data-ic="al-r" aria-label="Align right" title="Align right (print area)"></button><button class="ib sel" data-t="al-t" data-ic="al-t" aria-label="Align top" title="Align top (print area)"></button><button class="ib sel" data-t="al-m" data-ic="al-m" aria-label="Centre vertically" title="Centre vertically (print area)"></button><button class="ib sel" data-t="al-b" data-ic="al-b" aria-label="Align bottom" title="Align bottom (print area)"></button></div>
+   </div>
+   <div class="sheet"><div class="cap">Flat pattern (cm) · drag to move · corners resize · top dot rotates · dashed yellow = print area</div><canvas id="ed"></canvas></div>
+   <div class="dgrid">
+    <section class="layers" aria-labelledby="hL"><div class="lhead"><h3 id="hL">Layers</h3><span class="lty" id="lcount"></span></div><ul id="lyr" class="lyr" role="listbox" aria-labelledby="hL"></ul></section>
+    <section class="props" id="props" aria-label="Artwork properties"></section>
+   </div>
+  </section>
+  <p class="note" id="sizeNote">Size L (men's grading): body panels 53 × 73 cm. Check your printer's size chart.</p>
+ </div>
+ <div class="split" id="split" role="separator" aria-orientation="vertical" aria-label="Resize the 3D preview" tabindex="0" title="Drag to resize the preview (double-click to reset)"></div>
+ <section class="pane view" id="viewPane" aria-label="Live 3D preview">
+  <div id="stage"><canvas id="bg"></canvas><div id="loading" class="cap" style="left:auto;right:0" hidden>Loading garment…</div><div class="cap">Drag to orbit · pinch or scroll to zoom</div></div>
+  <div class="vbar">
+   <div class="vrow" role="group" aria-label="Camera">
+    <span class="seg"><button class="chip" data-v="front">Front</button><button class="chip" data-v="back">Back</button><button class="chip" data-v="left">Left</button><button class="chip" data-v="right">Right</button><button class="chip" data-v="fl" aria-pressed="true">45°</button></span>
+    <button class="chip" data-step="-1" aria-label="Rotate 45 degrees left" title="Rotate 45° left">‹ 45°</button><button class="chip" data-step="1" aria-label="Rotate 45 degrees right" title="Rotate 45° right">45° ›</button>
+    <button class="chip" id="spin" aria-pressed="false">Spin</button>
+   </div>
+   <div class="vrow" role="group" aria-label="Zoom">
+    <span class="seg"><button class="chip ib" data-cam="out" data-ic="zout" aria-label="Zoom out" title="Zoom out"></button><button class="chip ib" data-cam="in" data-ic="zin" aria-label="Zoom in" title="Zoom in"></button><button class="chip" data-cam="fit" title="Fit the whole garment in view">Fit</button></span>
+    <button class="chip" data-cam="reset">Reset camera</button>
+    <button class="chip ib push" id="fs" data-ic="full" aria-pressed="false" aria-label="Full screen preview" title="Full screen"></button>
+   </div>
+   <div class="vrow"><label class="lbl" for="backdrop">Background</label><select id="backdrop"></select><input type="color" id="bgcol" value="#34495e" aria-label="Custom background colour" hidden><label class="btn chip" id="bgimgL" hidden>Image…<input type="file" id="bgimg" accept="image/*" hidden></label><button class="chip push" id="shot">Snapshot</button></div>
+  </div>
+ </section>
 </main>
-<p class="note" id="sizeNote">Pattern sizes are a men's L reference, measured from the 3D shirt model.</p>
+<footer class="foot"><span>© 2026 PHabrika™. All rights reserved.</span><span class="fsep" aria-hidden="true">|</span><span>Made by: Claude <span class="fsep" aria-hidden="true">|</span> Jhedd E.</span></footer>
 
 <div class="ov" id="ov" hidden><div class="ovin"><button class="x" id="ovx">Close</button><div id="ovb"></div></div></div>
 
 <script src="lib/three.min.js"></script>
 <script src="lib/OrbitControls.js"></script>
 <script src="lib/jszip.min.js" defer></script>
+<script src="lib/jspdf.umd.min.js" defer></script>
 <script>
 {
 const $=s=>document.querySelector(s);
@@ -136,25 +235,32 @@ const PI=Math.PI;
 /* ---------- garment definitions (cm, size L reference) ---------- */
 const ST={
  polo:{name:"Polo shirt Men",W:50,H:72,neck:'polo',NW:8.5,FD:6.5,BD:2.2,SD:5.5,sleeve:{w0:46,w1:36,l:22,ang:55},fab:'cotton',cuff:'rib'},
- bjersey:{name:"Basketball Jersey",W:52,H:76,neck:'v',NW:9,FD:15,BD:3,SD:4,strap:6.5,AH:25,sleeve:null,fab:'drifit'},
+ bjersey:{name:"Basketball Jersey",W:52,H:76,neck:'v',neckStyle:'v',NW:9,FD:15,BD:3,SD:4,strap:5,strapM:1,AH:25,sleeve:null,fab:'drifit'},
  wvjersey:{name:"V-neck Jersey Women",W:46,H:64,neck:'v',NW:7.8,FD:14,BD:2,SD:5,sleeve:{w0:40,w1:33,l:15,ang:58},fab:'drifit'},
  vjersey:{name:"V-neck Jersey Men",W:49,H:72,neck:'v',NW:8.5,FD:17,BD:2.2,SD:5.5,sleeve:{w0:46,w1:38,l:21,ang:55},fab:'drifit'},
  wpolo:{name:"Polo shirt Women",W:46,H:64,neck:'polo',NW:7.6,FD:6,BD:2,SD:5.5,sleeve:{w0:40,w1:33,l:14,ang:58},fab:'cotton',cuff:'rib',PL:11},
  wtee:{name:"T-shirt Woman",W:46,H:64,neck:'crew',NW:8,FD:8.5,BD:2,SD:5,sleeve:{w0:40,w1:33,l:15,ang:58},fab:'drifit'},
- tee:{name:"T-shirt Men",W:57,H:74,neck:'crew',NW:9.5,FD:9,BD:2.5,SD:4,sleeve:{w0:50,w1:44,l:24,ang:40},fab:'cotton'}
+ tee:{name:"T-shirt Men",W:53,H:73,neck:'crew',NW:9,FD:8.5,BD:2.3,SD:6,sleeve:{w0:44,w1:37,l:22,ang:60},fab:'cotton',hem:'flat'}
 };
-const FAB={cotton:{name:'Cotton knit',rough:.94},drifit:{name:'Dri-fit polyester',rough:.55}};
+const FAB={cotton:{name:'Cotton knit',rough:.94},poly:{name:'Polyester',rough:.6},drifit:{name:'Dri-FIT performance polyester',rough:.55}};
+let fabTee='cotton',mqSel='none';
 const COLORS=[['Black','#1c1c1e'],['White','#f2f1ec'],['Heather grey','#9a9a9c'],['Navy','#22304c'],['Maroon','#6b2430'],['Royal blue','#2450a8'],['Forest','#2f4a3a'],['Sand','#cdb894']];
 const FONTS=['Anton','Bebas Neue','Archivo Black','Permanent Marker','Inter Tight'];
 
-let style='tee',fabric='drifit',garment='#1c1c1e',trimOn=false,trimColor='#f2f1ec',backdrop='studio';
+let style='tee',fabric='cotton',garment='#1c1c1e',trimOn=false,trimColor='#f2f1ec',backdrop='studio';
 let G,RX,RZ;
 const PIECES=[{id:'front',name:'Front'},{id:'back',name:'Back'},{id:'rs',name:'Right sleeve'},{id:'ls',name:'Left sleeve'}];
 const [F,B,RS,LS]=PIECES;const SHEET={w:0,h:0};
 let TH=[],AL=[];
 
+const SIZES=['kids','XS','S','M','L','XL','XXL','XXXL'];let sizeSel='L';
+const BS=()=>ST[style],baseSize=()=>/^w/.test(style)?'M':'L';
+function sizeF(){const b=BS(),bi=SIZES.indexOf(baseSize());let W=b.W,H=b.H;if(sizeSel==='kids'){W=(b.W+2.5*(1-bi))*.8;H=(b.H+2*(1-bi))*.78}else{const k=SIZES.indexOf(sizeSel)-bi;W=b.W+2.5*k;H=b.H+2*k}return{sx:W/b.W,sy:H/b.H}}
+function sizeSpec(){const b=BS(),{sx,sy}=sizeF(),g={...b};['W','NW','strap'].forEach(k=>{if(g[k]!=null)g[k]=+(b[k]*sx).toFixed(1)});['H','FD','BD','SD','AH'].forEach(k=>{if(g[k]!=null)g[k]=+(b[k]*sy).toFixed(1)});
+ if(b.sleeve)g.sleeve={...b.sleeve,w0:+(b.sleeve.w0*sx).toFixed(1),w1:+(b.sleeve.w1*sx).toFixed(1),l:+(b.sleeve.l*(sx+sy)/2).toFixed(1)};return g}
+function applySizeScale(){if(!shirtHolder||!shirtHolder.userData.sc)return;const{sx,sy}=sizeF(),k=shirtHolder.userData.sc;shirtHolder.scale.set(k*sx,k*sy,k*sx);shadow.position.y=-40-42.5*sy-3;shadow.scale.setScalar(.6+.4*sx);dirty()}
 function layout(){
- G=ST[style];const sl=G.sleeve||ST.tee.sleeve;RX=G.W*.395;RZ=RX*.55;
+ G=sizeSpec();const sl=G.sleeve||ST.tee.sleeve;RX=G.W*.395;RZ=RX*.55;
  F.x=2;F.y=2;F.w=G.W;F.h=G.H;B.x=G.W+8;B.y=2;B.w=G.W;B.h=G.H;
  RS.w=LS.w=sl.w0;RS.h=LS.h=sl.l;RS.x=2+(G.W-sl.w0)/2;LS.x=B.x+(G.W-sl.w0)/2;RS.y=LS.y=G.H+12;
  RS.hidden=LS.hidden=!G.sleeve;SHEET.w=2*G.W+10;SHEET.h=G.sleeve?G.H+12+sl.l+9:G.H+6;
@@ -193,19 +299,62 @@ const PATTERNS={
 const thumbOf=c=>{const t=mk(80),s=Math.min(c.width,c.height);t.getContext('2d').drawImage(c,(c.width-s)/2,(c.height-s)/2,s,s,0,0,80,80);return t.toDataURL()};
 for(const k in PATTERNS){const P=PATTERNS[k];if(P.img){P.cv=mk(8);P.thumb='';const im=new Image();im.onload=()=>{P.cv.width=im.naturalWidth;P.cv.height=im.naturalHeight;P.cv.getContext('2d').drawImage(im,0,0);P.thumb=thumbOf(P.cv);const b=document.querySelector(`[data-p="${k}"]`);if(b)b.style.backgroundImage=`url(${P.thumb})`;dirty()};im.src=P.img}else{P.cv=P.make();P.thumb=thumbOf(P.cv)}}
 
+/* ---------- solid colour + shaped geometric designs (redrawn from their colours; hex editable) ---------- */
+const SHAPES={
+ solid:{name:'Solid colour',two:false,c:['#c8202f'],d(x,w,h,a){x.fillStyle=a;x.fillRect(0,0,w,h)}},
+};
+function genShape(L){const S=SHAPES[L.gen.k],W_=600,H_=Math.max(120,Math.min(2400,Math.round(600*L.h/L.w))),c=mk(W_,H_);S.d(c.getContext('2d'),W_,H_,L.gen.c[0],L.gen.c[1]||L.gen.c[0]);L.src=c;L._ar=Math.round(L.h/L.w*100)}
+const shapeThumb=k=>{const c=mk(80,80),x=c.getContext('2d');x.fillStyle='#2a2c2f';x.fillRect(0,0,80,80);SHAPES[k].d(x,80,80,...SHAPES[k].c,SHAPES[k].c[0]);return c.toDataURL()};
+const normHex=v=>{v=String(v).trim().replace(/^#?/,'#');if(/^#[0-9a-f]{3}$/i.test(v))v='#'+v.slice(1).split('').map(c=>c+c).join('');return /^#[0-9a-f]{6}$/i.test(v)?v.toLowerCase():null};
+
+/* ---------- layer shapes: any image or pattern can be cut to a shape ---------- */
+const MASKS={square:'Square',rounded:'Rounded square',circle:'Circle',triangle:'Triangle',diamond:'Diamond',hexagon:'Hexagon',star:'Star',shield:'Shield',v:'V',chevrons:'Chevrons',diagonal:'Diagonal band',zigzag:'Zigzag',triple:'Triple stripes',double:'Double stripes',wave:'Wave'};
+const BANDS=new Set(['v','chevrons','diagonal','zigzag','triple','double','wave']);
+function maskPath(k,w,h,t=.3){const p=new Path2D(),X=u=>-w/2+u*w,Y=v=>-h/2+v*h,poly=pts=>{pts.forEach(([u,v],i)=>i?p.lineTo(X(u),Y(v)):p.moveTo(X(u),Y(v)));p.closePath()};
+ switch(k){
+  case 'rounded':{const r=Math.min(w,h)*.14;p.roundRect?p.roundRect(-w/2,-h/2,w,h,r):p.rect(-w/2,-h/2,w,h);break}
+  case 'circle':p.ellipse(0,0,w/2,h/2,0,0,7);break;
+  case 'triangle':poly([[.5,0],[1,1],[0,1]]);break;
+  case 'diamond':poly([[.5,0],[1,.5],[.5,1],[0,.5]]);break;
+  case 'hexagon':poly([[.25,0],[.75,0],[1,.5],[.75,1],[.25,1],[0,.5]]);break;
+  case 'star':{const q=[];for(let i=0;i<10;i++){const a=-PI/2+i*PI/5,r=i%2?.2:.5;q.push([.5+Math.cos(a)*r,.53+Math.sin(a)*r])}poly(q);break}
+  case 'shield':p.moveTo(X(0),Y(0));p.lineTo(X(1),Y(0));p.lineTo(X(1),Y(.5));p.quadraticCurveTo(X(1),Y(.85),X(.5),Y(1));p.quadraticCurveTo(X(0),Y(.85),X(0),Y(.5));p.closePath();break;
+  case 'v':poly([[0,0],[t*.5,0],[.5,1-t*1.15],[1-t*.5,0],[1,0],[.5,1]]);break;
+  case 'chevrons':{const b=t*.32;for(let k=0;k<3;k++){const y=k*.25;poly([[0,y],[.5,y+.5],[1,y],[1,y+b],[.5,y+.5+b],[0,y+b]])}break}
+  case 'diagonal':poly([[0,1-t],[1-t,0],[1,0],[1,t],[t,1],[0,1]]);break;
+  case 'zigzag':{const n=5,a=.16,top=[],bot=[];for(let i=0;i<=n*2;i++){const u=i/(n*2),dv=(i%2?a:-a);top.push([u,.5-t/2+dv]);bot.push([u,.5+t/2+dv])}poly(top.concat(bot.reverse()));break}
+  case 'triple':{const s=t*.42,g=s*.55,y0=.5-(3*s+2*g)/2;for(let k=0;k<3;k++)poly([[0,y0+k*(s+g)],[1,y0+k*(s+g)],[1,y0+k*(s+g)+s],[0,y0+k*(s+g)+s]]);break}
+  case 'double':{const s=t*.6,g=s*.45,y0=.5-(2*s+g)/2;for(let k=0;k<2;k++)poly([[0,y0+k*(s+g)],[1,y0+k*(s+g)],[1,y0+k*(s+g)+s],[0,y0+k*(s+g)+s]]);break}
+  case 'wave':{const top=[],bot=[];for(let i=0;i<=40;i++){const u=i/40,v=.5+Math.sin(u*PI*4)*.18;top.push([u,v-t/2]);bot.push([u,v+t/2])}poly(top.concat(bot.reverse()));break}
+  default:p.rect(-w/2,-h/2,w,h)}
+ return p}
+/* ---------- background removal: edge-connected colour fill with soft edges (best on plain or studio backgrounds) ---------- */
+function removeBg(src,tol){const k=Math.min(1,1400/Math.max(src.width,src.height)),W=Math.round(src.width*k),H=Math.round(src.height*k),c=mk(W,H),x=c.getContext('2d');x.drawImage(src,0,0,W,H);
+ const id=x.getImageData(0,0,W,H),d=id.data,N=W*H;const bs=[];for(let i=0;i<W;i+=2){bs.push(i,(H-1)*W+i)}for(let j=0;j<H;j+=2){bs.push(j*W,j*W+W-1)}
+ const pick=ch=>{const v=bs.map(i=>d[i*4+ch]).sort((a,b)=>a-b);return v[v.length>>1]},R=pick(0),Gc=pick(1),Bc=pick(2),T=tol*4.4;
+ const dist=i=>{const o=i*4;return Math.hypot(d[o]-R,d[o+1]-Gc,d[o+2]-Bc)};
+ const bg=new Uint8Array(N),st=[];for(const i of bs)if(d[i*4+3]<10||dist(i)<T){bg[i]=1;st.push(i)}
+ while(st.length){const i=st.pop(),u=i%W,v=(i/W)|0;for(const j of[u>0?i-1:-1,u<W-1?i+1:-1,v>0?i-W:-1,v<H-1?i+W:-1]){if(j<0||bg[j])continue;if(d[j*4+3]<10||dist(j)<T){bg[j]=1;st.push(j)}}}
+ for(let i=0;i<N;i++){if(bg[i]){d[i*4+3]=0;continue}const u=i%W,v=(i/W)|0;if((u>0&&bg[i-1])||(u<W-1&&bg[i+1])||(v>0&&bg[i-W])||(v<H-1&&bg[i+W])){const f=Math.min(1,dist(i)/(T*1.6));d[i*4+3]=Math.round(d[i*4+3]*(.25+.75*f))}}
+ x.putImageData(id,0,0);return c}
+let bgTimer=0;
+function applyBg(L){clearTimeout(bgTimer);bgTimer=setTimeout(()=>{L.src=L.bgOff?L.orig:removeBg(L.orig,L.bgTol||22);dirty()},60)}
+
 /* ---------- layers ---------- */
 let layers=[],selId=null,uid=1;const undoStack=[];
-const cur=()=>layers.find(l=>l.id===selId)||null;
+const cur=()=>layers.find(l=>l.id===selId)||null,vis=()=>layers.filter(l=>!l.hidden);
 function commit(){undoStack.push({l:layers.map(l=>({...l})),s:selId});if(undoStack.length>80)undoStack.shift()}
 function undo(){const s=undoStack.pop();if(!s)return;layers=s.l;selId=s.s;renderProps();dirty()}
-function textCanvas(text,font,color){const f=`400px "${font}", Impact, sans-serif`,t=mk(10),x0=t.getContext('2d');x0.font=f;const w=x0.measureText(text||' ').width;const c=mk(w+60,520),x=c.getContext('2d');x.font=f;x.fillStyle=color;x.textAlign='center';x.textBaseline='middle';x.fillText(text||' ',c.width/2,270);return c}
-function retext(L){const make=()=>{const h=L.h;L.src=textCanvas(L.text,L.font,L.color);L.w=h*L.src.width/L.src.height};make();document.fonts.load(`400px "${L.font}"`).then(()=>{make();dirty();syncProps()}).catch(()=>{})}
+function clearAll(){if(!layers.length)return;commit();layers=[];selId=null;cropping=false;renderProps();dirty()}
+function textCanvas(text,font,color,k=1){const f=`${400*k}px "${font}", Impact, sans-serif`,t=mk(10),x0=t.getContext('2d');x0.font=f;const w=x0.measureText(text||' ').width;const c=mk(w+60*k,520*k),x=c.getContext('2d');x.font=f;x.fillStyle=color;x.textAlign='center';x.textBaseline='middle';x.fillText(text||' ',c.width/2,270*k);return c}
+function retext(L){const make=()=>{const h=L.h;L.src=textCanvas(L.text,L.font,L.color);L.w=h*L.src.width/L.src.height;thumbs()};make();document.fonts.load(`400px "${L.font}"`).then(()=>{make();dirty();syncProps()}).catch(()=>{})}
 function addLayer(o){const L={id:uid++,x:F.x+G.W/2,y:F.y+25,w:28,h:28,rot:0,op:1,tile:0,...o};commit();layers.push(L);selId=L.id;renderProps();dirty();return L}
 const PRESETS=()=>[['Center chest',F.x+G.W/2,F.y+G.FD+16,30,30],['Left chest',F.x+G.W/2+12,F.y+G.FD+10,9,9],['Full front',F.x+G.W/2,F.y+G.H/2,G.W,G.H],['Upper back',B.x+G.W/2,B.y+16,32,14],['Full back',B.x+G.W/2,B.y+G.H/2,G.W,G.H],['Right sleeve',RS.x+RS.w/2,RS.y+RS.h/2,RS.w,RS.h],['Left sleeve',LS.x+LS.w/2,LS.y+LS.h/2,LS.w,LS.h]].slice(0,G.sleeve?7:5);
 function place(L,[,cx,cy,bw,bh]){L.x=cx;L.y=cy;L.rot=0;if(L.tile){L.w=bw;L.h=bh}else{const a=L.w/L.h;if(bw/bh>a){L.h=bh;L.w=bh*a}else{L.w=bw;L.h=bw/a}}}
 function cropR(L){const cl=L.cl||0,cr=L.cr||0,ct=L.ct||0,cb=L.cb||0;return[-L.w/2+cl*L.w,-L.h/2+ct*L.h,L.w/2-cr*L.w,L.h/2-cb*L.h]}
 const isCropped=L=>(L.cl||L.cr||L.ct||L.cb)>0;let cropping=false;
-function drawLayer(x,L,a=1){x.save();x.globalAlpha=a*L.op;x.translate(L.x,L.y);x.rotate(L.rot*PI/180);if(isCropped(L)){const[x0,y0,x1,y1]=cropR(L);x.beginPath();x.rect(x0,y0,x1-x0,y1-y0);x.clip()}
+function drawLayer(x,L,a=1){if(L.gen&&L._ar!==Math.round(L.h/L.w*100))genShape(L);x.save();x.globalAlpha=a*L.op;x.translate(L.x,L.y);x.rotate(L.rot*PI/180);if(isCropped(L)){const[x0,y0,x1,y1]=cropR(L);x.beginPath();x.rect(x0,y0,x1-x0,y1-y0);x.clip()}
+ if(L.mask&&L.mask!=='square')x.clip(maskPath(L.mask,L.w,L.h,L.mt||.3));
  if(L.tile){const pt=x.createPattern(L.src,'repeat'),k=L.tile/L.src.width;pt.setTransform(new DOMMatrix([k,0,0,k,-L.w/2,-L.h/2]));x.fillStyle=pt;x.fillRect(-L.w/2,-L.h/2,L.w,L.h)}
  else x.drawImage(L.src,-L.w/2,-L.h/2,L.w,L.h);x.restore()}
 function corners(L,full){const c=Math.cos(L.rot*PI/180),s=Math.sin(L.rot*PI/180),[x0,y0,x1,y1]=full?[-L.w/2,-L.h/2,L.w/2,L.h/2]:cropR(L);return[[x0,y0],[x1,y0],[x1,y1],[x0,y1]].map(([lx,ly])=>[L.x+lx*c-ly*s,L.y+lx*s+ly*c])}
@@ -213,44 +362,79 @@ function local(L,p){const c=Math.cos(-L.rot*PI/180),s=Math.sin(-L.rot*PI/180),dx
 function inside(L,p){const[lx,ly]=local(L,p),[x0,y0,x1,y1]=cropR(L);return lx>=x0&&lx<=x1&&ly>=y0&&ly<=y1}
 
 /* ---------- 2D editor ---------- */
-const ed=$('#ed'),ex=ed.getContext('2d');let esc_=1,eox=0,eoy=0,dpr=1;
-function sizeEd(){dpr=Math.min(devicePixelRatio||1,2);ed.style.aspectRatio=`${SHEET.w+4}/${SHEET.h+2}`;const w=ed.clientWidth,h=ed.clientHeight;ed.width=w*dpr;ed.height=h*dpr;esc_=Math.min(w/(SHEET.w+4),h/(SHEET.h+2));eox=(w-SHEET.w*esc_)/2;eoy=(h-SHEET.h*esc_)/2;dirty()}
+const ed=$('#ed'),ex=ed.getContext('2d');let esc_=1,eox=0,eoy=0,dpr=1,vz=1,vpx=0,vpy=0,ebw=1,ebh=1,bsc=1,gridOn=true,snapC=true,snapG=true,guides=[];
+function sizeEd(){dpr=Math.min(devicePixelRatio||1,2);ed.style.aspectRatio=`${SHEET.w+4}/${SHEET.h+2}`;const w=ed.clientWidth,h=ed.clientHeight;ed.width=w*dpr;ed.height=h*dpr;ebw=w;ebh=h;bsc=Math.min(w/(SHEET.w+4),h/(SHEET.h+2));viewEd()}
+function viewEd(){esc_=bsc*vz;eox=(ebw-SHEET.w*esc_)/2+vpx;eoy=(ebh-SHEET.h*esc_)/2+vpy;const z=document.getElementById('zl');if(z)z.textContent=Math.round(vz*100)+'%';dirty()}
+function zoomAt(f,sx,sy){if(sx==null){sx=ebw/2;sy=ebh/2}const nz=Math.min(8,Math.max(.5,vz*f));if(nz===vz)return;const px=(sx-eox)/esc_,py=(sy-eoy)/esc_;vz=nz;const e=bsc*vz;vpx=sx-px*e-(ebw-SHEET.w*e)/2;vpy=sy-py*e-(ebh-SHEET.h*e)/2;if(vz===1&&Math.abs(vpx)<40&&Math.abs(vpy)<40)vpx=vpy=0;viewEd()}
+function fitEd(){vz=1;vpx=vpy=0;viewEd()}
+/* geometry helpers: bounding box on the sheet, the panel an artwork sits on, and that panel's safe print area */
+function bboxOf(L){const c=corners(L),xs=c.map(p=>p[0]),ys=c.map(p=>p[1]);return{x0:Math.min(...xs),x1:Math.max(...xs),y0:Math.min(...ys),y1:Math.max(...ys)}}
+function pieceOf(L){const a=active();return a.find(p=>L.x>=p.x&&L.x<=p.x+p.w&&L.y>=p.y&&L.y<=p.y+p.h)||a.map(p=>({p,d:Math.hypot(Math.max(p.x-L.x,0,L.x-p.x-p.w),Math.max(p.y-L.y,0,L.y-p.y-p.h))})).sort((a,b)=>a.d-b.d)[0].p}
+function printRect(p){if(p===F||p===B){const m=2.5,top=(p===F?G.FD:G.BD)+2;return{x:p.x+m,y:p.y+top,w:p.w-2*m,h:p.h-top-3}}return{x:p.x+1.5,y:p.y+1.5,w:p.w-3,h:p.h-3.5}}
+function snapMove(L){const t=8/esc_,b=bboxOf(L),p=pieceOf(L),xs=[],ys=[];
+ if(snapC){xs.push({v:p.x+p.w/2,c:1});ys.push({v:p.y+p.h/2,c:1})}
+ if(snapG){const r=printRect(p);xs.push({v:p.x},{v:p.x+p.w},{v:r.x},{v:r.x+r.w});ys.push({v:p.y+p.h},{v:r.y},{v:r.y+r.h});
+  vis().forEach(o=>{if(o===L)return;const q=bboxOf(o);xs.push({v:q.x0},{v:(q.x0+q.x1)/2},{v:q.x1});ys.push({v:q.y0},{v:(q.y0+q.y1)/2},{v:q.y1})})}
+ const mx=[b.x0,(b.x0+b.x1)/2,b.x1],my=[b.y0,(b.y0+b.y1)/2,b.y1],best=(cs,ms)=>{let o=null;cs.forEach(c=>ms.forEach((m,i)=>{if(c.c&&i!==1)return;const d=c.v-m;if(Math.abs(d)<t&&(!o||Math.abs(d)<Math.abs(o.d)))o={d,v:c.v,c:c.c}}));return o};
+ const bx=best(xs,mx),by=best(ys,my);if(bx){L.x+=bx.d;guides.push({x:bx.v,c:bx.c})}if(by){L.y+=by.d;guides.push({y:by.v,c:by.c})}}
 function drawSheet(x,sc,ox,oy,o){x.save();x.setTransform(o.d*sc,0,0,o.d*sc,o.d*ox,o.d*oy);
- if(o.ghost)layers.forEach(L=>drawLayer(x,L,.22));
+ if(o.ghost)vis().forEach(L=>drawLayer(x,L,.22));
  PIECES.forEach(p=>{if(p.hidden)return;piecePath(x,p);if(p.hidden){x.setLineDash([1,1]);x.strokeStyle=o.dark?'#999':'#555';x.lineWidth=1/sc;x.stroke();x.setLineDash([]);return}
-  x.fillStyle=garment;x.fill();x.save();x.clip();layers.forEach(L=>drawLayer(x,L));x.restore();x.strokeStyle=o.dark?'#222':'#c9c7c0';x.lineWidth=(o.dark?1.4:1.1)/sc;piecePath(x,p);x.stroke()});
- if(G.neck==='polo'){x.save();x.setLineDash([.6,.6]);x.strokeStyle=o.dark?'#c0392b':'#ff7a5c';x.lineWidth=1/sc;x.strokeRect(F.x+G.W/2-1.75,F.y+G.FD,3.5,G.PL||14);x.restore()}
+  x.fillStyle=garment;x.fill();x.save();x.clip();vis().forEach(L=>drawLayer(x,L));x.restore();x.strokeStyle=o.dark?'#222':'#c9c7c0';x.lineWidth=(o.dark?1.4:1.1)/sc;piecePath(x,p);x.stroke()});
+ if(G.neck==='polo'){x.save();x.setLineDash([.6,.6]);x.strokeStyle=o.dark?'#c0392b':'#3d8bff';x.lineWidth=1/sc;x.strokeRect(F.x+G.W/2-1.75,F.y+G.FD,3.5,G.PL||14);x.restore()}
  x.fillStyle=o.dark?'#333':'#9b9da1';x.font=`${(o.dark?15:12)/sc}px Inter, sans-serif`;x.textBaseline='top';
  PIECES.forEach(p=>{if(p.hidden)return;const t=p.hidden?`${p.name} (none)`:`${p.name} · ${p.w}×${p.h} cm`;x.fillText(t,p.x,p.y+p.h+1.2)});
  x.restore()}
 function drawEditor(){const w=ed.width,h=ed.height;ex.setTransform(1,0,0,1,0,0);ex.fillStyle='#1b1c1e';ex.fillRect(0,0,w,h);
- ex.strokeStyle='#ffffff0d';ex.lineWidth=1;const gs=10*esc_*dpr;for(let gx=(eox*dpr)%gs;gx<w;gx+=gs){ex.beginPath();ex.moveTo(gx,0);ex.lineTo(gx,h);ex.stroke()}for(let gy=(eoy*dpr)%gs;gy<h;gy+=gs){ex.beginPath();ex.moveTo(0,gy);ex.lineTo(w,gy);ex.stroke()}
+ if(gridOn){const gl=(step,col)=>{const gs=step*esc_*dpr;if(gs<6)return;ex.strokeStyle=col;ex.lineWidth=1;ex.beginPath();for(let gx=((eox*dpr)%gs+gs)%gs;gx<w;gx+=gs){ex.moveTo(gx,0);ex.lineTo(gx,h)}for(let gy=((eoy*dpr)%gs+gs)%gs;gy<h;gy+=gs){ex.moveTo(0,gy);ex.lineTo(w,gy)}ex.stroke()};if(esc_>=14)gl(1,'#ffffff08');gl(10,'#ffffff14')}
  drawSheet(ex,esc_,eox,eoy,{d:dpr,ghost:true});
- const L=cur();if(!L)return;ex.setTransform(dpr*esc_,0,0,dpr*esc_,dpr*eox,dpr*eoy);const c=corners(L);ex.strokeStyle='#ff7a5c';ex.lineWidth=1.5/esc_;ex.setLineDash([4/esc_,3/esc_]);ex.beginPath();c.forEach((p,i)=>i?ex.lineTo(...p):ex.moveTo(...p));ex.closePath();ex.stroke();ex.setLineDash([]);
- const hd=handles(L);ex.fillStyle='#fff';ex.strokeStyle='#ff7a5c';
- if(cropping){ex.save();ex.globalAlpha=.35;drawLayer(ex,{...L,cl:0,cr:0,ct:0,cb:0});ex.restore();const fc=corners(L,true);ex.setLineDash([2/esc_,3/esc_]);ex.strokeStyle='#ffffff88';ex.beginPath();fc.forEach((p,i)=>i?ex.lineTo(...p):ex.moveTo(...p));ex.closePath();ex.stroke();ex.setLineDash([]);ex.strokeStyle='#ff7a5c';
+ const L=cur();ex.setTransform(dpr*esc_,0,0,dpr*esc_,dpr*eox,dpr*eoy);
+ if(L&&!L.hidden){const r=printRect(pieceOf(L));ex.save();ex.setLineDash([3/esc_,4/esc_]);ex.strokeStyle='#ffd50099';ex.lineWidth=1/esc_;ex.strokeRect(r.x,r.y,r.w,r.h);ex.restore()}
+ guides.forEach(g=>{ex.strokeStyle=g.c?'#ff3355':'#ffd500';ex.lineWidth=1.2/esc_;ex.beginPath();if(g.x!=null){ex.moveTo(g.x,-eoy/esc_);ex.lineTo(g.x,(ebh-eoy)/esc_)}else{ex.moveTo(-eox/esc_,g.y);ex.lineTo((ebw-eox)/esc_,g.y)}ex.stroke()});
+ if(!L)return;const c=corners(L);if(L.hidden){ex.strokeStyle='#9b9da1';ex.lineWidth=1/esc_;ex.setLineDash([3/esc_,3/esc_]);ex.beginPath();c.forEach((p,i)=>i?ex.lineTo(...p):ex.moveTo(...p));ex.closePath();ex.stroke();ex.setLineDash([]);return}ex.strokeStyle=L.locked?'#c9c7c0':'#3d8bff';ex.lineWidth=1.5/esc_;ex.setLineDash([4/esc_,3/esc_]);ex.beginPath();c.forEach((p,i)=>i?ex.lineTo(...p):ex.moveTo(...p));ex.closePath();ex.stroke();ex.setLineDash([]);
+ const hd=handles(L);ex.fillStyle='#fff';ex.strokeStyle='#3d8bff';
+ if(cropping){ex.save();ex.globalAlpha=.35;drawLayer(ex,{...L,cl:0,cr:0,ct:0,cb:0});ex.restore();const fc=corners(L,true);ex.setLineDash([2/esc_,3/esc_]);ex.strokeStyle='#ffffff88';ex.beginPath();fc.forEach((p,i)=>i?ex.lineTo(...p):ex.moveTo(...p));ex.closePath();ex.stroke();ex.setLineDash([]);ex.strokeStyle='#3d8bff';
   ex.lineWidth=1.5/esc_;ex.beginPath();c.forEach((p,i)=>i?ex.lineTo(...p):ex.moveTo(...p));ex.closePath();ex.stroke();
   [hd.l,hd.r,hd.t,hd.b].forEach(p=>{ex.fillRect(p[0]-6/esc_,p[1]-6/esc_,12/esc_,12/esc_);ex.strokeRect(p[0]-6/esc_,p[1]-6/esc_,12/esc_,12/esc_)})}
- else{[hd.rs,hd.ro].forEach(p=>{ex.beginPath();ex.arc(p[0],p[1],7/esc_,0,7);ex.fill();ex.stroke()});
+ else if(!L.locked){[hd.rs,hd.ro].forEach(p=>{ex.beginPath();ex.arc(p[0],p[1],7/esc_,0,7);ex.fill();ex.stroke()});
  ex.beginPath();ex.moveTo(...hd.top);ex.lineTo(...hd.ro);ex.stroke();}
- ex.setTransform(dpr,0,0,dpr,0,0);ex.font='12px Inter';const[q0,q1,q2,q3]=cropR(L),tx=`${(q2-q0).toFixed(1)} × ${(q3-q1).toFixed(1)} cm${cropping?' · cropping':''}`;const bp=[(hd.rs[0])*esc_+eox,(hd.rs[1])*esc_+eoy+14];ex.fillStyle='#000a';const tw=ex.measureText(tx).width;ex.fillRect(bp[0]-tw/2-6,bp[1]-2,tw+12,18);ex.fillStyle='#fff';ex.textAlign='center';ex.textBaseline='top';ex.fillText(tx,bp[0],bp[1]);ex.textAlign='start'}
+ ex.setTransform(dpr,0,0,dpr,0,0);ex.font='12px Inter';const[q0,q1,q2,q3]=cropR(L),tx=`${(q2-q0).toFixed(1)} × ${(q3-q1).toFixed(1)} cm${cropping?' · cropping':''}${L.locked?' · locked':''}`;const bp=[(hd.rs[0])*esc_+eox,(hd.rs[1])*esc_+eoy+14];ex.fillStyle='#000a';const tw=ex.measureText(tx).width;ex.fillRect(bp[0]-tw/2-6,bp[1]-2,tw+12,18);ex.fillStyle='#fff';ex.textAlign='center';ex.textBaseline='top';ex.fillText(tx,bp[0],bp[1]);ex.textAlign='start'}
 function handles(L){const c=Math.cos(L.rot*PI/180),s=Math.sin(L.rot*PI/180),T=(lx,ly)=>[L.x+lx*c-ly*s,L.y+lx*s+ly*c],off=26/esc_,[x0,y0,x1,y1]=cropR(L),mx=(x0+x1)/2,my=(y0+y1)/2;return{rs:T(x1,y1),ro:T(mx,y0-off),top:T(mx,y0),l:T(x0,my),r:T(x1,my),t:T(mx,y0),b:T(mx,y1)}}
 const toSheet=e=>{const r=ed.getBoundingClientRect();return[(e.clientX-r.left-eox)/esc_,(e.clientY-r.top-eoy)/esc_]};
 let drag=null;
-ed.addEventListener('pointerdown',e=>{const p=toSheet(e);let L=cur(),mode=null;const hr=18/esc_;
- let edge=null;if(L){const h=handles(L);if(cropping){for(const k of['l','r','t','b'])if(Math.hypot(p[0]-h[k][0],p[1]-h[k][1])<hr){mode='crop';edge=k;break}}
+const ptrs=new Map();let pinch=null;
+ed.addEventListener('pointerdown',e=>{ptrs.set(e.pointerId,[e.clientX,e.clientY]);
+ if(ptrs.size===2){if(drag&&drag.mode!=='pan'){const L=cur();if(L){L.x=drag.x;L.y=drag.y;L.w=drag.w;L.h=drag.h;L.rot=drag.rot}undoStack.pop()}drag=null;guides=[];const[a,b]=[...ptrs.values()];pinch={d:Math.hypot(a[0]-b[0],a[1]-b[1])||1,z:vz};dirty();return}
+ if(ptrs.size>2)return;
+ const p=toSheet(e);let L=cur(),mode=null;const hr=18/esc_;
+ let edge=null;if(L&&!L.locked&&!L.hidden){const h=handles(L);if(cropping){for(const k of['l','r','t','b'])if(Math.hypot(p[0]-h[k][0],p[1]-h[k][1])<hr){mode='crop';edge=k;break}}
   else if(Math.hypot(p[0]-h.rs[0],p[1]-h.rs[1])<hr)mode='scale';else if(Math.hypot(p[0]-h.ro[0],p[1]-h.ro[1])<hr)mode='rot'}
- if(!mode){L=[...layers].reverse().find(l=>inside(l,p))||null;if(!L||L.id!==selId)cropping=false;selId=L?L.id:null;renderProps();if(L)mode='move'}
+ if(!mode){L=[...vis()].reverse().find(l=>inside(l,p))||null;if(!L||L.id!==selId)cropping=false;selId=L?L.id:null;renderProps();if(L&&!L.locked)mode='move'}
  if(mode){commit();ed.setPointerCapture(e.pointerId);drag={mode,edge,p,moved:false,x:L.x,y:L.y,w:L.w,h:L.h,rot:L.rot,d0:Math.hypot(p[0]-L.x,p[1]-L.y)||1,a0:Math.atan2(p[1]-L.y,p[0]-L.x)}}
+ else if(vz>1||e.button===1){ed.setPointerCapture(e.pointerId);drag={mode:'pan',sx:e.clientX,sy:e.clientY,vx:vpx,vy:vpy,moved:false}}
  dirty()});
-ed.addEventListener('pointermove',e=>{if(!drag)return;const L=cur();if(!L)return;const p=toSheet(e);drag.moved=true;
- if(drag.mode==='move'){L.x=drag.x+p[0]-drag.p[0];L.y=drag.y+p[1]-drag.p[1]}
+ed.addEventListener('pointermove',e=>{if(ptrs.has(e.pointerId))ptrs.set(e.pointerId,[e.clientX,e.clientY]);
+ if(pinch&&ptrs.size===2){const[a,b]=[...ptrs.values()],r=ed.getBoundingClientRect();zoomAt(pinch.z*Math.hypot(a[0]-b[0],a[1]-b[1])/pinch.d/vz,(a[0]+b[0])/2-r.left,(a[1]+b[1])/2-r.top);return}
+ if(!drag)return;if(drag.mode==='pan'){vpx=drag.vx+e.clientX-drag.sx;vpy=drag.vy+e.clientY-drag.sy;drag.moved=true;viewEd();return}
+ const L=cur();if(!L)return;const p=toSheet(e);drag.moved=true;
+ if(drag.mode==='move'){L.x=drag.x+p[0]-drag.p[0];L.y=drag.y+p[1]-drag.p[1];guides=[];if(!e.altKey&&(snapC||snapG))snapMove(L)}
  else if(drag.mode==='crop'){const[lx,ly]=local(L,p),m=.03,cl=L.cl||0,cr=L.cr||0,ct=L.ct||0,cb=L.cb||0,cl1=v=>Math.max(0,Math.min(v[1],v[0]));
   if(drag.edge==='l')L.cl=cl1([(lx+L.w/2)/L.w,1-cr-m]);else if(drag.edge==='r')L.cr=cl1([(L.w/2-lx)/L.w,1-cl-m]);else if(drag.edge==='t')L.ct=cl1([(ly+L.h/2)/L.h,1-cb-m]);else L.cb=cl1([(L.h/2-ly)/L.h,1-ct-m])}
  else if(drag.mode==='scale'){const k=Math.max(.05,Math.hypot(p[0]-L.x,p[1]-L.y)/drag.d0);L.w=Math.max(1,drag.w*k);L.h=Math.max(1,drag.h*k)}
  else{let r=drag.rot+(Math.atan2(p[1]-L.y,p[0]-L.x)-drag.a0)*180/PI;r=((r+540)%360)-180;if(e.shiftKey||Math.abs(r%45)<3||Math.abs(r%45)>42)r=Math.round(r/45)*45;L.rot=r}
  dirty()});
-const endDrag=()=>{if(drag&&!drag.moved)undoStack.pop();if(drag)syncProps();drag=null};
+const endDrag=e=>{if(e)ptrs.delete(e.pointerId);if(ptrs.size<2)pinch=null;if(drag&&!drag.moved&&drag.mode!=='pan')undoStack.pop();if(drag&&drag.mode!=='pan'){syncProps();thumbs()}drag=null;if(guides.length){guides=[];dirty()}};
+ed.addEventListener('wheel',e=>{const z=e.ctrlKey||e.metaKey;if(!z&&vz<=1)return;e.preventDefault();const r=ed.getBoundingClientRect();if(z)zoomAt(Math.exp(-e.deltaY*.0025),e.clientX-r.left,e.clientY-r.top);else{vpx-=e.deltaX;vpy-=e.deltaY;viewEd()}},{passive:false});
+/* double-click (or double-tap) a text to edit it in place */
+let tapT=0,tapId=null,txtEd=null;
+function editText(L){if(txtEd)txtEd.remove();const r=ed.getBoundingClientRect(),w=Math.max(140,L.w*esc_+24),fs=Math.max(14,Math.min(30,L.h*esc_*.55));
+ const i=document.createElement('input');i.type='text';i.value=L.text||'';i.className='txted';i.setAttribute('aria-label','Edit text');
+ Object.assign(i.style,{left:(r.left+eox+L.x*esc_-w/2)+'px',top:(r.top+eoy+L.y*esc_-fs*.9)+'px',width:w+'px',fontSize:fs+'px',fontFamily:`"${L.font}",Inter,sans-serif`});
+ document.body.append(i);txtEd=i;i.focus();i.select();commit();let done=false;
+ const fin=ok=>{if(done)return;done=true;if(ok&&i.value.trim()){L.text=i.value;if(!L.named)L.name=i.value.slice(0,24);retext(L);renderProps()}else if(!ok)undo();i.remove();txtEd=null;dirty()};
+ i.onkeydown=e=>{if(e.key==='Enter')fin(true);else if(e.key==='Escape')fin(false)};i.onblur=()=>fin(true)}
+ed.addEventListener('dblclick',e=>{const p=toSheet(e),L=[...vis()].reverse().find(l=>inside(l,p));if(L&&L.type==='text'){selId=L.id;renderProps();editText(L)}});
+ed.addEventListener('pointerup',e=>{if(e.pointerType!=='mouse'){const L=cur(),now=performance.now();if(L&&L.type==='text'&&!(drag&&drag.moved)){if(tapId===L.id&&now-tapT<350){editText(L);tapT=0}else{tapId=L.id;tapT=now}}}});
 ed.addEventListener('pointerup',endDrag);ed.addEventListener('pointercancel',endDrag);
 ed.addEventListener('dragover',e=>e.preventDefault());ed.addEventListener('drop',e=>{e.preventDefault();loadFiles(e.dataTransfer.files)});
 
@@ -260,10 +444,12 @@ const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,preserveDrawin
 renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));renderer.outputEncoding=THREE.sRGBEncoding;renderer.setClearColor(0,0);renderer.domElement.id='gl';stage.appendChild(renderer.domElement);
 const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(30,1,1,3000);cam.position.set(0,-30,200);
 const ctl=new THREE.OrbitControls(cam,renderer.domElement);ctl.target.set(0,-38,0);ctl.enableDamping=true;ctl.enablePan=false;ctl.minDistance=70;ctl.maxDistance=420;ctl.autoRotateSpeed=2.2;
-scene.add(new THREE.HemisphereLight(0xffffff,0x3a3a3a,.72));
-const key=new THREE.DirectionalLight(0xffffff,.85);key.position.set(60,80,120);scene.add(key);
-const rim=new THREE.DirectionalLight(0xffffff,.45);rim.position.set(-90,40,-110);scene.add(rim);
-const fill=new THREE.DirectionalLight(0xffffff,.25);fill.position.set(-80,-10,60);scene.add(fill);
+scene.add(new THREE.HemisphereLight(0xffffff,0x2a2a2a,.5));
+const key=new THREE.DirectionalLight(0xffffff,1.15);key.position.set(-60,85,115);scene.add(key);
+renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;key.castShadow=true;key.shadow.mapSize.set(2048,2048);
+{const c=key.shadow.camera;c.left=-95;c.right=95;c.top=95;c.bottom=-95;c.near=20;c.far=420;key.shadow.bias=-.0005;key.shadow.normalBias=.35}
+const rim=new THREE.DirectionalLight(0xffffff,.55);rim.position.set(-90,40,-110);scene.add(rim);const rim2=new THREE.DirectionalLight(0xffffff,.5);rim2.position.set(110,50,-70);scene.add(rim2);
+const fill=new THREE.DirectionalLight(0xffffff,.3);fill.position.set(85,-5,80);scene.add(fill);
 const shadowC=mk(256),sx=shadowC.getContext('2d'),sg=sx.createRadialGradient(128,128,0,128,128,128);sg.addColorStop(0,'rgba(0,0,0,.55)');sg.addColorStop(1,'rgba(0,0,0,0)');sx.fillStyle=sg;sx.fillRect(0,0,256,256);
 const shadow=new THREE.Mesh(new THREE.PlaneGeometry(90,30),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(shadowC),transparent:true,depthWrite:false}));shadow.rotation.x=-PI/2;scene.add(shadow);
 let shirt=new THREE.Group();scene.add(shirt);
@@ -304,7 +490,7 @@ function buildShirt(){
   const L1=a.map(([x,y])=>tp(false,x,y)).concat(a.slice(1,-1).reverse().map(([x,y])=>tp(true,G.W-x,y)));
   const L2=a.map(([x,y])=>tp(false,G.W-x,y)).concat(a.slice(1,-1).reverse().map(([x,y])=>tp(true,x,y)));
   shirt.add(tube(L1,true,.8),tube(L2,true,.8))}
- shirt.visible=false;shadow.position.y=photo?-81.5:-G.H-6;applyTrim();textures()}
+ shirt.visible=false;shadow.position.y=photo?-40-42.5*sizeF().sy-3:-G.H-6;applyTrim();textures()}
 function buildCollar(fr,bk){const m=fr.length>>1,loop=fr.slice(m,-1).concat(bk.slice(0,-1),fr.slice(0,m+1)).slice(2,-2);
  let cx=0,cz=0;loop.forEach(p=>{cx+=p.x;cz+=p.z});cx/=loop.length;cz/=loop.length;
  const prof=[[0,0],[2.6,.2],[3.1,1],[1.6,2.9],[-1.8,4.8]],pos=[],idx=[],N=loop.length;
@@ -314,9 +500,11 @@ function buildCollar(fr,bk){const m=fr.length>>1,loop=fr.slice(m,-1).concat(bk.s
  const px0=G.W/2-1.75,pl=grid(6,14,0,(s,t)=>{const q=torsoPoint(false,(px0+s*3.5)/G.W,(G.FD-.3+t*14)/G.H);return[q[0],q[1],q[2]+.3]},()=>[0,0]);shirt.add(new THREE.Mesh(pl,trimMat));
  [3,7.5,12].forEach(d=>{const q=torsoPoint(false,.5,(G.FD+d)/G.H),b=new THREE.Mesh(new THREE.CylinderGeometry(.55,.55,.3,16),btnMat);b.rotation.x=PI/2;b.position.set(q[0],q[1],q[2]+.5);shirt.add(b)})}
 function applyTrim(){trimMat.color.set(trimOn?trimColor:garment).convertSRGBToLinear();active().forEach(p=>p.inner&&p.inner.color.set(garment).convertSRGBToLinear().multiplyScalar(.6))}
-function textures(){active().forEach(p=>{if(!p.cv)return;const x=p.cv.getContext('2d');x.setTransform(PX,0,0,PX,-p.x*PX,-p.y*PX);x.fillStyle=garment;x.fillRect(p.x-1,p.y-1,p.w+2,p.h+2);layers.forEach(L=>drawLayer(x,L));p.tex.needsUpdate=true})}
+let noSel=false;
+function textures(){const S=!noSel&&cur();active().forEach(p=>{if(!p.cv)return;const x=p.cv.getContext('2d');x.setTransform(PX,0,0,PX,-p.x*PX,-p.y*PX);x.fillStyle=garment;x.fillRect(p.x-1,p.y-1,p.w+2,p.h+2);vis().forEach(L=>drawLayer(x,L));
+ if(S&&!S.hidden){const c=corners(S);x.save();x.strokeStyle='#3d8bff';x.lineWidth=.25;x.setLineDash([.9,.6]);x.beginPath();c.forEach((q,i)=>i?x.lineTo(...q):x.moveTo(...q));x.closePath();x.stroke();x.restore()}p.tex.needsUpdate=true})}
 
-/* ---------- backdrops (drawn, no photos) ---------- */
+/* ---------- backdrops: drawn studio colours + photo scenes ---------- */
 const BD={
  studio:{name:'Studio grey',draw(x,w,h){const g=x.createRadialGradient(w/2,h*.4,0,w/2,h*.4,Math.max(w,h)*.75);g.addColorStop(0,'#8c8c8e');g.addColorStop(1,'#4a4a4c');x.fillStyle=g;x.fillRect(0,0,w,h)}},
  black:{name:'Black',draw(x,w,h){const g=x.createRadialGradient(w/2,h*.42,0,w/2,h*.42,Math.max(w,h)*.75);g.addColorStop(0,'#2b2c2f');g.addColorStop(1,'#050506');x.fillStyle=g;x.fillRect(0,0,w,h)}},
@@ -324,61 +512,63 @@ const BD={
  smoke:{name:'Black with smoke',draw(x,w,h){BD.black.draw(x,w,h);const r=rng(5),u=Math.max(w,h)/900;x.globalCompositeOperation='lighter';
   for(let k=0;k<6;k++){let px=r()*w,py=h*(.25+r()*.75),a=r()*PI*2;for(let i=0;i<70;i++){a+=(r()-.5)*.5;px+=Math.cos(a)*9*u;py-=(3+r()*4)*u;const rr=(20+i*2.2+r()*30)*u,g=x.createRadialGradient(px,py,0,px,py,rr);g.addColorStop(0,`rgba(225,225,232,${.018*(1-i/70)+.004})`);g.addColorStop(1,'rgba(235,235,240,0)');x.fillStyle=g;x.fillRect(px-rr,py-rr,rr*2,rr*2)}}
   x.globalCompositeOperation='source-over'}},
- grass:{name:'Grass field',draw(x,w,h){const hz=h*.52,r=rng(9),u=h/800;let g=x.createLinearGradient(0,0,0,hz);g.addColorStop(0,'#7fb3df');g.addColorStop(1,'#e2eef6');x.fillStyle=g;x.fillRect(0,0,w,hz);
-  x.fillStyle='#3f5e3a';for(let i=0;i<70;i++){const cx=r()*w,rr=(14+r()*34)*u;x.beginPath();x.arc(cx,hz-rr*.4,rr,0,7);x.fill()}
-  g=x.createLinearGradient(0,hz,0,h);g.addColorStop(0,'#78ad55');g.addColorStop(1,'#2f6125');x.fillStyle=g;x.fillRect(0,hz,w,h-hz);
-  for(let i=0;i<5000;i++){const y=hz+Math.pow(r(),.7)*(h-hz),k=(y-hz)/(h-hz),bx=r()*w,l=(2+k*16)*u;x.strokeStyle=`hsla(${90+r()*30},${40+r()*20}%,${22+r()*28}%,.8)`;x.lineWidth=(.6+k*1.6)*u;x.beginPath();x.moveTo(bx,y);x.lineTo(bx+(r()-.5)*l*.6,y-l);x.stroke()}}},
- beach:{name:'Beach',draw(x,w,h){const hz=h*.5,r=rng(13),u=h/800;let g=x.createLinearGradient(0,0,0,hz);g.addColorStop(0,'#6aaee6');g.addColorStop(1,'#f3e7d6');x.fillStyle=g;x.fillRect(0,0,w,hz);
-  g=x.createLinearGradient(0,hz,0,h*.62);g.addColorStop(0,'#1c6da0');g.addColorStop(1,'#4fb2cf');x.fillStyle=g;x.fillRect(0,hz,w,h*.12);
-  g=x.createLinearGradient(0,h*.62,0,h);g.addColorStop(0,'#d9c08f');g.addColorStop(.12,'#ead6ab');g.addColorStop(1,'#cfae78');x.fillStyle=g;x.fillRect(0,h*.62,w,h*.38);
-  x.strokeStyle='rgba(255,255,255,.85)';x.lineWidth=5*u;x.beginPath();for(let i=0;i<=w;i+=8)x.lineTo(i,h*.62+4*u*Math.sin(i/(40*u)));x.stroke();
-  for(let i=0;i<4000;i++){x.fillStyle=`rgba(${120+r()*80},${90+r()*60},${50+r()*40},.25)`;x.fillRect(r()*w,h*.64+r()*h*.36,1.5*u,1.5*u)}}},
- court:{name:'Basketball court (outdoor)',draw(x,w,h){const hz=h*.6,r=rng(17),u=h/800;let g=x.createLinearGradient(0,0,0,h*.35);g.addColorStop(0,'#8cc0e8');g.addColorStop(1,'#e4eef4');x.fillStyle=g;x.fillRect(0,0,w,h*.35);
-  x.fillStyle='#5a7a4f';x.fillRect(0,h*.3,w,hz-h*.3);for(let i=0;i<50;i++){x.fillStyle='#46663d';const cx=r()*w,rr=(20+r()*30)*u;x.beginPath();x.arc(cx,h*.32,rr,0,7);x.fill()}
-  x.strokeStyle='rgba(200,205,210,.55)';x.lineWidth=1.2*u;const s=16*u;for(let i=-h;i<w+h;i+=s){x.beginPath();x.moveTo(i,h*.28);x.lineTo(i+(hz-h*.28),hz);x.stroke();x.beginPath();x.moveTo(i,hz);x.lineTo(i+(hz-h*.28),h*.28);x.stroke()}
-  x.fillStyle='#55595e';for(let i=0;i<=w;i+=w/6)x.fillRect(i-3*u,h*.26,6*u,hz-h*.26);
-  g=x.createLinearGradient(0,hz,0,h);g.addColorStop(0,'#3a7a94');g.addColorStop(1,'#245a73');x.fillStyle=g;x.fillRect(0,hz,w,h-hz);courtLines(x,w,h,hz,u,'#b8473a','#f4f4f0')}},
- indoor:{name:'Indoor court (cement)',draw(x,w,h){const hz=h*.62,r=rng(19),u=h/800;let g=x.createLinearGradient(0,0,0,hz);g.addColorStop(0,'#a3a29d');g.addColorStop(1,'#7f7e7a');x.fillStyle=g;x.fillRect(0,0,w,hz);
-  x.strokeStyle='rgba(0,0,0,.13)';x.lineWidth=1.5*u;const bh=34*u;for(let y=bh,k=0;y<hz;y+=bh,k++){x.beginPath();x.moveTo(0,y);x.lineTo(w,y);x.stroke();for(let i=(k%2)*bh;i<w;i+=bh*2){x.beginPath();x.moveTo(i,y-bh);x.lineTo(i,y);x.stroke()}}
-  x.fillStyle='#4a4a47';x.fillRect(0,hz-14*u,w,14*u);
-  x.fillStyle='#f4f4f2';x.fillRect(w/2-60*u,24*u,120*u,74*u);x.strokeStyle='#c0392b';x.lineWidth=3*u;x.strokeRect(w/2-22*u,58*u,44*u,30*u);x.strokeStyle='#e0632a';x.lineWidth=4*u;x.beginPath();x.ellipse(w/2,102*u,22*u,6*u,0,0,7);x.stroke();
-  g=x.createLinearGradient(0,hz,0,h);g.addColorStop(0,'#8c8b87');g.addColorStop(1,'#595855');x.fillStyle=g;x.fillRect(0,hz,w,h-hz);
-  for(let i=0;i<260;i++){const cx=r()*w,cy=hz+r()*(h-hz),rr=(10+r()*50)*u,gg=x.createRadialGradient(cx,cy,0,cx,cy,rr);gg.addColorStop(0,r()<.5?'rgba(0,0,0,.05)':'rgba(255,255,255,.035)');gg.addColorStop(1,'rgba(0,0,0,0)');x.fillStyle=gg;x.fillRect(cx-rr,cy-rr,rr*2,rr*2)}
-  courtLines(x,w,h,hz,u,null,'#e8c547');g=x.createLinearGradient(0,hz,0,h);g.addColorStop(0,'rgba(255,255,255,.12)');g.addColorStop(.4,'rgba(255,255,255,0)');x.fillStyle=g;x.fillRect(0,hz,w,h-hz)}}
+ indoor:{name:'Indoor basketball court',photo:'b/indoor.jpg',fx:.5,fy:.55},
+ court:{name:'Outdoor basketball court',photo:'b/court.jpg',fx:.6,fy:.6},
+ beach:{name:'Beach',photo:'b/beach.jpg',fx:.45,fy:.55},
+ grass:{name:'Grass field',photo:'b/grass.jpg',fx:.5,fy:.55},
+ transparent:{name:'Transparent',draw(x,w,h){x.clearRect(0,0,w,h)}},
+ custom:{name:'Custom…',draw(x,w,h){const im=bgImg;if(im&&im.naturalWidth){const k=Math.max(w/im.naturalWidth,h/im.naturalHeight);x.drawImage(im,(w-im.naturalWidth*k)/2,(h-im.naturalHeight*k)/2,im.naturalWidth*k,im.naturalHeight*k);return}
+  x.fillStyle=bgCol;x.fillRect(0,0,w,h);const g=x.createRadialGradient(w/2,h*.42,0,w/2,h*.42,Math.max(w,h)*.75);g.addColorStop(0,'#ffffff26');g.addColorStop(1,'#00000059');x.fillStyle=g;x.fillRect(0,0,w,h)}}
 };
-function courtLines(x,w,h,hz,u,paint,line){const fy=hz+(h-hz)*.18,ny=h*1.05,fw=w*.13,nw=w*.42;x.beginPath();x.moveTo(w/2-fw,fy);x.lineTo(w/2+fw,fy);x.lineTo(w/2+nw,ny);x.lineTo(w/2-nw,ny);x.closePath();if(paint){x.fillStyle=paint;x.fill()}
- x.strokeStyle=line;x.lineWidth=4*u;x.stroke();x.beginPath();x.moveTo(0,hz+(h-hz)*.06);x.lineTo(w,hz+(h-hz)*.06);x.stroke();x.beginPath();x.ellipse(w/2,fy,fw,(h-hz)*.07,0,PI,0,true);x.stroke();
- x.beginPath();x.ellipse(w/2,hz+(h-hz)*.06,w*.62,(h-hz)*.62,0,0,PI);x.stroke()}
-function drawBackdrop(){const w=bgc.clientWidth,h=bgc.clientHeight,d=Math.min(devicePixelRatio||1,2);bgc.width=w*d;bgc.height=h*d;const x=bgc.getContext('2d');BD[backdrop].draw(x,bgc.width,bgc.height);shadow.material.opacity=backdrop==='black'||backdrop==='smoke'?.5:.85}
+let bgCol='#34495e',bgImg=null;const BDORD=['studio','black','white','transparent','custom'],BDSCN=['smoke','indoor','court','beach','grass'];
+const bdImg={};
+function photoDraw(b,x,w,h){let im=bdImg[b.photo];if(!im){im=bdImg[b.photo]=new Image();im.onload=()=>drawBackdrop();im.src=b.photo}
+ if(!im.complete||!im.naturalWidth){BD.studio.draw(x,w,h);return}const k=Math.max(w/im.naturalWidth,h/im.naturalHeight),dw=im.naturalWidth*k,dh=im.naturalHeight*k;
+ x.drawImage(im,Math.min(0,Math.max(w-dw,w/2-dw*b.fx)),Math.min(0,Math.max(h-dh,h/2-dh*b.fy)),dw,dh)}
+function paintBackdrop(x,w,h){const B_=BD[backdrop]||BD.studio;if(B_.photo)photoDraw(B_,x,w,h);else B_.draw(x,w,h)}
+function drawBackdrop(){const w=bgc.clientWidth,h=bgc.clientHeight,d=Math.min(devicePixelRatio||1,2);bgc.width=w*d;bgc.height=h*d;const x=bgc.getContext('2d');paintBackdrop(x,bgc.width,bgc.height);shadow.material.opacity=backdrop==='black'||backdrop==='smoke'?.5:.85}
 
 /* ---------- 3D garment models (real shirt meshes) ---------- */
 let photo=null;const pGroup=new THREE.Group();pGroup.visible=false;scene.add(pGroup);const mCache={},tl=new THREE.TextureLoader();
-const SU={tF:{value:null},tBk:{value:null},tRS:{value:null},tLS:{value:null},gcol:{value:new THREE.Color()},tcol:{value:new THREE.Color()},ccol:{value:new THREE.Color()},taper:{value:0}};
-const shirtMat=new THREE.MeshStandardMaterial({color:0xffffff,roughness:.86,metalness:0,side:THREE.DoubleSide});
+const JCUT=`
+bool jcut(float rg,float s,float t){if(!((rg>.5&&rg<1.5)||rg>5.5))return false;float dx=abs(s*jc.x-jc.x*.5),py=t*jc.y;
+ if(dx>jx.y){float ys=jc.w*(jx.y-jc.z)/(jc.x*.5-jc.z),c=1.-sqrt(clamp((dx-jx.y)/(jc.x*.5-jx.y),0.,1.)),arm=ys+(jx.z-ys)*sqrt(max(0.,1.-c*c));if(py<arm-.05)return true;}
+ if(rg<1.5&&dx<jc.z){float u=dx/jc.z,e=jn.x>.5?jn.y*(1.-u):jn.z*sqrt(max(0.,1.-u*u));if(py<e-.05)return true;}return false;}`;
+const SU={tF:{value:null},tBk:{value:null},tRS:{value:null},tLS:{value:null},gcol:{value:new THREE.Color()},tcol:{value:new THREE.Color()},ccol:{value:new THREE.Color()},taper:{value:0},jc:{value:new THREE.Vector4(1,1,1,1)},jx:{value:new THREE.Vector3(0,0,0)},jn:{value:new THREE.Vector3(0,0,0)},det:{value:0},sp:{value:new THREE.Vector4(1,1,1,1)},slen:{value:1}};
+const shirtMat=new THREE.MeshPhysicalMaterial({color:0xffffff,roughness:.86,metalness:0,side:THREE.DoubleSide});shirtMat.shadowSide=THREE.BackSide;
 shirtMat.onBeforeCompile=sh=>{Object.assign(sh.uniforms,SU);
- sh.vertexShader=sh.vertexShader.replace('#include <common>','#include <common>\nattribute vec3 pc;varying vec3 vPc;').replace('#include <begin_vertex>','#include <begin_vertex>\nvPc=pc;');
+ sh.vertexShader=sh.vertexShader.replace('#include <common>','#include <common>\nattribute vec3 pc;attribute float ao;varying vec3 vPc;varying float vAo;').replace('#include <begin_vertex>','#include <begin_vertex>\nvPc=pc;vAo=ao;');
  sh.fragmentShader=sh.fragmentShader.replace('#include <common>',`#include <common>
-uniform sampler2D tF,tBk,tRS,tLS;uniform vec3 gcol,tcol,ccol;uniform float taper;varying vec3 vPc;
-vec3 lin3(vec3 c){return pow(max(c,0.),vec3(2.2));}`).replace('#include <map_fragment>',`{float rg=floor(vPc.x+.5),s=vPc.y,t=vPc.z;vec3 q=lin3(gcol);
+uniform sampler2D tF,tBk,tRS,tLS;uniform vec3 gcol,tcol,ccol;uniform float taper,det,slen;uniform vec4 sp,jc;uniform vec3 jx,jn;varying vec3 vPc;varying float vAo;
+vec3 lin3(vec3 c){return pow(max(c,0.),vec3(2.2));}`+JCUT).replace('#include <map_fragment>',`{float rg=floor(vPc.x+.5),s=vPc.y,t=vPc.z;vec3 q=lin3(gcol);
+ if(jx.x>.5&&jcut(rg,s,t))discard;
  if(rg>.5&&rg<1.5)q=lin3(texture2D(tF,vec2(s,1.-t)).rgb);else if(rg>5.5)q=lin3(texture2D(tBk,vec2(s,1.-t)).rgb);
  else if(rg>1.5&&rg<3.5){if(t<-.07)discard;t=max(t,0.);float u=taper*t*.5+fract(s)*(1.-taper*t);q=lin3((rg<2.5?texture2D(tRS,vec2(u,1.-t)):texture2D(tLS,vec2(u,1.-t))).rgb);}
- if(rg>4.5&&rg<5.5)q=lin3(tcol);else if(rg>8.5)q=lin3(ccol);else if(rg>7.5)q=lin3(gcol)*.45+.012;else if(!gl_FrontFacing){q=lin3(gcol)*.5+.004;if(rg>1.5&&rg<3.5)q*=.18+.82*smoothstep(.15,1.,t);}diffuseColor.rgb*=q;}`)};
+ if(rg>4.5&&rg<5.5)q=lin3(tcol);else if(rg>8.5)q=lin3(ccol);else if(rg>7.5)q=lin3(gcol)*.45+.012;else if(!gl_FrontFacing){q=lin3(gcol)*.5+.004;if(rg>1.5&&rg<3.5)q*=.18+.82*smoothstep(.15,1.,t);}
+ if(rg>1.5&&rg<3.5&&gl_FrontFacing){float cu=cos((vPc.y-.5)*6.2832);q*=1.-.3*(1.-smoothstep(0.,.25,max(vPc.z,0.)))*smoothstep(-.3,1.,-cu);}
+ if(det>.5&&gl_FrontFacing){float sh=1.;
+  if((rg>.5&&rg<1.5)||rg>5.5){float e=(.5-abs(s-.5))*sp.x;sh*=1.-.24*(1.-smoothstep(.06,.3,e));float dx=abs(s*sp.x-sp.x*.5),py=t*sp.y,yl=sp.w*(dx-sp.z)/(sp.x*.5-sp.z);if(dx>sp.z+.6)sh*=1.-.22*(1.-smoothstep(.06,.35,py-yl));}
+  if(rg>1.5&&rg<3.5)sh*=1.-.24*(1.-smoothstep(.05,.32,t*slen));
+  if(rg>4.5&&rg<5.5){float al=vPc.y,z=vPc.z;if(z>1.9)sh*=.84+.16*(.5+.5*sin(al*6.2832/.3));else if(z>.9){float a=(z-1.)*6.2832,sn=sin(a);float ln=(1.-smoothstep(0.,.05,abs(abs(sn)-.72)))*step(0.,cos(a));sh*=1.-.22*ln*step(.3,fract(al/.42));}}
+  q*=sh;}
+ diffuseColor.rgb*=q*(rg>4.5&&rg<5.5?mix(1.,vAo,.25):vAo);}`)};
 const b64f=(s,T)=>{const b=atob(s),u=new Uint8Array(b.length);for(let i=0;i<b.length;i++)u[i]=b.charCodeAt(i);return new T(u.buffer)};
 const ldTex=f=>new Promise((res,rej)=>tl.load(f,t=>{t.flipY=false;res(t)},undefined,rej));
 function loadModel(k){if(mCache[k])return mCache[k];return mCache[k]=Promise.all([fetch(`s/${k}.json`).then(r=>{if(!r.ok)throw Error('missing');return r.json()}),new Promise(res=>tl.load(`s/${k}_knit.png`,t=>res(t),undefined,()=>res(null)))]).then(([d,kn])=>{
  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(b64f(d.pos,Float32Array),3));g.setAttribute('normal',new THREE.BufferAttribute(b64f(d.nor,Float32Array),3));
- if(d.uv)g.setAttribute('uv',new THREE.BufferAttribute(b64f(d.uv,Float32Array),2));g.setAttribute('pc',new THREE.BufferAttribute(b64f(d.pc,Float32Array),3));g.setIndex(new THREE.BufferAttribute(b64f(d.idx,Uint32Array),1));
- if(kn&&d.uv){kn.wrapS=kn.wrapT=THREE.RepeatWrapping;shirtMat.normalMap=kn;shirtMat.normalScale.set(.45,.45);shirtMat.needsUpdate=true}return{g,h:d.height,sh:d.sh}}).catch(e=>{delete mCache[k];throw e})}
-function photoUniforms(){if(!photo)return;const sl=G.sleeve||ST.tee.sleeve;SU.tF.value=F.tex;SU.tBk.value=B.tex;SU.tRS.value=RS.tex||F.tex;SU.tLS.value=LS.tex||F.tex;SU.gcol.value.set(garment);SU.tcol.value.set(trimOn?trimColor:garment);if(trimOn)SU.ccol.value.set(trimColor);else{const hsl=new THREE.Color(garment).getHSL({});SU.ccol.value.setHSL(hsl.h,hsl.s,hsl.l>.82?hsl.l-.12:Math.min(1,hsl.l+.13))}SU.taper.value=(sl.w0-sl.w1)/sl.w0}
+ if(d.uv)g.setAttribute('uv',new THREE.BufferAttribute(b64f(d.uv,Float32Array),2));g.setAttribute('pc',new THREE.BufferAttribute(b64f(d.pc,Float32Array),3));g.setAttribute('ao',d.ao?new THREE.BufferAttribute(b64f(d.ao,Float32Array),1):new THREE.BufferAttribute(new Float32Array(d.n||g.attributes.position.count).fill(1),1));g.setIndex(new THREE.BufferAttribute(b64f(d.idx,Uint32Array),1));
+ if(kn){kn.wrapS=kn.wrapT=THREE.RepeatWrapping}return{g,h:d.height,sh:d.sh,kn:d.uv?kn:null,arm:d.arm?d.arm.slice().sort((a,b)=>a.m-b.m):null,armP:d.armP||null,neck:d.neck||null,armG:{},neckG:{}}}).catch(e=>{delete mCache[k];throw e})}
+function photoUniforms(){if(!photo)return;const sl=BS().sleeve||ST.tee.sleeve;SU.tF.value=F.tex;SU.tBk.value=B.tex;SU.tRS.value=RS.tex||F.tex;SU.tLS.value=LS.tex||F.tex;SU.gcol.value.set(garment);SU.tcol.value.set(trimOn?trimColor:garment);if(trimOn)SU.ccol.value.set(trimColor);else{const hsl=new THREE.Color(garment).getHSL({});SU.ccol.value.setHSL(hsl.h,hsl.s,hsl.l>.82?hsl.l-.12:Math.min(1,hsl.l+.13))}SU.taper.value=(sl.w0-sl.w1)/sl.w0;SU.det.value=BS().hem==='flat'?1:0;{const on=!!(BS().strap&&curModel&&curModel.arm);SU.jx.value.set(on?1:0,(BS().NW||9)+(BS().strap||0),BS().AH||25);SU.jc.value.set(BS().W,BS().H,BS().NW||9,BS().SD||4);const ap=(curModel&&curModel.armP)||{};SU.jn.value.set(BS().neckStyle==='round'?0:1,ap.FD||15,ap.FDR||8)}SU.sp.value.set(BS().W,BS().H,BS().NW||8,BS().SD||4);SU.slen.value=sl.l}
 let shirtHolder=null,sleeveMesh=null,curModel=null;
-function sleeveGeo(sh){const grids=[],sl=G.sleeve,l=sl.l,ang=(sl.ang+Math.max(0,Math.min(25,(l-24)*.55)))*PI/180,pos=[],uvs=[],pcs=[],idx=[];
+function sleeveGeo(sh){const grids=[],sl=BS().sleeve,l=sl.l,ang=(sl.ang+Math.max(0,Math.min(25,(l-24)*.55)))*PI/180,pos=[],uvs=[],pcs=[],idx=[];
  const sm=x=>{x=Math.min(1,Math.max(0,x));return x*x*(3-2*x)},upf=d=>.35+.65*sm(d/11),zf=d=>.78+.22*sm(d/12),V=(x,y,z)=>new THREE.Vector3(x,y,z);
  for(const side of [1,-1]){const A=V(side*Math.cos(ang),-Math.sin(ang),0),U=V(side*Math.sin(ang),Math.cos(ang),0),Z=V(0,0,-side),at=ang+10*PI/180,Atop=V(side*Math.cos(at),-Math.sin(at),0),S0=V(...sh[String(side)]);
+  const sa0=Math.atan2(BS().SD,BS().W/2-BS().NW),rnd=BS().hem==='flat',top=d=>{if(!rnd)return S0.clone().addScaledVector(Atop,d);const p=S0.clone(),n=Math.max(1,Math.ceil(d/.5)),dx=d/n;for(let i=0;i<n;i++){const al=sa0+(at-sa0)*sm((i+.5)*dx/10);p.x+=side*Math.cos(al)*dx;p.y-=Math.sin(al)*dx}return p};
   const nu=64,T=[];for(let i=0;i<8;i++)T.push(-.3+.3*i/8);grids.push({b:pos.length/3,nu,get nv(){return T.length}});const nv2=Math.max(16,Math.round(l/1.2));for(let i=0;i<=nv2;i++)T.push(i/nv2);
   const base=pos.length/3,code=side>0?3:2;let C1,r1,u1,z1;
   T.forEach(t=>{const tc=Math.max(t,0),d=tc*l,w=sl.w0-(sl.w0-sl.w1)*tc,r=w/(2*PI)*(1+.6*Math.min(t,0)),u0=upf(d),zz=zf(d);
-   const C=(t>=0?S0.clone().addScaledVector(Atop,d):S0.clone().addScaledVector(A,t*l*.6).addScaledVector(U,t*12)).addScaledVector(U,-r*u0*.95).addScaledVector(A,-.4);
-   for(let i=0;i<nu;i++){const s=i/(nu-1),ph=(s-.5)*2*PI,cu=Math.cos(ph),wob=1+.02*Math.sin(ph*3+t*6)*tc,p=C.clone().addScaledVector(U,r*cu*(cu>0?u0:1)*wob).addScaledVector(Z,r*Math.sin(ph)*zz*wob);
+   const C=(t>=0?top(d):S0.clone().addScaledVector(A,t*l*.6).addScaledVector(U,t*12)).addScaledVector(U,-r*u0*.95).addScaledVector(A,-.4);
+   for(let i=0;i<nu;i++){const s=i/(nu-1),ph=(s-.5)*2*PI,cu=Math.cos(ph),wob=1+.02*Math.sin(ph*3+t*6)*tc+(rnd?.032*Math.sin(tc*l/2.4*2*PI+.6)*(1-sm(tc/.5))*sm(-cu*1.4):0)+(rnd?.012*Math.sin(ph*5+tc*9):0),p=C.clone().addScaledVector(U,r*cu*(cu>0?u0:1)*wob).addScaledVector(Z,r*Math.sin(ph)*zz*wob);
     pos.push(p.x,p.y,p.z);uvs.push(s*w/.62,d/.5);pcs.push(code,s,t<0?t:tc)}
    if(t===1){C1=C;r1=r;u1=u0;z1=zz}});
   const nv=T.length,tri=[];for(let j=0;j<nv-1;j++)for(let i=0;i<nu-1;i++){const a=base+j*nu+i,b=a+1,c=a+nu,e=c+1;tri.push([a,c,b],[b,c,e])}
@@ -387,33 +577,105 @@ function sleeveGeo(sh){const grids=[],sl=G.sleeve,l=sl.l,ang=(sl.ang+Math.max(0,
   const jm=Math.floor(nv/2),cen=P(base+jm*nu).add(P(base+jm*nu+nu/2)).multiplyScalar(.5),flip=n.dot(pa.clone().sub(cen))<0;
   tri.forEach(([a,b,c])=>flip?idx.push(a,c,b):idx.push(a,b,c));
   // cuff: ribbed band (polo) or rolled hem (tee)
-  if(G.cuff==='rib'){const cb=pos.length/3,ncu=64,rows=5,BL=2.6;for(let k=0;k<rows;k++){const f=k/(rows-1);for(let i=0;i<ncu;i++){const ph=i/ncu*2*PI,cu=Math.cos(ph),rib=1+.012*Math.cos(ph*48),sc=(1.015-.05*f)*rib,q=C1.clone().addScaledVector(U,r1*cu*(cu>0?u1:1)*sc).addScaledVector(Z,r1*Math.sin(ph)*z1*sc).addScaledVector(A,BL*f-.3);pos.push(q.x,q.y,q.z);uvs.push(i*.5,f);pcs.push(5,0,0)}}
+  if(BS().cuff==='rib'){const cb=pos.length/3,ncu=64,rows=5,BL=2.6;for(let k=0;k<rows;k++){const f=k/(rows-1);for(let i=0;i<ncu;i++){const ph=i/ncu*2*PI,cu=Math.cos(ph),rib=1+.012*Math.cos(ph*48),sc=(1.015-.05*f)*rib,q=C1.clone().addScaledVector(U,r1*cu*(cu>0?u1:1)*sc).addScaledVector(Z,r1*Math.sin(ph)*z1*sc).addScaledVector(A,BL*f-.3);pos.push(q.x,q.y,q.z);uvs.push(i*.5,f);pcs.push(5,0,0)}}
    for(let k=0;k<rows-1;k++)for(let i=0;i<ncu;i++){const a=cb+k*ncu+i,b=cb+k*ncu+(i+1)%ncu,c=a+ncu,e=b+ncu;idx.push(a,b,c,b,e,c)}}
   else{  const cb=pos.length/3,ncu=64,nt=10;for(let i=0;i<ncu;i++){const ph=i/ncu*2*PI,cu=Math.cos(ph),q=C1.clone().addScaledVector(U,r1*cu*(cu>0?u1:1)).addScaledVector(Z,r1*Math.sin(ph)*z1),nr=q.clone().sub(C1).normalize();
-   for(let k=0;k<nt;k++){const ps=k/nt*2*PI,p=q.clone().addScaledVector(nr,Math.cos(ps)*.75*.6).addScaledVector(A,Math.sin(ps)*.75-.4);pos.push(p.x,p.y,p.z);uvs.push(i*.5,k/nt);pcs.push(5,0,0)}}
+   for(let k=0;k<nt;k++){const ps=k/nt*2*PI,fl=BS().hem==='flat',p=q.clone().addScaledVector(nr,Math.cos(ps)*(fl?.27:.45)).addScaledVector(A,fl?Math.sin(ps)*1.0-.95:Math.sin(ps)*.75-.4);pos.push(p.x,p.y,p.z);uvs.push(i*.5,k/nt);pcs.push(5,i/ncu*2*PI*r1,1+k/nt)}}
   for(let i=0;i<ncu;i++)for(let k=0;k<nt;k++){const a=cb+i*nt+k,b=cb+i*nt+(k+1)%nt,c=cb+((i+1)%ncu)*nt+k,e=cb+((i+1)%ncu)*nt+(k+1)%nt;idx.push(a,b,c,b,e,c)}}
   }
- const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(uvs,2));g.setAttribute('pc',new THREE.Float32BufferAttribute(pcs,3));g.setIndex(idx);g.computeVertexNormals();
+ const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(uvs,2));g.setAttribute('pc',new THREE.Float32BufferAttribute(pcs,3));g.setAttribute('ao',new THREE.Float32BufferAttribute(new Float32Array(pos.length/3).fill(1),1));g.setIndex(idx);g.computeVertexNormals();
  const N=g.attributes.normal;for(const gr of grids){for(let j=0;j<gr.nv;j++){const a=gr.b+j*gr.nu,b=a+gr.nu-1,x=(N.getX(a)+N.getX(b))/2,y=(N.getY(a)+N.getY(b))/2,z=(N.getZ(a)+N.getZ(b))/2,l=Math.hypot(x,y,z)||1;N.setXYZ(a,x/l,y/l,z/l);N.setXYZ(b,x/l,y/l,z/l)}}N.needsUpdate=true;return g}
-function rebuildSleeves(){if(!shirtHolder||!curModel)return;if(sleeveMesh){shirtHolder.remove(sleeveMesh);sleeveMesh.geometry.dispose();sleeveMesh=null}if(!G.sleeve)return;sleeveMesh=new THREE.Mesh(sleeveGeo(curModel.sh),shirtMat);shirtHolder.add(sleeveMesh)}
-let slReq=0;function setSleeveLen(v){if(!G.sleeve)return;G.sleeve.l=v;$('#slenv').textContent=v+' cm';rebuildSleeves();cancelAnimationFrame(slReq);slReq=requestAnimationFrame(()=>{layout();buildShirt();sizeEd();photoUniforms();dirty()})}
+const FP={cotton:{tex:'s/tee_cotton.png',rep:1/2.6,ns:.65,rough:.95,sheen:.1},poly:{tex:'s/tee_poly.png',rep:1/3.2,ns:.25,rough:.55,sheen:.12},drifit:{tex:'s/tee_drifit.png',rep:1/3.4,ns:.7,rough:.66,sheen:.14}},fpTex={};
+function applyFabric(){if(!curModel&&!shirtHolder)return;const tee=style==='tee',p=FP[fabric];let t,rep=1,ns=.45,rough=.86,sh=0;
+ if(tee&&p){t=fpTex[fabric]||(fpTex[fabric]=tl.load(p.tex,()=>dirty()));t.wrapS=t.wrapT=THREE.RepeatWrapping;rep=p.rep;ns=p.ns;rough=p.rough;sh=p.sheen}else t=(mCache[style]&&curModelKn)||null;
+ shirtMat.normalMap=t||null;if(t)t.repeat.set(rep,rep);shirtMat.normalScale.set(ns,ns);shirtMat.roughness=rough;shirtMat.sheen=sh?new THREE.Color(sh,sh,sh):null;shirtMat.needsUpdate=true;dirty()}
+let curModelKn=null,manData=null,manGroup=null,manReq=0;
+const manMat=new THREE.MeshStandardMaterial({color:0xd3cec6,roughness:.55,metalness:0});
+manMat.onBeforeCompile=sh=>{sh.vertexShader=sh.vertexShader.replace('#include <common>','#include <common>\nattribute float ao;varying float vAo;').replace('#include <begin_vertex>','#include <begin_vertex>\nvAo=ao;');
+ sh.fragmentShader=sh.fragmentShader.replace('#include <common>','#include <common>\nvarying float vAo;').replace('#include <color_fragment>','#include <color_fragment>\ndiffuseColor.rgb*=vAo;')};
+function loadMan(){return manData||(manData=fetch('s/man_tee.json').then(r=>{if(!r.ok)throw Error('missing');return r.json()}).then(d=>{const o={};for(const k of ['m','f']){const q=d[k],g=new THREE.BufferGeometry();
+ g.setAttribute('position',new THREE.BufferAttribute(b64f(q.pos,Float32Array),3));g.setAttribute('normal',new THREE.BufferAttribute(b64f(q.nor,Float32Array),3));g.setAttribute('ao',new THREE.BufferAttribute(b64f(q.ao,Float32Array),1));g.setIndex(new THREE.BufferAttribute(b64f(q.idx,Uint32Array),1));o[k]=g}return o}).catch(e=>{manData=null;throw e}))}
+/* arms: follow the sleeve's own axis (same maths as sleeveGeo), stay clear of the sleeve wall, bend at the elbow below short sleeves */
+function armGeo(sh,sex){const sl=BS().sleeve,l=sl.l,ang=(sl.ang+Math.max(0,Math.min(25,(l-24)*.55)))*PI/180,M=sex==='m',k=M?1:.86,pos=[],idx=[],aos=[];
+ const sm=x=>{x=Math.min(1,Math.max(0,x));return x*x*(3-2*x)},upf=d=>.35+.65*sm(d/11),zf=d=>.78+.22*sm(d/12),V=(x,y,z)=>new THREE.Vector3(x,y,z);
+ const LU=(M?30:27.5),LF=(M?25.5:23),LH=(M?17.5:15.5),bend=1-sm((l-(LU-4))/8);
+ const prof=a=>a<LU?(M?[5.0,4.75,4.4,4.0]:[4.3,4.1,3.8,3.45])[Math.min(3,Math.floor(a/LU*3))]*(1-(a/LU*3%1))+(M?[5.0,4.75,4.4,4.0,4.0]:[4.3,4.1,3.8,3.45,3.45])[Math.min(4,Math.floor(a/LU*3)+1)]*(a/LU*3%1):(()=>{const u=(a-LU)/LF;return(M?4.0:3.45)*(1+.08*Math.sin(Math.min(1,u*2.2)*PI))*(1-u)+(M?2.75:2.35)*u})();
+ for(const side of [1,-1]){const A=V(side*Math.cos(ang),-Math.sin(ang),0),U=V(side*Math.sin(ang),Math.cos(ang),0),Z=V(0,0,-side),at=ang+10*PI/180,Atop=V(side*Math.cos(at),-Math.sin(at),0),S0=V(...sh[String(side)]);
+  const sec=d=>{const tc=Math.min(1,Math.max(0,d/l)),w=sl.w0-(sl.w0-sl.w1)*tc,r=w/(2*PI),u0=upf(d),zz=zf(d),C=S0.clone().addScaledVector(Atop,d).addScaledVector(U,-r*u0*.95).addScaledVector(A,-.4);return{c:C.addScaledVector(U,r*(u0-1)/2),hu:r*(1+u0)/2,hz:r*zz}};
+  const Fd=Atop.clone().lerp(V(side*.08,-1,.16),.85*bend).normalize();
+  const path=[];let p=null,dir=Atop.clone(),a=-3;
+  for(;a<=LU+LF+LH+.01;a+=.8){let ra;const inS=a<=l-1;
+   if(inS){const S=sec(Math.max(a,0));p=a<0?S.c.clone().addScaledVector(Atop,a):S.c.clone();ra=Math.min(prof(Math.max(a,0)),Math.min(S.hu,S.hz)-.55)}
+   else{const b=sm((a-(LU-4))/8);dir=Atop.clone().lerp(Fd,b).normalize();p=p.clone().addScaledVector(dir,.8);ra=a<LU+LF?prof(a):0}
+   path.push({p:p.clone(),d:dir.clone(),a,ra})}
+  // rings; hand = flattened mitten after the wrist
+  const nr=28,base=pos.length/3;path.forEach((q,j)=>{const d=q.d,wa=V(0,0,1).sub(d.clone().multiplyScalar(d.z)).normalize(),ta=d.clone().cross(wa).normalize();let rw=q.ra,rt=q.ra;
+   if(q.a>LU+LF){const u=(q.a-LU-LF)/LH;rw=(M?2.75:2.35)+(M?1.6:1.35)*Math.sin(Math.min(1,u*1.6)*PI*.5)-(u>.75?(M?4.2:3.6)*(1-Math.sqrt(Math.max(0,1-((u-.75)/.25)**2))):0);rw=Math.max(rw,.05);const wr=(M?2.75:2.35)*.93,ht=(M?2.15:1.85),bl=sm(u/.35);rt=Math.max(.05,(wr*(1-bl)+ht*bl)*(u<.85?1:Math.sqrt(Math.max(0,1-((u-.85)/.15)**2))))}
+   for(let i=0;i<nr;i++){const ph=i/nr*2*PI,v=q.p.clone().addScaledVector(wa,Math.cos(ph)*rw).addScaledVector(ta,Math.sin(ph)*rt*(q.a<LU+LF?.93:1));pos.push(v.x,v.y,v.z);aos.push(1)}});
+  const nv=path.length;for(let j=0;j<nv-1;j++)for(let i=0;i<nr;i++){const a1=base+j*nr+i,b1=base+j*nr+(i+1)%nr,c1=a1+nr,e1=b1+nr;idx.push(a1,c1,b1,b1,c1,e1)}
+  const c0=pos.length/3,p0=path[0].p;pos.push(p0.x,p0.y,p0.z);aos.push(1);for(let i=0;i<nr;i++)idx.push(c0,base+i,base+(i+1)%nr)}
+ const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.setAttribute('ao',new THREE.Float32BufferAttribute(aos,1));g.setIndex(idx);g.computeVertexNormals();
+ return g}
+async function updateMannequin(){const req=++manReq;if(manGroup&&shirtHolder){shirtHolder.remove(manGroup);manGroup.children.forEach(m=>m.geometry!==manData?.m&&m.geometry.dispose&&m.userData.own&&m.geometry.dispose())}manGroup=null;
+ if(style!=='tee'||mqSel==='none'||!shirtHolder||!curModel){if(D!==200)frameView();dirty();return}
+ let d;try{d=await loadMan()}catch(e){console.error(e);return}if(req!==manReq||!shirtHolder)return;
+ const gp=new THREE.Group(),body=new THREE.Mesh(d[mqSel],manMat),arms=new THREE.Mesh(armGeo(curModel.sh,mqSel),manMat);arms.userData.own=true;
+ for(const m of [body,arms]){m.castShadow=m.receiveShadow=true;gp.add(m)}manGroup=gp;shirtHolder.add(gp);frameView();dirty()}
+function frameView(){const on=!!manGroup;D=on?262:200;ctl.target.y=on?-44:-38;goView(curView||'front')}
+/* jersey: shoulder-strap and neckline controllers (geometry trimmed in the shader, bindings rebuilt here) */
+const trimDepthMat=new THREE.MeshDepthMaterial({depthPacking:THREE.RGBADepthPacking});
+trimDepthMat.onBeforeCompile=sh=>{Object.assign(sh.uniforms,{jc:SU.jc,jx:SU.jx,jn:SU.jn});
+ sh.vertexShader=sh.vertexShader.replace('#include <common>','#include <common>\nattribute vec3 pc;varying vec3 vPc;').replace('#include <begin_vertex>','#include <begin_vertex>\nvPc=pc;');
+ sh.fragmentShader=sh.fragmentShader.replace('#include <common>','#include <common>\nuniform vec4 jc;uniform vec3 jx,jn;varying vec3 vPc;'+JCUT).replace('void main() {','void main() {\nif(jx.x>.5&&jcut(floor(vPc.x+.5),vPc.y,vPc.z))discard;')};
+let armMesh=null,neckMesh=null,stReq=0;
+function bindGeo(pos,nor,idx){const g=new THREE.BufferGeometry(),n=pos.length/3,pc=new Float32Array(n*3);for(let i=0;i<n;i++)pc[i*3]=5;
+ g.setAttribute('position',new THREE.BufferAttribute(pos,3));g.setAttribute('normal',new THREE.BufferAttribute(nor,3));g.setAttribute('pc',new THREE.BufferAttribute(pc,3));
+ g.setAttribute('ao',new THREE.BufferAttribute(new Float32Array(n).fill(1),1));g.setAttribute('uv',new THREE.BufferAttribute(new Float32Array(n*2),2));g.setIndex(new THREE.BufferAttribute(idx,1));return g}
+/* armhole binding: blend the two nearest precomputed widths, so the slider is continuous; updates the buffers in place */
+function rebuildArm(){if(!shirtHolder||!curModel)return;const A=curModel.arm;if(!A||!BS().strapM){if(armMesh){shirtHolder.remove(armMesh);armMesh=null}return}
+ const C=curModel.armG;if(!C.dec){C.dec=A.map(v=>({m:v.m,p:b64f(v.pos,Float32Array),n:b64f(v.nor,Float32Array)}));C.g=bindGeo(new Float32Array(C.dec[0].p.length),new Float32Array(C.dec[0].n.length),b64f(A[0].idx,Uint32Array))}
+ const m=Math.min(A[A.length-1].m,Math.max(A[0].m,BS().strapM));let i=0;while(i<C.dec.length-2&&C.dec[i+1].m<m)i++;const a=C.dec[i],b=C.dec[i+1],f=(m-a.m)/(b.m-a.m);
+ const P=C.g.attributes.position.array,N=C.g.attributes.normal.array;for(let k=0;k<P.length;k++)P[k]=a.p[k]+(b.p[k]-a.p[k])*f;
+ for(let k=0;k<N.length;k+=3){const x=a.n[k]+(b.n[k]-a.n[k])*f,y=a.n[k+1]+(b.n[k+1]-a.n[k+1])*f,z=a.n[k+2]+(b.n[k+2]-a.n[k+2])*f,l=Math.hypot(x,y,z)||1;N[k]=x/l;N[k+1]=y/l;N[k+2]=z/l}
+ C.g.attributes.position.needsUpdate=C.g.attributes.normal.needsUpdate=true;C.g.computeBoundingSphere();
+ if(!armMesh||armMesh.parent!==shirtHolder){armMesh=new THREE.Mesh(C.g,shirtMat);armMesh.castShadow=armMesh.receiveShadow=true;shirtHolder.add(armMesh)}dirty()}
+function rebuildNeck(){if(!shirtHolder||!curModel)return;if(neckMesh){shirtHolder.remove(neckMesh);neckMesh=null}const Nk=curModel.neck;if(!Nk)return;
+ const k=BS().neckStyle==='round'?'round':'v';let g=curModel.neckG[k];if(!g){const v=Nk[k];g=curModel.neckG[k]=bindGeo(b64f(v.pos,Float32Array),b64f(v.nor,Float32Array),b64f(v.idx,Uint32Array))}
+ neckMesh=new THREE.Mesh(g,shirtMat);neckMesh.castShadow=neckMesh.receiveShadow=true;shirtHolder.add(neckMesh);dirty()}
+const SW0=5;
+function strapLabel(){$('#strapv').textContent=`${(+BS().strapM).toFixed(2)}× · ${(SW0*BS().strapM).toFixed(1)} cm`}
+function setStrap(m){if(!BS().strapM)return;BS().strapM=m;BS().strap=SW0*m;strapLabel();rebuildArm();photoUniforms();cancelAnimationFrame(stReq);stReq=requestAnimationFrame(()=>{layout();buildShirt();sizeEd();photoUniforms();dirty()})}
+function setNeck(k){if(!BS().neckStyle)return;BS().neckStyle=k;BS().neck=k==='round'?'crew':'v';BS().FD=k==='round'?8:15;document.querySelectorAll('[data-neck]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.neck===k));rebuildNeck();photoUniforms();layout();buildShirt();sizeEd();photoUniforms();dirty()}
+function rebuildSleeves(){if(!shirtHolder||!curModel)return;if(sleeveMesh){shirtHolder.remove(sleeveMesh);sleeveMesh.geometry.dispose();sleeveMesh=null}if(!G.sleeve)return;sleeveMesh=new THREE.Mesh(sleeveGeo(curModel.sh),shirtMat);sleeveMesh.castShadow=sleeveMesh.receiveShadow=true;shirtHolder.add(sleeveMesh);updateMannequin()}
+let slReq=0;function setSleeveLen(v){if(!G.sleeve)return;const{sx,sy}=sizeF();BS().sleeve.l=v/((sx+sy)/2);G.sleeve.l=v;$('#slenv').textContent=v+' cm';rebuildSleeves();cancelAnimationFrame(slReq);slReq=requestAnimationFrame(()=>{layout();buildShirt();sizeEd();photoUniforms();dirty()})}
 let modeReq=0;
 async function setMode(k){const req=++modeReq;$('#loading').hidden=false;
- try{const c=await loadModel(k);if(req!==modeReq)return;photo=k;buildShirt();pGroup.clear();curModel=c;const sc=85/c.h;shirtHolder=new THREE.Group();shirtHolder.scale.setScalar(sc);shirtHolder.add(new THREE.Mesh(c.g,shirtMat));sleeveMesh=null;rebuildSleeves();pGroup.add(shirtHolder);pGroup.position.set(0,-40,0);pGroup.visible=true;shirt.visible=false;
-  shadow.position.y=-40-c.h*sc/2-3;photoUniforms();goView('front');dirty()}
+ try{const c=await loadModel(k);if(req!==modeReq)return;photo=k;buildShirt();pGroup.clear();curModel=c;curModelKn=c.kn;const sc=85/c.h;shirtHolder=new THREE.Group();shirtHolder.userData.sc=sc;{const{sx,sy}=sizeF();shirtHolder.scale.set(sc*sx,sc*sy,sc*sx);shirtHolder.userData.sy=sy};{const bm=new THREE.Mesh(c.g,shirtMat);bm.castShadow=bm.receiveShadow=true;if(c.arm)bm.customDepthMaterial=trimDepthMat;shirtHolder.add(bm)}armMesh=null;neckMesh=null;rebuildArm();rebuildNeck();sleeveMesh=null;manGroup=null;applyFabric();rebuildSleeves();if(!G.sleeve)updateMannequin();pGroup.add(shirtHolder);pGroup.position.set(0,-40,0);pGroup.visible=true;shirt.visible=false;
+  {const{sx,sy}=sizeF();shadow.position.y=-40-c.h*sc*sy/2-3;shadow.scale.setScalar(.6+.4*sx)}photoUniforms();goView(curView||'fl');dirty()}
  catch(e){console.error(e);show(`<h2>Garment</h2><p class="warn">Could not load this shirt model. Check your connection and try again.</p>`)}finally{if(req===modeReq)$('#loading').hidden=true}}
 function syncPhoto(){setMode(style)}
 
 /* ---------- view ---------- */
 let D=200,tween=null;
 function sizeGL(){const w=stage.clientWidth,h=stage.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();const t=Math.tan(15*PI/180);D=Math.max(56/t,57/(t*cam.aspect));if(!window._sz){window._sz=1;cam.position.set(0,-30,D)}drawBackdrop()}
-const VIEWS={front:[0,-30,1],back:[0,-30,-1],left:[1,-30,0],right:[-1,-30,0]};
-function goView(v){const [a,y,b]=VIEWS[v];tween=V3(a*D,y,b*D)}
-document.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{ctl.autoRotate=false;$('#spin').setAttribute('aria-pressed','false');goView(b.dataset.v)});
+const R2=Math.SQRT1_2,EY=-8,VIEWS={front:[0,EY,1],fl:[R2,EY,R2],left:[1,EY,0],bl:[R2,EY,-R2],back:[0,EY,-1],br:[-R2,EY,-R2],right:[-1,EY,0],fr:[-R2,EY,R2]},VORD=['front','fl','left','bl','back','br','right','fr'];
+let curView='fl';const markView=v=>document.querySelectorAll('[data-v]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===v));
+function goView(v){const [a,y,b]=VIEWS[v];curView=v;markView(v);tween=V3(a*D,y,b*D)}
+function camZoom(f){stopSpin();const d=(tween||cam.position).clone().sub(ctl.target),n=Math.min(ctl.maxDistance,Math.max(ctl.minDistance,d.length()*f));tween=ctl.target.clone().add(d.setLength(n))}
+function camFit(){stopSpin();const az=Math.atan2(cam.position.x-ctl.target.x,cam.position.z-ctl.target.z);tween=V3(Math.sin(az)*D,EY,Math.cos(az)*D)}
+/* turn the 3D shirt so the panel an artwork sits on faces the camera */
+function focus3D(L){if(!L)return;const p=pieceOf(L),az=Math.atan2(cam.position.x-ctl.target.x,cam.position.z-ctl.target.z)*180/PI;
+ const want=p===B?'back':p===RS?'right':p===LS?'left':'fl',ok=p===B?Math.abs(az)>115:p===RS?az<-35&&az>-145:p===LS?az>35&&az<145:Math.abs(az)<65;if(!ok){stopSpin();goView(want)}}
+const stopSpin=()=>{ctl.autoRotate=false;$('#spin').setAttribute('aria-pressed','false')};
+document.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{stopSpin();goView(b.dataset.v)});
+document.querySelectorAll('[data-cam]').forEach(b=>b.onclick=()=>{const a=b.dataset.cam;if(a==='in')camZoom(.82);else if(a==='out')camZoom(1.22);else if(a==='fit')camFit();else{stopSpin();ctl.target.set(0,-38,0);goView('fl')}});
+document.querySelectorAll('[data-step]').forEach(b=>b.onclick=()=>{stopSpin();const az=Math.atan2(cam.position.x-ctl.target.x,cam.position.z-ctl.target.z),i=((Math.round(az/(PI/4))%8)+8)%8,cur=VORD[i];goView(VORD[(VORD.indexOf(cur)+ +b.dataset.step+8)%8])});
+$('#fab').onchange=e=>{fabTee=fabric=e.target.value;applyFabric()};
 $('#spin').onclick=e=>{ctl.autoRotate=!ctl.autoRotate;e.currentTarget.setAttribute('aria-pressed',ctl.autoRotate)};
-ctl.addEventListener('start',()=>tween=null);
+ctl.addEventListener('start',()=>{tween=null;markView(null)});
 let need=false;const dirty=()=>need=true;
-(function loop(){requestAnimationFrame(loop);if(need){need=false;drawEditor();textures()}
+let pauseGL=false;
+(function loop(){requestAnimationFrame(loop);if(pauseGL)return;if(need){need=false;drawEditor();textures()}
  if(tween){cam.position.lerp(tween,.14);if(cam.position.distanceTo(tween)<.5)tween=null}ctl.update();if(photo)photoUniforms();renderer.render(scene,cam)})();
 
 /* ---------- toolbar ---------- */
@@ -422,68 +684,182 @@ const markColor=()=>{document.querySelectorAll('.sw').forEach(b=>b.setAttribute(
 const setGarment=c=>{garment=c;markColor();applyTrim();dirty()};
 $('#colors').onclick=e=>{const b=e.target.closest('[data-c]');if(b)setGarment(b.dataset.c)};$('#gcol').oninput=e=>setGarment(e.target.value);
 $('#trimOn').onchange=e=>{trimOn=e.target.checked;applyTrim()};$('#trim').oninput=e=>{trimColor=e.target.value;trimOn=true;$('#trimOn').checked=true;applyTrim()};
-$('#pats').innerHTML=Object.entries(PATTERNS).map(([k,p])=>`<button class="pat" data-p="${k}" title="${p.name}" aria-label="Add ${p.name} pattern" style="background-image:url(${p.thumb})"></button>`).join('');
+$('#pats').innerHTML=`<button class="pat" data-sh="solid" title="Solid colour" aria-label="Add Solid colour" style="background-image:url(${shapeThumb('solid')})"></button>`+Object.entries(PATTERNS).map(([k,p])=>`<button class="pat" data-p="${k}" title="${p.name}" aria-label="Add ${p.name} pattern" style="background-image:url(${p.thumb})"></button>`).join('');
+const addShape=k=>{const S=SHAPES[k],L=addLayer({type:'img',name:S.name,gen:{k,c:S.c.slice()},w:G.W*.9,h:G.H*.9});place(L,PRESETS()[2]);genShape(L);renderProps();dirty()};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-sh]');if(b)addShape(b.dataset.sh)});
 $('#pats').onclick=e=>{const b=e.target.closest('[data-p]');if(!b)return;const p=PATTERNS[b.dataset.p];const L=addLayer({type:'pat',name:p.name,src:p.cv,tile:p.tile||8});place(L,PRESETS()[2]);dirty();syncProps()};
+$('#addName').onclick=()=>{const L=addLayer({type:'text',role:'Player name',name:'Player name',named:true,text:'PLAYER',font:'Bebas Neue',color:'#f2f1ec',h:6});retext(L);L.x=B.x+G.W/2;L.y=B.y+G.BD+9;dirty();syncProps();focus3D(L)};
+$('#addNum').onclick=()=>{const L=addLayer({type:'text',role:'Jersey number',name:'Number 23',named:true,text:'23',font:'Anton',color:'#f2f1ec',h:24});retext(L);L.x=B.x+G.W/2;L.y=B.y+G.BD+15+12;dirty();syncProps();focus3D(L)};
 $('#addText').onclick=()=>{const L=addLayer({type:'text',name:'Text',text:'YOUR TEXT',font:'Anton',color:'#f2f1ec',h:7});retext(L);L.w=Math.min(L.w,30);L.h=L.w*L.src.height/L.src.width;dirty();syncProps()};
-$('#undo').onclick=undo;$('#slen').oninput=e=>setSleeveLen(+e.target.value);
-function loadFiles(files){[...files].filter(f=>f.type.startsWith('image/')).forEach(f=>{const url=URL.createObjectURL(f),im=new Image();im.onload=()=>{const k=Math.min(1,3000/Math.max(im.width,im.height)),c=mk(im.width*k,im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(url);const L=addLayer({type:'img',name:f.name,src:c,w:28,h:28*c.height/c.width});place(L,PRESETS()[0]);dirty();syncProps()};im.src=url})}
+$('#undo').onclick=undo;$('#clearAll').onclick=clearAll;$('#slen').oninput=e=>setSleeveLen(+e.target.value);$('#strapw').oninput=e=>setStrap(+e.target.value);document.querySelectorAll('[data-neck]').forEach(b=>b.onclick=()=>setNeck(b.dataset.neck));
+function loadFiles(files){[...files].filter(f=>f.type.startsWith('image/')).forEach(f=>{const url=URL.createObjectURL(f),im=new Image();im.onload=()=>{const k=Math.min(1,3000/Math.max(im.width,im.height)),c=mk(im.width*k,im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(url);const L=addLayer({type:'img',name:f.name,src:c,orig:c,file:f,bgOff:true,bgTol:22,w:28,h:28*c.height/c.width});place(L,PRESETS()[0]);dirty();syncProps()};im.src=url})}
 $('#file').onchange=e=>{loadFiles(e.target.files);e.target.value=''};
-$('#backdrop').innerHTML=Object.entries(BD).map(([k,b])=>`<option value="${k}">${b.name}</option>`).join('');$('#backdrop').value=backdrop;$('#backdrop').onchange=e=>{backdrop=e.target.value;drawBackdrop()};
+$('#backdrop').innerHTML=BDORD.map(k=>`<option value="${k}">${BD[k].name}</option>`).join('')+`<optgroup label="Scenes">${BDSCN.map(k=>`<option value="${k}">${BD[k].name}</option>`).join('')}</optgroup>`;$('#backdrop').value=backdrop;
+const setBackdrop=v=>{backdrop=v;$('#bgcol').hidden=$('#bgimgL').hidden=v!=='custom';stage.classList.toggle('tp',v==='transparent');drawBackdrop()};
+$('#backdrop').onchange=e=>setBackdrop(e.target.value);$('#bgcol').oninput=e=>{bgCol=e.target.value;bgImg=null;drawBackdrop()};
+$('#bgimg').onchange=e=>{const f=e.target.files[0];e.target.value='';if(!f)return;const im=new Image();im.onload=()=>{bgImg=im;drawBackdrop()};im.src=URL.createObjectURL(f)};
 function setStyle(v){const old=PIECES.map(p=>({p,x:p.x,y:p.y,w:p.w,h:p.h}));
- const rel=layers.map(L=>{const o=old.find(q=>L.x>=q.x-2&&L.x<=q.x+q.w+2&&L.y>=q.y-2&&L.y<=q.y+q.h+2)||old[0];return{L,o,fx:(L.x-o.x)/o.w,fy:(L.y-o.y)/o.h,full:L.tile&&Math.abs(L.w-o.w)<.5&&Math.abs(L.h-o.h)<.5}});
+ const rel=layers.map(L=>{const o=old.find(q=>L.x>=q.x-2&&L.x<=q.x+q.w+2&&L.y>=q.y-2&&L.y<=q.y+q.h+2)||old[0];return{L,o,fx:(L.x-o.x)/o.w,fy:(L.y-o.y)/o.h,full:(L.tile||L.gen)&&Math.abs(L.w-o.w)<.5&&Math.abs(L.h-o.h)<.5}});
  style=v;layout();rel.forEach(({L,o,fx,fy,full})=>{L.x=o.p.x+fx*o.p.w;L.y=o.p.y+fy*o.p.h;if(full){L.w=o.p.w;L.h=o.p.h}});
- fabric=G.fab;$('#sizeNote').textContent=`Pattern sizes are a ${/^w/.test(style)?"women's M":style==='bjersey'?'adult L':"men's L"} reference, measured from the 3D shirt model. Check your printer's size chart.`;$('#slenGrp').hidden=!G.sleeve;if(G.sleeve){$('#slen').value=G.sleeve.l;$('#slenv').textContent=G.sleeve.l+' cm'}buildShirt();sizeEd();renderProps()}
+ fabric=style==='tee'?fabTee:G.fab;$('#fabGrp').hidden=style!=='tee';applySizeScale();$('#sizeNote').textContent=`Size ${sizeSel==='kids'?'Kids':sizeSel} (${/^w/.test(style)?"women's":style==='bjersey'?'adult':"men's"} grading): body panels ${G.W} × ${G.H} cm. Check your printer's size chart.`;$('#slenGrp').hidden=!G.sleeve;$('#strapGrp').hidden=!G.strapM;$('#neckGrp').hidden=!G.neckStyle;if(G.strapM){$('#strapw').value=G.strapM;strapLabel()}if(G.neckStyle)document.querySelectorAll('[data-neck]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.neck===G.neckStyle));if(G.sleeve){$('#slen').value=G.sleeve.l;$('#slenv').textContent=G.sleeve.l+' cm'}buildShirt();sizeEd();renderProps()}
 $('#style').onchange=e=>{commit();setStyle(e.target.value);syncPhoto()};
+$('#size').onchange=e=>{commit();sizeSel=e.target.value;setStyle(style)};
+
+/* ---------- icons (inline SVG, no icon font) ---------- */
+const IC={zin:'<circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M8.5 11h5M11 8.5v5"/>',zout:'<circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M8.5 11h5"/>',
+ fit:'<path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5"/><rect x="8.5" y="8.5" width="7" height="7" rx="1"/>',reset:'<path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3"/><path d="M4 4.5V8h3.5"/>',
+ grid:'<rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M4 9.3h16M4 14.7h16M9.3 4v16M14.7 4v16"/>',snapc:'<path d="M12 3v5M12 16v5M3 12h5M16 12h5"/><circle cx="12" cy="12" r="3.2"/>',
+ snapg:'<path d="M3 7h18M7 3v18" stroke-dasharray="2 2"/><rect x="10" y="10" width="9" height="9" rx="1.5"/>',lock:'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+ unlock:'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 7.6-1.8"/>',dup:'<rect x="8.5" y="8.5" width="11.5" height="11.5" rx="2"/><path d="M15.5 8.5V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v9.5a1 1 0 0 0 1 1h3.5"/>',
+ fwd:'<path d="M5 20h14M12 16.5V4M7.5 8.5L12 4l4.5 4.5"/>',bwd:'<path d="M5 4h14M12 7.5V20M7.5 15.5L12 20l4.5-4.5"/>',del:'<path d="M4 7h16M9.5 7V4.5h5V7M6.5 7l1 13h9l1-13M10 11v5.5M14 11v5.5"/>',
+ 'al-l':'<path d="M4 3v18"/><rect x="7" y="6" width="12" height="4" rx="1"/><rect x="7" y="14" width="8" height="4" rx="1"/>','al-c':'<path d="M12 3v18"/><rect x="5" y="6" width="14" height="4" rx="1"/><rect x="7.5" y="14" width="9" height="4" rx="1"/>',
+ 'al-r':'<path d="M20 3v18"/><rect x="5" y="6" width="12" height="4" rx="1"/><rect x="9" y="14" width="8" height="4" rx="1"/>','al-t':'<path d="M3 4h18"/><rect x="6" y="7" width="4" height="12" rx="1"/><rect x="14" y="7" width="4" height="8" rx="1"/>',
+ 'al-m':'<path d="M3 12h18"/><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="7.5" width="4" height="9" rx="1"/>','al-b':'<path d="M3 20h18"/><rect x="6" y="5" width="4" height="12" rx="1"/><rect x="14" y="9" width="4" height="8" rx="1"/>',
+ eye:'<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.8"/>',eyeOff:'<path d="M3.5 3.5l17 17M10.4 5.7A9 9 0 0 1 12 5.5c6 0 9.5 6.5 9.5 6.5a16 16 0 0 1-2.9 3.7M6.6 7C4 8.7 2.5 12 2.5 12S6 18.5 12 18.5a9 9 0 0 0 4.6-1.3M10 10a2.8 2.8 0 0 0 4 4"/>',
+ grip:'<circle cx="9" cy="6" r="1.4"/><circle cx="15" cy="6" r="1.4"/><circle cx="9" cy="12" r="1.4"/><circle cx="15" cy="12" r="1.4"/><circle cx="9" cy="18" r="1.4"/><circle cx="15" cy="18" r="1.4"/>',
+ ren:'<path d="M4 20h4.5L19 9.5 14.5 5 4 15.5z"/>',full:'<path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5"/>'};
+const svg=k=>`<svg viewBox="0 0 24 24" aria-hidden="true">${IC[k]}</svg>`;
+document.querySelectorAll('[data-ic]').forEach(b=>b.innerHTML=svg(b.dataset.ic));
+
+/* ---------- layers panel (top of the list = front-most artwork) ---------- */
+const ROLES={img:['Image','Logo','Sponsor logo','Decorative artwork'],text:['Text','Player name','Jersey number']};
+const TYPE=L=>L.role||(L.type==='text'?'Text':L.type==='pat'?'Pattern':L.gen?'Solid colour':'Image');
+const lyr=$('#lyr');
+function thumbL(cv,L){if(!L||!L.src||!cv)return;const x=cv.getContext('2d');x.setTransform(1,0,0,1,0,0);x.clearRect(0,0,cv.width,cv.height);const b=bboxOf(L),k=Math.min(68/Math.max(.1,b.x1-b.x0),68/Math.max(.1,b.y1-b.y0));x.setTransform(k,0,0,k,40-k*(b.x0+b.x1)/2,40-k*(b.y0+b.y1)/2);drawLayer(x,{...L,op:1})}
+let thT=0;function thumbs(){clearTimeout(thT);thT=setTimeout(()=>lyr.querySelectorAll('.li').forEach(li=>{const L=layers.find(l=>l.id===+li.dataset.id),cv=li.querySelector('canvas');if(L&&cv)thumbL(cv,L)}),120)}
+function renderLayers(){const n=layers.length;$('#lcount').textContent=n?`${n} layer${n>1?'s':''}`:'';
+ if(!n){lyr.innerHTML='<li class="lempty">No layers yet. Add an image, text or pattern and it appears here.</li>';return}
+ lyr.innerHTML=[...layers].reverse().map(L=>{const sel=L.id===selId,nm=esc(L.name);return`<li class="li${L.hidden?' hid':''}" data-id="${L.id}" role="option" aria-selected="${sel}" tabindex="${sel||(!selId&&L===layers[n-1])?0:-1}">
+  <span class="grip" title="Drag to reorder">${svg('grip')}</span><canvas width="80" height="80" aria-hidden="true"></canvas>
+  <span class="lt"><span class="ln" title="${nm} · double-click to rename">${nm}</span><span class="lty">${esc(TYPE(L))}${L.locked?' · locked':''}${L.hidden?' · hidden':''}</span></span>
+  <span class="lb"><button data-la="vis" aria-pressed="${!L.hidden}" aria-label="${L.hidden?'Show':'Hide'} ${nm}" title="${L.hidden?'Show':'Hide'}">${svg(L.hidden?'eyeOff':'eye')}</button><button data-la="lock" aria-pressed="${!!L.locked}" aria-label="${L.locked?'Unlock':'Lock'} ${nm}" title="${L.locked?'Unlock':'Lock'} position">${svg(L.locked?'lock':'unlock')}</button></span>
+  ${sel?`<span class="lx"><button data-la="ren">${svg('ren')}Rename</button><button data-la="dup">${svg('dup')}Duplicate</button><button data-la="del" class="danger">${svg('del')}Delete</button></span>`:''}</li>`}).join('');
+ lyr.querySelectorAll('.li').forEach(li=>thumbL(li.querySelector('canvas'),layers.find(l=>l.id===+li.dataset.id)));
+ const s_=lyr.querySelector('[aria-selected=true]');if(s_&&s_.scrollIntoView)s_.scrollIntoView({block:'nearest'})}
+function renameL(L){const li=lyr.querySelector(`[data-id="${L.id}"]`),sp=li&&li.querySelector('.ln');if(!sp)return;const i=document.createElement('input');i.type='text';i.className='lren';i.value=L.name;i.setAttribute('aria-label','Layer name');sp.replaceWith(i);i.focus();i.select();let done=false;
+ const fin=ok=>{if(done)return;done=true;const v=i.value.trim();if(ok&&v&&v!==L.name){commit();L.name=v.slice(0,40);L.named=true}renderProps()};i.onkeydown=e=>{e.stopPropagation();if(e.key==='Enter')fin(true);else if(e.key==='Escape')fin(false)};i.onblur=()=>fin(true);i.onclick=e=>e.stopPropagation()}
+lyr.addEventListener('click',e=>{const li=e.target.closest('.li');if(!li||e.target.closest('input'))return;const L=layers.find(l=>l.id===+li.dataset.id);if(!L)return;const b=e.target.closest('[data-la]');
+ if(b){const a=b.dataset.la;if(a==='ren'){renameL(L);return}selId=L.id;act(a,L);return}
+ if(selId!==L.id){cropping=false;selId=L.id;renderProps();dirty()}focus3D(L);const f=lyr.querySelector(`[data-id="${L.id}"]`);if(f)f.focus()});
+lyr.addEventListener('dblclick',e=>{const n=e.target.closest('.ln');if(!n)return;const L=layers.find(l=>l.id===+n.closest('.li').dataset.id);if(L)renameL(L)});
+lyr.addEventListener('keydown',e=>{const li=e.target.closest('.li');if(!li||e.target.matches('input'))return;const rows=[...lyr.querySelectorAll('.li')],i=rows.indexOf(li);
+ if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();const t=rows[i+(e.key==='ArrowDown'?1:-1)];if(t){selId=+t.dataset.id;renderProps();dirty();const f=lyr.querySelector(`[data-id="${selId}"]`);if(f)f.focus()}}
+ else if(e.key==='Enter'||e.key===' '){e.preventDefault();li.click()}else if(e.key==='F2'){const L=layers.find(l=>l.id===+li.dataset.id);if(L)renameL(L)}});
+/* drag to reorder (pointer events, so it also works with touch) */
+lyr.addEventListener('pointerdown',e=>{const g=e.target.closest('.grip');if(!g)return;e.preventDefault();const li=g.closest('.li'),id=+li.dataset.id;g.setPointerCapture(e.pointerId);li.classList.add('dragging');let to=null;const mark=document.createElement('li');mark.className='drop';mark.setAttribute('aria-hidden','true');
+ const mv=ev=>{const rows=[...lyr.querySelectorAll('.li')];let k=rows.length;for(let i=0;i<rows.length;i++){const r=rows[i].getBoundingClientRect();if(ev.clientY<r.top+r.height/2){k=i;break}}to=k;if(k<rows.length)lyr.insertBefore(mark,rows[k]);else lyr.append(mark);
+  const lr=lyr.getBoundingClientRect();if(ev.clientY<lr.top+24)lyr.scrollTop-=8;else if(ev.clientY>lr.bottom-24)lyr.scrollTop+=8};
+ const up=()=>{g.removeEventListener('pointermove',mv);g.removeEventListener('pointerup',up);g.removeEventListener('pointercancel',up);mark.remove();li.classList.remove('dragging');if(to==null){return}
+  const disp=[...layers].reverse(),from=disp.findIndex(l=>l.id===id),L=disp[from];let k=to;if(k>from)k--;if(k===from){return}commit();disp.splice(from,1);disp.splice(k,0,L);layers=disp.reverse();selId=id;renderProps();dirty()};
+ g.addEventListener('pointermove',mv);g.addEventListener('pointerup',up);g.addEventListener('pointercancel',up)});
+
+/* ---------- actions shared by the toolbar, the Layers panel and the keyboard ---------- */
+function alignL(L,k){const p=pieceOf(L),r=printRect(p),b=bboxOf(L);
+ if(k==='l')L.x+=r.x-b.x0;else if(k==='c')L.x+=p.x+p.w/2-(b.x0+b.x1)/2;else if(k==='r')L.x+=r.x+r.w-b.x1;
+ else if(k==='t')L.y+=r.y-b.y0;else if(k==='m')L.y+=r.y+r.h/2-(b.y0+b.y1)/2;else if(k==='b')L.y+=r.y+r.h-b.y1}
+function act(a,L){if(!L)return;const i=layers.indexOf(L);
+ if(a==='lock'){commit();L.locked=!L.locked;if(L.locked)cropping=false}
+ else if(a==='vis'){commit();L.hidden=!L.hidden}
+ else if(a==='dup'){commit();const n={...L,id:uid++,x:L.x+3,y:L.y+3,locked:false,hidden:false};if(L.gen)n.gen={k:L.gen.k,c:L.gen.c.slice()};layers.splice(i+1,0,n);selId=n.id}
+ else if(a==='fwd'){if(i>=layers.length-1)return;commit();layers.splice(i,1);layers.splice(i+1,0,L)}
+ else if(a==='bwd'){if(i<=0)return;commit();layers.splice(i,1);layers.splice(i-1,0,L)}
+ else if(a==='del'){commit();layers.splice(i,1);if(selId===L.id){selId=null;cropping=false}}
+ else if(a.startsWith('al-')){if(L.locked||L.hidden)return;commit();alignL(L,a.slice(3))}
+ else return;renderProps();dirty()}
+function updTools(){const L=cur(),i=L?layers.indexOf(L):-1;document.querySelectorAll('.etools .sel').forEach(b=>{const t=b.dataset.t;b.disabled=!L||(t.startsWith('al-')&&(L.locked||L.hidden))||(t==='fwd'&&i===layers.length-1)||(t==='bwd'&&i===0)});
+ const pr=(t,v)=>{const b=document.querySelector(`.etools [data-t="${t}"]`);if(b)b.setAttribute('aria-pressed',v)};pr('grid',gridOn);pr('snapc',snapC);pr('snapg',snapG);
+ const lb=document.querySelector('.etools [data-t="lock"]'),k=!!(L&&L.locked);lb.setAttribute('aria-pressed',k);lb.innerHTML=svg(k?'lock':'unlock');lb.setAttribute('aria-label',k?'Unlock position':'Lock position')}
+document.querySelector('.etools').addEventListener('click',e=>{const b=e.target.closest('[data-t]');if(!b||b.disabled)return;const t=b.dataset.t;
+ if(t==='zin')zoomAt(1.25);else if(t==='zout')zoomAt(.8);else if(t==='fit')fitEd();else if(t==='reset'){fitEd();gridOn=snapC=snapG=true;cropping=false;updTools();dirty()}
+ else if(t==='grid'){gridOn=!gridOn;updTools();dirty()}else if(t==='snapc'){snapC=!snapC;updTools()}else if(t==='snapg'){snapG=!snapG;updTools()}
+ else act(t,cur())});
 
 /* ---------- properties panel ---------- */
 const props=$('#props');
 let dockMin=false;
 const head=t=>`<div class="phead"><h2>${t}</h2><button class="chip dockt" data-a="min" aria-expanded="${!dockMin}">${dockMin?'Show settings':'Hide'}</button></div>`;
-function renderProps(){const L=cur();props.classList.toggle('sel',!!L);props.classList.toggle('min',!!L&&dockMin);const list=layers.length?`<div class="row">${layers.map(l=>`<button class="chip" data-sel="${l.id}" aria-pressed="${l.id===selId}">${esc(l.name)}</button>`).join('')}</div>`:'';
- if(!L){props.innerHTML=`<div class="phead"><h2>Artwork</h2></div><p class="hint">Tap artwork on the flat pattern to edit it, or add an image, text or pattern above.</p>${list}`;return}
- props.innerHTML=`${head(esc(L.name))}<div class="row"><span class="lbl">Place on</span>${PRESETS().map((p,i)=>`<button class="chip" data-pre="${i}">${p[0]}</button>`).join('')}</div>
+function renderProps(){const L=cur();{const cb=document.getElementById('clearAll');if(cb)cb.disabled=!layers.length}renderLayers();updTools();
+ if(!L){props.innerHTML=`<div class="phead"><h2>Artwork properties</h2></div><p class="hint">Select artwork on the flat pattern or in Layers to edit its exact position, size, rotation and opacity. Double-click a text to change its words.</p>`;return}
+ const lk=!!L.locked,dis=lk?'disabled':'',roles=L.gen||L.type==='pat'?null:ROLES[L.type==='text'?'text':'img'];
+ props.innerHTML=`<div class="phead"><h2>${esc(L.name)}</h2><span class="lty">${esc(TYPE(L))}${L.hidden?' · hidden':''}</span></div>
+ ${lk?'<p class="hint">Position is locked. Unlock it in Layers or the toolbar to move, resize or rotate it.</p>':''}
+ <div class="row"><span class="lbl">Place on</span>${PRESETS().map((p,i)=>`<button class="chip" data-pre="${i}" ${dis}>${p[0]}</button>`).join('')}</div>
+ <h3 class="sub">Position and size</h3>
+ <div class="fields nums">
+  <label>X (cm)<input type="number" id="px" step="0.1" ${dis}></label><label>Y (cm)<input type="number" id="py" step="0.1" ${dis}></label>
+  <label>Width (cm)<input type="number" id="pw" step="0.1" min="0.5" ${dis}></label><label>Height (cm)<input type="number" id="ph" step="0.1" min="0.5" ${dis}></label>
+ </div>
+ <div class="fields" style="margin-top:10px">
+  <label>Rotation (°)<span class="pair"><input type="number" id="prn" step="1" min="-180" max="180" ${dis} aria-label="Rotation in degrees"><input type="range" id="pr" min="-180" max="180" ${dis} aria-label="Rotation slider"></span></label>
+  <label>Opacity (%)<span class="pair"><input type="number" id="pon" step="1" min="0" max="100" aria-label="Opacity in percent"><input type="range" id="po" min="0" max="100" aria-label="Opacity slider"></span></label>
+  <label class="chk"><input type="checkbox" id="par" ${(L.ar??!L.tile)?'checked':''} ${dis}> Keep proportions</label>
+ </div>
+ <p class="hint small" id="pref" style="margin:8px 0 0"></p>
+ <h3 class="sub">Appearance</h3>
  <div class="fields">
-  <label>Width (cm)<input type="number" id="pw" step="0.5" min="1"></label><label>Height (cm)<input type="number" id="ph" step="0.5" min="1"></label>
-  <label>Rotation <input type="range" id="pr" min="-180" max="180"></label><label>Opacity <input type="range" id="po" min="0" max="100"></label>
-  ${L.type!=='text'?`<label style="flex-direction:row;align-items:center;gap:8px;color:var(--ink)"><input type="checkbox" id="pk" ${L.tile?'checked':''}> Repeat as pattern</label>`:''}
+  ${roles?`<label>Layer type<select id="prl">${roles.map(r=>`<option ${TYPE(L)===r?'selected':''}>${r}</option>`).join('')}</select></label>`:''}
+  ${L.gen?`<label>Colour (hex)<span class="hexrow"><input type="text" id="gh0" maxlength="7" spellcheck="false" aria-label="Colour hex code"><input type="color" id="gc0" aria-label="Pick colour"></span></label>${SHAPES[L.gen.k].two?`<label>Second colour (hex)<span class="hexrow"><input type="text" id="gh1" maxlength="7" spellcheck="false" aria-label="Second colour hex code"><input type="color" id="gc1" aria-label="Pick second colour"></span></label>`:''}`:''}
+  ${L.type!=='text'?`<label>Shape<select id="psh">${Object.entries(MASKS).map(([k,n])=>`<option value="${k}" ${(L.mask||'square')===k?'selected':''}>${n}</option>`).join('')}</select></label>${BANDS.has(L.mask)?`<label>Shape thickness<input type="range" id="pst" min="0.08" max="0.7" step="0.01"></label>`:''}`:''}
+  ${L.type==='img'&&L.orig?`<label class="chk"><input type="checkbox" id="pbg" ${L.bgOff?'':'checked'}> Remove background</label>${L.bgOff?'':`<label>Background tolerance<input type="range" id="pbt" min="4" max="70" step="1"></label>`}`:''}
+  ${L.type!=='text'?`<label class="chk"><input type="checkbox" id="pk" ${L.tile?'checked':''}> Repeat as pattern</label>`:''}
   ${L.tile?`<label>Repeat size (cm)<input type="range" id="pt" min="2" max="40" step="0.5"></label>`:''}
   ${L.type==='text'?`<label>Text<input type="text" id="ptx"></label><label>Font<select id="pf">${FONTS.map(f=>`<option>${f}</option>`).join('')}</select></label><label>Colour<input type="color" id="pc"></label>`:''}
- </div><div class="row" style="margin-top:12px"><button class="chip" data-a="crop" aria-pressed="${cropping}">${cropping?'Done cropping':'Crop'}</button>${isCropped(L)?'<button class="chip" data-a="uncrop">Reset crop</button>':''}<button class="chip" data-a="dup">Duplicate</button><button class="chip" data-a="up">Bring forward</button><button class="chip" data-a="down">Send back</button><button class="chip danger" data-a="del">Delete</button></div>${list}`;
+ </div><div class="row" style="margin:12px 0 0"><span class="lbl">Edit</span><button class="chip" data-a="crop" aria-pressed="${cropping}" ${dis}>${cropping?'Done cropping':'Crop'}</button>${isCropped(L)?`<button class="chip" data-a="uncrop" ${dis}>Reset crop</button>`:''}</div>`;
  syncProps()}
 function syncProps(skip){const L=cur();if(!L)return;const set=(id,v)=>{const e=document.getElementById(id);if(e&&id!==skip&&document.activeElement!==e)e.value=v};
- set('pw',+L.w.toFixed(1));set('ph',+L.h.toFixed(1));set('pr',Math.round(L.rot));set('po',Math.round(L.op*100));set('pt',L.tile);set('ptx',L.text||'');set('pf',L.font);set('pc',L.color)}
-props.addEventListener('focusin',e=>{if(e.target.matches('input,select'))commit()});
+ const p_=pieceOf(L),b_=bboxOf(L),[q0,q1,q2,q3]=cropR(L);set('px',+(b_.x0-p_.x).toFixed(1));set('py',+(b_.y0-p_.y).toFixed(1));set('pw',+(q2-q0).toFixed(1));set('ph',+(q3-q1).toFixed(1));set('pr',Math.round(L.rot));set('prn',Math.round(L.rot));set('po',Math.round(L.op*100));set('pon',Math.round(L.op*100));
+ {const r=document.getElementById('pref');if(r)r.textContent=`X and Y: from the top-left corner of the ${p_.name} panel${p_===F||p_===B?' (top = shoulder line)':''} to the artwork's outer edge. Sizes are the printed size.`}set('pt',L.tile);set('ptx',L.text||'');set('pf',L.font);set('pc',L.color);set('pst',L.mt||.3);set('pbt',L.bgTol||22);if(L.gen)L.gen.c.forEach((c,i)=>{set('gh'+i,c.toUpperCase());set('gc'+i,c)})}
+props.addEventListener('focusin',e=>{if(e.target.matches('input,select')){commit();props._fp=cur()&&pieceOf(cur())}});
+props.addEventListener('change',()=>{syncProps();thumbs()});
 props.addEventListener('input',e=>{const L=cur();if(!L)return;const id=e.target.id,v=e.target.value;
- if(id==='pw'&&+v>0){if(!L.tile)L.h*=+v/L.w;L.w=+v}else if(id==='ph'&&+v>0){if(!L.tile)L.w*=+v/L.h;L.h=+v}
- else if(id==='pr')L.rot=+v;else if(id==='po')L.op=v/100;else if(id==='pt')L.tile=+v;
- else if(id==='ptx'){L.text=v;L.name=v.slice(0,24)||'Text';retext(L)}else if(id==='pf'){L.font=v;retext(L)}else if(id==='pc'){L.color=v;retext(L)}
+ const num=v!==''&&isFinite(+v);
+ if(id==='px'||id==='py'){if(!num)return;const p=props._fp||pieceOf(L),b=bboxOf(L);if(id==='px')L.x+=p.x+ +v-b.x0;else L.y+=p.y+ +v-b.y0}
+ else if(id==='pw'||id==='ph'){if(!(+v>0))return;const[q0,q1,q2,q3]=cropR(L),keep=L.ar??!L.tile;if(id==='pw'){const k=+v/(q2-q0);L.w*=k;if(keep)L.h*=k}else{const k=+v/(q3-q1);L.h*=k;if(keep)L.w*=k}}
+ else if(id==='pr'||id==='prn'){if(!num)return;L.rot=Math.max(-180,Math.min(180,+v))}else if(id==='po'||id==='pon'){if(!num)return;L.op=Math.max(0,Math.min(100,+v))/100}
+ else if(id==='par')L.ar=e.target.checked;else if(id==='prl'){L.role=v;renderLayers()}else if(id==='pt')L.tile=+v;
+ else if(id==='ptx'){L.text=v;if(!L.named){L.name=v.slice(0,24)||'Text';renderLayers()}retext(L)}else if(id==='pf'){L.font=v;retext(L)}else if(id==='pc'){L.color=v;retext(L)}
+ else if(/^g[hc][01]$/.test(id)&&L.gen){const i=+id[2],h=normHex(v);e.target.setAttribute('aria-invalid',!h);if(!h)return;L.gen={k:L.gen.k,c:L.gen.c.map((c,j)=>j===i?h:c)};genShape(L)}
+ else if(id==='psh'){L.mask=v;renderProps()}else if(id==='pst')L.mt=+v;
+ else if(id==='pbg'){L.bgOff=!e.target.checked;applyBg(L);renderProps()}else if(id==='pbt'){L.bgTol=+v;applyBg(L)}
  else if(id==='pk'){L.tile=e.target.checked?Math.min(12,L.w):0;renderProps()}
  syncProps(id);dirty()});
-props.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.a==='min'){dockMin=!dockMin;renderProps();return}if(b.dataset.sel){cropping=false;selId=+b.dataset.sel;renderProps();dirty();return}
- const L=cur();if(!L)return;if(b.dataset.pre){commit();place(L,PRESETS()[+b.dataset.pre]);syncProps();dirty();return}
+props.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+ const L=cur();if(!L)return;if(b.dataset.pre){if(L.locked)return;commit();place(L,PRESETS()[+b.dataset.pre]);syncProps();dirty();focus3D(L);return}
  const a=b.dataset.a,i=layers.indexOf(L);if(!a)return;if(a==='crop'){cropping=!cropping;renderProps();dirty();return}commit();if(a==='uncrop'){L.cl=L.cr=L.ct=L.cb=0;renderProps();dirty();return}
- if(a==='dup'){const n={...L,id:uid++,x:L.x+3,y:L.y+3};layers.splice(i+1,0,n);selId=n.id}
+ if(a==='dup'){const n={...L,id:uid++,x:L.x+3,y:L.y+3};if(L.gen)n.gen={k:L.gen.k,c:L.gen.c.slice()};layers.splice(i+1,0,n);selId=n.id}
  else if(a==='up'&&i<layers.length-1){layers.splice(i,1);layers.splice(i+1,0,L)}else if(a==='down'&&i>0){layers.splice(i,1);layers.splice(i-1,0,L)}
  else if(a==='del'){layers.splice(i,1);selId=null}renderProps();dirty()});
 addEventListener('keydown',e=>{if(e.target.matches('input,select,textarea'))return;if((e.ctrlKey||e.metaKey)&&e.key==='z'){e.preventDefault();undo();return}
- const L=cur();if(!L)return;if(e.key==='Delete'||e.key==='Backspace'){commit();layers=layers.filter(l=>l!==L);selId=null;renderProps();dirty()}
- const m={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]}[e.key];if(m){e.preventDefault();commit();const k=e.shiftKey?5:.5;L.x+=m[0]*k;L.y+=m[1]*k;syncProps();dirty()}});
+ const L=cur();if(!L)return;if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='d'){e.preventDefault();act('dup',L);return}if(e.key==='Delete'||e.key==='Backspace'){if(L.locked)return;commit();layers=layers.filter(l=>l!==L);selId=null;renderProps();dirty()}
+ const m={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]}[e.key];if(m&&!L.locked&&!e.target.closest('#lyr')){e.preventDefault();commit();const k=e.shiftKey?5:.5;L.x+=m[0]*k;L.y+=m[1]*k;syncProps();dirty()}});
 
 /* ---------- overlay / export ---------- */
-const ov=$('#ov'),ovb=$('#ovb');const show=h=>{ovb.innerHTML=h;ov.hidden=false};$('#ovx').onclick=()=>ov.hidden=true;addEventListener('keydown',e=>{if(e.key==='Escape')ov.hidden=true});
+const ov=$('#ov'),ovb=$('#ovb');function placeOv(){const v=$('#viewPane'),r=v.getBoundingClientRect();ov.style.right=innerWidth>=900&&!v.classList.contains('full')&&!document.fullscreenElement?Math.max(0,innerWidth-r.left+2)+'px':''}
+const show=(h,wide)=>{ovb.innerHTML=h;$('.ovin').classList.toggle('wide',!!wide);ov.hidden=false;placeOv()};$('#ovx').onclick=()=>ov.hidden=true;addEventListener('resize',()=>{if(!ov.hidden)placeOv()});
+addEventListener('keydown',e=>{if(e.key==='Escape'){if(!ov.hidden)ov.hidden=true;else if($('#viewPane').classList.contains('full')){$('#viewPane').classList.remove('full');$('#fs').setAttribute('aria-pressed','false')}}});
+$('#fs').onclick=()=>{const v=$('#viewPane');if(document.fullscreenElement){document.exitFullscreen();return}if(v.classList.contains('full')){v.classList.remove('full');$('#fs').setAttribute('aria-pressed','false');return}
+ const fb=()=>{v.classList.add('full');$('#fs').setAttribute('aria-pressed','true')};try{v.requestFullscreen?v.requestFullscreen().catch(fb):fb()}catch{fb()}};
+document.addEventListener('fullscreenchange',()=>$('#fs').setAttribute('aria-pressed',!!document.fullscreenElement));
+{const h=document.querySelector('.top'),set=()=>document.documentElement.style.setProperty('--hh',(innerWidth>=900?h.offsetHeight:0)+'px');new ResizeObserver(set).observe(h);addEventListener('resize',set);set()}
+/* resizable preview: drag the divider (double-click resets) */
+{const work=$('#work'),sp=$('#split');const setPV=w=>{const max=Math.max(360,work.clientWidth-480);w=Math.round(Math.max(320,Math.min(max,w)));work.style.setProperty('--pvw',w+'px');try{localStorage.setItem('phab-pvw',w)}catch{}};
+ try{const v=+localStorage.getItem('phab-pvw');if(v)work.style.setProperty('--pvw',v+'px')}catch{}
+ sp.addEventListener('pointerdown',e=>{sp.setPointerCapture(e.pointerId);const r=work.getBoundingClientRect(),pr=parseFloat(getComputedStyle(work).paddingRight)||0;sp.onpointermove=ev=>setPV(r.right-pr-ev.clientX-7);sp.onpointerup=sp.onpointercancel=()=>{sp.onpointermove=null}});
+ sp.addEventListener('keydown',e=>{const w=$('#viewPane').getBoundingClientRect().width;if(e.key==='ArrowLeft'){e.preventDefault();setPV(w+24)}else if(e.key==='ArrowRight'){e.preventDefault();setPV(w-24)}});
+ sp.ondblclick=()=>{work.style.removeProperty('--pvw');try{localStorage.removeItem('phab-pvw')}catch{}}}
 const toURL=c=>new Promise(r=>c.toBlob(b=>r(URL.createObjectURL(b)),'image/png'));
 const slug=t=>(t||'untitled-design').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'design';
 const dlLink=(url,name,label,cls='btn')=>`<a class="${cls}" href="${url}" download="${esc(name)}">${label}</a>`;
 const txtURL=t=>URL.createObjectURL(new Blob([t],{type:'text/plain'}));
-$('#shot').onclick=async()=>{renderer.render(scene,cam);const c=mk(bgc.width,bgc.height),x=c.getContext('2d');x.drawImage(bgc,0,0);x.drawImage(renderer.domElement,0,0,c.width,c.height);
+$('#shot').onclick=async()=>{noSel=true;textures();renderer.render(scene,cam);const c=mk(bgc.width,bgc.height),x=c.getContext('2d');x.drawImage(bgc,0,0);x.drawImage(renderer.domElement,0,0,c.width,c.height);noSel=false;textures();
  const u=await toURL(c);show(`<h2>Snapshot</h2><div class="dl">${dlLink(u,slug(window._dn)+'_'+slug(G.name)+'_3d.png','Download PNG','btn primary')}</div><img src="${u}" alt="3D shirt snapshot">`)};
 const cm2in=v=>(v/2.54).toFixed(1);
 const colorName=h=>(COLORS.find(c=>c[1].toLowerCase()===h.toLowerCase())||['Custom'])[0];
-function methodFor(){return fabric==='drifit'&&new THREE.Color(garment).getHSL({}).l>.6?'sublimation':'dtf'}
+function methodFor(){return (fabric==='drifit'||fabric==='poly')&&new THREE.Color(garment).getHSL({}).l>.6?'sublimation':'dtf'}
 function dominant(L){if(L.type==='text')return[L.color];const c=mk(40),x=c.getContext('2d');x.drawImage(L.src,0,0,40,40);const d=x.getImageData(0,0,40,40).data,m=new Map();
  for(let i=0;i<d.length;i+=4){if(d[i+3]<128)continue;const k=(d[i]>>5)<<6|(d[i+1]>>5)<<3|(d[i+2]>>5),e=m.get(k)||{n:0,r:0,g:0,b:0};e.n++;e.r+=d[i];e.g+=d[i+1];e.b+=d[i+2];m.set(k,e)}
  return[...m.values()].sort((a,b)=>b.n-a.n).filter(e=>e.n>20).slice(0,6).map(e=>'#'+[e.r,e.g,e.b].map(v=>Math.round(v/e.n).toString(16).padStart(2,'0')).join(''))}
-function placements(){const out=[];layers.forEach((L,i)=>{const c=corners(L),xs=c.map(p=>p[0]),ys=c.map(p=>p[1]),bx0=Math.min(...xs),bx1=Math.max(...xs),by0=Math.min(...ys),by1=Math.max(...ys);
+function placements(){const out=[];vis().forEach((L,i)=>{const c=corners(L),xs=c.map(p=>p[0]),ys=c.map(p=>p[1]),bx0=Math.min(...xs),bx1=Math.max(...xs),by0=Math.min(...ys),by1=Math.max(...ys);
  active().forEach(p=>{const x0=Math.max(bx0,p.x),x1=Math.min(bx1,p.x+p.w),y0=Math.max(by0,p.y),y1=Math.min(by1,p.y+p.h);if(x1-x0<.3||y1-y0<.3)return;
   const torso=p===F||p===B,cx=(x0+x1)/2-(p.x+p.w/2),side=Math.abs(cx)<.3?'centred':`${Math.abs(cx).toFixed(1)} cm toward wearer's ${(p===B?cx<0:cx>0)?'left':'right'}`;
   const pos=torso?`Top ${(y0-p.y).toFixed(1)} cm below HPS · ${side} of ${p===F?'CF':'CB'}`:`Top ${(y0-p.y).toFixed(1)} cm below shoulder seam · ${Math.abs(cx)<.3?'centred on sleeve':Math.abs(cx).toFixed(1)+' cm off sleeve centre'}`;
@@ -497,7 +873,7 @@ function notes(pl){const m=methodFor(),dark=new THREE.Color(garment).getHSL({}).
  if(G.neck==='polo')n.push('Keep prints clear of the placket (marked on the flat) and collar.');
  n.push('Sizes: measurements are a size-L reference. Common practice is one artwork size for S–XL and about 110% for 2XL+, or grade proportionally; confirm with your printer.');
  n.push('Press temperature and time: follow your transfer film or ink supplier.');return n}
-function specText(pl){const L=[`DESIGN: ${(window._dn||'Untitled design')}`,`Date: ${new Date().toLocaleDateString()}`,`Garment: ${G.name}`,`Fabric: ${FAB[fabric].name}`,`Body colour: ${colorName(garment)} ${garment}`,`Trim (collar/hem/cuffs): ${trimOn?trimColor:'same as body'}`,`Print method: ${METHOD[methodFor()]}`,`Pattern size: L · Front/back panel ${G.W}×${G.H} cm${G.sleeve?` · Sleeve ${G.sleeve.w0}×${G.sleeve.l} cm`:''}`,'','PLACEMENTS'];
+function specText(pl){const L=[`DESIGN: ${(window._dn||'Untitled design')}`,`Date: ${new Date().toLocaleDateString()}`,`Garment: ${G.name}`,`Fabric: ${FAB[fabric].name}`,`Body colour: ${colorName(garment)} ${garment}`,`Trim (collar/hem/cuffs): ${trimOn?trimColor:'same as body'}`,`Print method: ${METHOD[methodFor()]}`,`Pattern size: ${sizeSel==='kids'?'Kids':sizeSel} · Front/back panel ${G.W}×${G.H} cm${G.sleeve?` · Sleeve ${G.sleeve.w0}×${G.sleeve.l} cm`:''}`,'','PLACEMENTS'];
  pl.forEach(r=>L.push(`${r.n}. ${r.L.name} — ${r.p.name}: ${r.w.toFixed(1)}×${r.h.toFixed(1)} cm (${cm2in(r.w)}×${cm2in(r.h)} in). ${r.pos}. Rotation ${Math.round(r.L.rot)}°.${r.L.tile?` Repeat ${r.L.tile} cm.`:''}${r.dpi?` ${r.dpi} dpi.`:''} Colours: ${r.cols.join(', ')}`));
  L.push('','NOTES',...notes(pl).map(s=>'- '+s));return L.join('\n')}
 function wrap(x,t,w){const o=[];let line='';t.split(' ').forEach(wd=>{const s=line?line+' '+wd:wd;if(x.measureText(s).width>w&&line){o.push(line);line=wd}else line=s});o.push(line);return o}
@@ -508,10 +884,10 @@ async function techPack(pl){const W=1240,pad=56;const meas=mk(10).getContext('2d
  x.font='700 38px "Inter Tight", Inter';x.fillText((window._dn||'Untitled design'),pad,pad);x.font='16px Inter';x.fillStyle='#666';x.textAlign='right';x.fillText('Print spec · '+new Date().toLocaleDateString(),W-pad,pad+12);x.textAlign='left';
  const meta=[['Garment',G.name],['Fabric',FAB[fabric].name],['Body colour',`${colorName(garment)} ${garment}`],['Trim',trimOn?trimColor:(G.neck==='polo'?'Collar: lighter shade of body':'Same as body')],['Print method',METHOD[methodFor()]],['Size basis','L (flat measurements)']];
  meta.forEach(([k,v],i)=>{const cx=pad+(i%3)*((W-2*pad)/3),cy=pad+58+(i/3|0)*44;x.fillStyle='#777';x.font='13px Inter';x.fillText(k,cx,cy);x.fillStyle='#111';x.font='600 17px Inter';x.fillText(v,cx+(k==='Body colour'?22:0),cy+17);if(k==='Body colour'){x.fillStyle=garment;x.fillRect(cx,cy+18,16,16);x.strokeStyle='#999';x.strokeRect(cx,cy+18,16,16)}});
- let y=pad+150;const save=cam.position.clone(),ar=ctl.autoRotate;ctl.autoRotate=false;const bw=(W-2*pad-20)/2;
+ let y=pad+150;const save=cam.position.clone(),ar=ctl.autoRotate;ctl.autoRotate=false;noSel=true;textures();const bw=(W-2*pad-20)/2;
  for(const [i,z] of [[0,1],[1,-1]]){cam.position.set(0,-30,z*D);cam.lookAt(ctl.target);renderer.render(scene,cam);const g=renderer.domElement,s=Math.min(g.width,g.height);x.fillStyle='#efefec';x.fillRect(pad+i*(bw+20),y,bw,440);
   x.drawImage(g,(g.width-s)/2,(g.height-s)/2,s,s,pad+i*(bw+20)+(bw-440)/2,y,440,440);x.fillStyle='#333';x.font='600 15px Inter';x.fillText(i?'Back':'Front',pad+i*(bw+20)+12,y+12)}
- cam.position.copy(save);ctl.autoRotate=ar;y+=470;
+ cam.position.copy(save);ctl.autoRotate=ar;noSel=false;textures();y+=470;
  x.font='700 22px "Inter Tight", Inter';x.fillStyle='#111';x.fillText('Flat pattern with placements',pad,y);y+=40;
  const sc=(W-2*pad)/SHEET.w;drawSheet(x,sc,pad,y,{d:1,dark:true});
  y+=sheetH+40;x.font='700 22px "Inter Tight", Inter';x.fillStyle='#111';x.fillText('Placements',pad,y);y+=36;
@@ -528,29 +904,125 @@ async function techPack(pl){const W=1240,pad=56;const meas=mk(10).getContext('2d
  return toURL(c)}
 async function printFile(p){const subl=methodFor()==='sublimation',bl=subl?1.5:0,maxPx=16e6;let R=150/2.54;const w=p.w+2*bl,h=p.h+2*bl;R=Math.min(R,Math.sqrt(maxPx/(w*h)));
  const c=mk(w*R,h*R),x=c.getContext('2d');x.setTransform(R,0,0,R,(-p.x+bl)*R,(-p.y+bl)*R);
- if(subl){x.fillStyle=garment;x.fillRect(p.x-bl,p.y-bl,w,h);layers.forEach(L=>drawLayer(x,L))}else{piecePath(x,p);x.clip();layers.forEach(L=>drawLayer(x,L))}
+ if(subl){x.fillStyle=garment;x.fillRect(p.x-bl,p.y-bl,w,h);vis().forEach(L=>drawLayer(x,L))}else{piecePath(x,p);x.clip();vis().forEach(L=>drawLayer(x,L))}
  const url=await toURL(c),info=`${p.name} · ${p.w}×${p.h} cm${bl?` + ${bl} cm bleed`:''} · ${c.width}×${c.height}px · ${Math.round(R*2.54)} dpi`;c.width=c.height=1;return{url,info}}
-$('#export').onclick=async()=>{show('<h2>Export for printing</h2><p>Preparing spec sheet and print files…</p>');await new Promise(r=>setTimeout(r,40));
- try{const pl=placements(),pack=await techPack(pl),files=[];for(const p of active())files.push({p,...await printFile(p)});const txt=specText(pl),base=slug(window._dn)+'_'+slug(G.name);
- show(`<h2>Export for printing</h2><p>Download the files below and give them to your printer.</p>
- <div class="dl"><button class="primary" id="zipAll">Download all (.zip)</button>${dlLink(pack,base+'_spec-sheet.png','Spec sheet PNG')}${dlLink(txtURL(txt),base+'_spec.txt','Spec text (.txt)')}</div>
- <div class="row"><label style="flex:1;min-width:200px"><span class="lbl">Design name</span><input type="text" id="dname" value="${esc(window._dn||'Untitled design')}"></label><button id="regen" style="align-self:end">Update</button><button id="copy" style="align-self:end">Copy spec as text</button></div>
- <h2 style="font-size:17px;margin-top:8px">Spec sheet</h2><img src="${pack}" alt="Print spec sheet">
- <h2 style="font-size:17px;margin-top:18px">Print files (one per panel, ${methodFor()==='sublimation'?'full panel with body colour, for sublimation':'transparent background'})</h2>
- <div class="files">${files.map(f=>`<figure><img src="${f.url}" alt="${esc(f.p.name)} print file"><figcaption>${esc(f.info)}</figcaption>${dlLink(f.url,base+'_'+slug(f.p.name)+'.png','Download')}</figure>`).join('')}</div>
- <h2 style="font-size:17px;margin-top:18px">Spec text</h2><pre id="spec"></pre>`);
- $('#spec').textContent=txt;
- $('#zipAll').onclick=async e=>{const b=e.currentTarget;if(!window.JSZip){b.textContent='Zip not available: use the single downloads';return}b.disabled=true;b.textContent='Zipping…';
-  try{const z=new JSZip(),blob=u=>fetch(u).then(r=>r.blob());z.file(base+'_spec-sheet.png',await blob(pack));z.file(base+'_spec.txt',txt);
-   for(const f of files)z.file(base+'_'+slug(f.p.name)+'.png',await blob(f.url));
-   const zb=await z.generateAsync({type:'blob'}),a=document.createElement('a');a.href=URL.createObjectURL(zb);a.download=base+'_print-pack.zip';document.body.append(a);a.click();a.remove();b.textContent='Downloaded'}
-  catch(err){b.textContent='Zip failed: use the single downloads'}finally{b.disabled=false}};$('#dname').oninput=e=>window._dn=e.target.value;$('#regen').onclick=()=>$('#export').click();
- $('#copy').onclick=async e=>{try{await navigator.clipboard.writeText(txt);e.target.textContent='Copied'}catch{e.target.textContent='Copy blocked: select the text below'}}}
- catch(err){show(`<h2>Export failed</h2><p class="warn">${esc(err.message)}</p>`)}};
+/* ---------- print-ready export: settings, validation, true-size files ---------- */
+const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1),PXCAP=isIOS?16e6:60e6;
+const libs={};
+function needLib(name,local,cdn){if(window[name])return Promise.resolve(window[name]);return libs[name]||(libs[name]=new Promise((res,rej)=>{const add=(src,next)=>{const t=document.createElement('script');t.src=src;t.onload=()=>window[name]?res(window[name]):next();t.onerror=next;document.head.append(t)};add(local,()=>add(cdn,()=>{libs[name]=null;rej(Error(name+' could not be loaded'))}))}))}
+const getZip=()=>needLib('JSZip','lib/jszip.min.js','https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js');
+const getPDF=()=>needLib('jspdf','lib/jspdf.umd.min.js','https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
+const ES={fmt:{png:true,svg:false,pdf:true,spec:true,mock:true,hires:false},dpi:300,mode:'art',bg:'transparent',bleed:0,mirror:false,areas:{},_m:null};
+const cm1=v=>(+v).toFixed(1),tick=()=>new Promise(r=>setTimeout(r,0)),hiCache=new Map();
+const fullPanel=L=>(L.tile||L.gen)&&active().some(p=>Math.abs(L.w-p.w)<1.5&&Math.abs(L.h-p.h)<1.5);
+function overlap(b,p){return Math.min(b.x1,p.x+p.w)-Math.max(b.x0,p.x)>.3&&Math.min(b.y1,p.y+p.h)-Math.max(b.y0,p.y)>.3}
+function artBox(p){let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;vis().forEach(L=>{const b=bboxOf(L);if(!overlap(b,p))return;x0=Math.min(x0,Math.max(b.x0,p.x));y0=Math.min(y0,Math.max(b.y0,p.y));x1=Math.max(x1,Math.min(b.x1,p.x+p.w));y1=Math.max(y1,Math.min(b.y1,p.y+p.h))});return x1>x0?{x:x0,y:y0,w:x1-x0,h:y1-y0}:null}
+function srcDpi(L){if(L.type==='text'||L.gen)return null;if(L.tile)return Math.round(L.src.width/(L.tile/2.54));const[q0,,q2]=cropR(L);return Math.round(L.src.width*(1-(L.cl||0)-(L.cr||0))/((q2-q0)/2.54))}
+function areaPlan(){const out=[];active().forEach(p=>{if(!ES.areas[p.id])return;const art=artBox(p);if(!art&&!(ES.mode==='panel'&&ES.bg!=='transparent'))return;
+ const b=+ES.bleed||0,base=ES.mode==='panel'?{x:p.x,y:p.y,w:p.w,h:p.h}:art,r={x:base.x-b,y:base.y-b,w:base.w+2*b,h:base.h+2*b},px=(r.w/2.54*ES.dpi)*(r.h/2.54*ES.dpi),dpi=px>PXCAP?Math.floor(ES.dpi*Math.sqrt(PXCAP/px)):ES.dpi;
+ out.push({p,r,art,dpi,pw:Math.round(r.w/2.54*dpi),ph:Math.round(r.h/2.54*dpi)})});return out}
+function hiText(L,dpi){if(L.type!=='text')return L;let k=L.h/2.54*dpi/L.src.height;if(k<=1.05)return L;k=Math.min(k,16000/L.src.width,16000/L.src.height,14);const key=[L.id,k.toFixed(2),L.text,L.font,L.color].join('|');let c=hiCache.get(key);if(!c){c=textCanvas(L.text,L.font,L.color,k);hiCache.set(key,c)}return{...L,src:c}}
+function renderArea(p,r,dpi,o={}){const R=dpi/2.54,c=mk(r.w*R,r.h*R),x=c.getContext('2d');if(o.mirror){x.translate(c.width,0);x.scale(-1,1)}
+ x.scale(c.width/r.w,c.height/r.h);x.translate(-r.x,-r.y);if(o.bg&&o.bg!=='transparent'){x.fillStyle=o.bg==='white'?'#ffffff':garment;x.fillRect(r.x,r.y,r.w,r.h)}
+ x.save();if(!(o.bleed>0&&o.mode==='panel')){piecePath(x,p);x.clip()}vis().forEach(L=>drawLayer(x,o.hi?hiText(L,dpi):L));x.restore();return c}
+function piecePts(p){if(p===F||p===B)return outline(p===B).map(([a,b])=>[p.x+a,p.y+b]);const q=G.sleeve||ST.tee.sleeve,d=(q.w0-q.w1)/2;return[[p.x,p.y],[p.x+q.w0,p.y],[p.x+q.w0-d,p.y+q.l],[p.x+d,p.y+q.l]]}
+function layerImg(L,dpi){const[q0,q1,q2,q3]=cropR(L),w=q2-q0,h=q3-q1;let R=dpi/2.54;const px=w*R*h*R;if(px>PXCAP/2)R*=Math.sqrt(PXCAP/2/px);const c=mk(w*R,h*R),x=c.getContext('2d');x.scale(c.width/w,c.height/h);x.translate(-q0,-q1);drawLayer(x,{...hiText(L,dpi),x:0,y:0,rot:0,op:1});return{c,q0,q1,w,h}}
+function areaSVG(it,title){const{p,r}=it,f=n=>+(+n).toFixed(3),clip=!(ES.bleed>0&&ES.mode==='panel'),cid='panel-'+p.id;
+ let o=`<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${f(r.w)}cm" height="${f(r.h)}cm" viewBox="${f(r.x)} ${f(r.y)} ${f(r.w)} ${f(r.h)}">\n<title>${esc(title)} – ${p.name}</title>\n<desc>Print at 100%: 1 unit = 1 cm. ${cm1(r.w)} × ${cm1(r.h)} cm. Each artwork is a separate, named object.</desc>\n`;
+ if(clip)o+=`<defs><clipPath id="${cid}"><polygon points="${piecePts(p).map(q=>q.map(f).join(',')).join(' ')}"/></clipPath></defs>\n`;
+ o+=ES.mirror?`<g transform="translate(${f(2*r.x+r.w)} 0) scale(-1 1)">`:'<g>';if(ES.bg!=='transparent')o+=`<rect x="${f(r.x)}" y="${f(r.y)}" width="${f(r.w)}" height="${f(r.h)}" fill="${ES.bg==='white'?'#ffffff':garment}"/>`;o+=clip?`<g clip-path="url(#${cid})">`:'<g>';
+ vis().forEach(L=>{const b=bboxOf(L);if(b.x1<r.x||b.x0>r.x+r.w||b.y1<r.y||b.y0>r.y+r.h)return;const im=layerImg(L,it.dpi);o+=`\n<image id="${slug(L.name)}-${L.id}" x="${f(im.q0)}" y="${f(im.q1)}" width="${f(im.w)}" height="${f(im.h)}" preserveAspectRatio="none" opacity="${f(L.op)}" transform="translate(${f(L.x)} ${f(L.y)}) rotate(${f(L.rot)})" xlink:href="${im.c.toDataURL('image/png')}"/>`;im.c.width=im.c.height=1});
+ return new Blob([o+'\n</g></g>\n</svg>\n'],{type:'image/svg+xml'})}
+function render3D(w,h,pos){const pr=renderer.getPixelRatio(),save=cam.position.clone(),ar=ctl.autoRotate;ctl.autoRotate=false;noSel=true;textures();
+ renderer.setPixelRatio(1);renderer.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();if(pos)cam.position.copy(pos);cam.lookAt(ctl.target);renderer.render(scene,cam);
+ const c=mk(w,h),x=c.getContext('2d');paintBackdrop(x,w,h);x.drawImage(renderer.domElement,0,0,w,h);cam.position.copy(save);ctl.autoRotate=ar;renderer.setPixelRatio(pr);noSel=false;textures();sizeGL();return c}
+function validate(plan){const v=[],add=(lv,t)=>v.push({lv,t}),q=L=>`<b>${esc(L.name)}</b>`,V=vis(),hid=layers.length-V.length,f=ES.fmt;
+ if(!V.length){add('err','There is no visible artwork to export.');return v}
+ if(!Object.values(f).some(Boolean))add('err','Choose at least one format.');
+ if((f.png||f.svg||f.pdf)&&!plan.length)add('err','Choose at least one print area that has artwork.');
+ if(hid)add('inf',`${hid} hidden layer${hid>1?'s are':' is'} left out of every file.`);
+ V.forEach(L=>{const b=bboxOf(L),on=active().filter(p=>overlap(b,p));if(!on.length){add('err',`${q(L)} is outside the garment pattern and will not print.`);return}
+  const d=srcDpi(L);if(d!=null&&d<100)add('wrn',`${q(L)} is only ${d} dpi at ${cm1(b.x1-b.x0)} cm wide and will print blurry. Use a larger original or print it smaller.`);else if(d!=null&&d<150)add('wrn',`${q(L)} is ${d} dpi at print size and may look soft (150 dpi minimum, 300 ideal).`);
+  if(fullPanel(L))return;const p=pieceOf(L),pr=printRect(p),e=.3;
+  if(b.x0<p.x-e||b.x1>p.x+p.w+e||b.y0<p.y-e||b.y1>p.y+p.h+e)add('wrn',`${q(L)} runs past the edge of the ${p.name} panel. The part outside is cut off.`);
+  else if(b.x0<pr.x-e||b.x1>pr.x+pr.w+e||b.y0<pr.y-e||b.y1>pr.y+pr.h+e)add('wrn',`${q(L)} goes outside the printable area of the ${p.name} (keep it ${p===F||p===B?'2.5 cm from the side seams, 2 cm below the neckline and 3 cm above the hem':'1.5 cm from the seams'}).`);
+  else if(Math.min(b.x0-pr.x,pr.x+pr.w-b.x1,b.y0-pr.y,pr.y+pr.h-b.y1)<1)add('inf',`${q(L)} is less than 1 cm from the print boundary on the ${p.name}.`);
+  if((p===F||p===B)&&methodFor()!=='sublimation'&&(b.x1-b.x0>40.5||b.y1-b.y0>50.5))add('wrn',`${q(L)} is ${cm1(b.x1-b.x0)} × ${cm1(b.y1-b.y0)} cm, bigger than a standard 40 × 50 cm print area. Check with your printer.`)});
+ plan.forEach(it=>{if(it.dpi<ES.dpi)add('wrn',`${it.p.name} at ${ES.dpi} dpi would be too large for this browser to draw, so it exports at ${it.dpi} dpi (${it.pw} × ${it.ph} px).`)});
+ if(f.svg&&V.some(L=>L.type!=='text'))add('inf','SVG keeps exact size and position, but photos, logos and patterns stay as embedded images at the chosen dpi; SVG cannot turn them into vectors.');
+ if(f.svg&&V.some(L=>L.type==='text'))add('inf','In the SVG, text is embedded as an image so it prints without the font installed.');
+ if(methodFor()==='sublimation'&&ES.bg==='transparent'&&(f.png||f.pdf||f.svg))add('wrn','This garment is set up for sublimation, which needs the body colour printed. Choose "Garment colour" background and "Full panel".');
+ if(ES.mode==='art'&&ES.bg!=='transparent')add('inf','A solid background fills the whole artwork rectangle. Use Transparent for DTF, DTG or screen print.');
+ if(ES.mirror)add('inf','Files are mirrored for transfer paper. Turn this off for DTG and screen print.');
+ if((f.mock||f.hires)&&backdrop==='transparent')add('inf','3D images use the Transparent background, so they save as PNG with transparency.');
+ if(!v.some(x=>x.lv==='err'||x.lv==='wrn'))v.unshift({lv:'ok',t:'Ready to print: all artwork sits inside the print areas at a good resolution.'});return v}
+function exportUI(){if(ES._m!==methodFor()){ES._m=methodFor();Object.assign(ES,ES._m==='sublimation'?{mode:'panel',bg:'garment',bleed:1.5}:{mode:'art',bg:'transparent',bleed:0})}
+ ES.areas={};active().forEach(p=>ES.areas[p.id]=!!artBox(p)||ES._m==='sublimation');
+ const ck=(id,on,t,sub='')=>`<label class="chk"><input type="checkbox" id="${id}" ${on?'checked':''}> <span>${t}${sub?`<br><small>${sub}</small>`:''}</span></label>`,rd=(n,v,cur,t)=>`<label class="chk"><input type="radio" name="${n}" value="${v}" ${cur===v?'checked':''}> ${t}</label>`;
+ show(`<h2>Export for printing</h2><p>Files are made from the design itself at true physical size, not from a screenshot. Check the warnings, then export.</p>
+ <div class="exg"><form id="exs" onsubmit="return false">
+  <label class="fl" style="margin-bottom:12px">Design name<input type="text" id="dname" value="${esc(window._dn||'Untitled design')}"></label>
+  <fieldset><legend>Formats</legend>${ck('f-png',ES.fmt.png,'PNG print files','One per print area, transparent background')}${ck('f-svg',ES.fmt.svg,'SVG print files','True size in cm, each artwork a separate object')}${ck('f-pdf',ES.fmt.pdf,'PDF','Spec sheet plus one true-size page per area')}${ck('f-spec',ES.fmt.spec,'Spec sheet','PNG sheet and plain-text spec for the printer')}${ck('f-mock',ES.fmt.mock,'3D mockup image','Front and back on the current background')}${ck('f-hires',ES.fmt.hires,'High-resolution 3D preview','Current camera view, 2400 px')}</fieldset>
+  <fieldset><legend>Print areas</legend>${active().map(p=>ck('a-'+p.id,ES.areas[p.id],p.name,artBox(p)?'':'No artwork')).join('')}</fieldset>
+  <fieldset><legend>Print settings</legend>
+   <label class="fl">Resolution<select id="e-dpi">${[150,200,300,600].map(d=>`<option value="${d}" ${ES.dpi===d?'selected':''}>${d} dpi${d===300?' (print standard)':''}</option>`).join('')}</select></label>
+   <span class="lbl">Output size</span>${rd('e-mode','art',ES.mode,'Artwork only (trimmed to the design)')}${rd('e-mode','panel',ES.mode,'Full panel (cut-and-sew, sublimation)')}
+   <span class="lbl">Background</span>${rd('e-bg','transparent',ES.bg,'Transparent')}${rd('e-bg','garment',ES.bg,'Garment colour')}${rd('e-bg','white',ES.bg,'White')}
+   <label class="fl">Bleed / margin (cm)<input type="number" id="e-bleed" min="0" max="5" step="0.5" value="${ES.bleed}"></label>
+   ${ck('e-mirror',ES.mirror,'Mirror image','For transfer paper (heat transfer, sublimation)')}
+  </fieldset></form>
+  <div><h3>Check</h3><ul class="val" id="exv"></ul><h3>Print areas at true size</h3><div class="apv" id="exp"></div>
+   <div class="dl"><button class="primary" id="doExport">Export files</button></div><div id="exout"></div></div></div>`,true);
+ const form=$('#exs');let t=0;const refresh=()=>{clearTimeout(t);t=setTimeout(exportRefresh,80)};
+ form.addEventListener('input',e=>{const el=e.target,id=el.id;if(id==='dname'){window._dn=el.value;return}
+  if(id.startsWith('f-'))ES.fmt[id.slice(2)]=el.checked;else if(id.startsWith('a-'))ES.areas[id.slice(2)]=el.checked;else if(id==='e-dpi')ES.dpi=+el.value;else if(el.name==='e-mode')ES.mode=el.value;else if(el.name==='e-bg')ES.bg=el.value;
+  else if(id==='e-bleed'){const b=+el.value;if(!(b>=0&&b<=5))return;ES.bleed=b}else if(id==='e-mirror')ES.mirror=el.checked;$('#exout').innerHTML='';refresh()});
+ $('#doExport').onclick=e=>runExport(e.currentTarget);exportRefresh()}
+function exportRefresh(){if(!$('#exv'))return;const plan=areaPlan(),v=validate(plan);
+ $('#exv').innerHTML=v.map(x=>`<li class="${x.lv}">${x.t}</li>`).join('');$('#doExport').disabled=v.some(x=>x.lv==='err');
+ const pl=placements(),box=$('#exp');box.innerHTML=plan.length?'':'<p class="hint">No print area selected.</p>';
+ plan.forEach(it=>{const k=Math.min(220/it.r.w,240/it.r.h),c=renderArea(it.p,it.r,k*2.54,{bg:ES.bg,mirror:ES.mirror,bleed:ES.bleed,mode:ES.mode});const x=c.getContext('2d');
+  if(ES.bleed>0){x.save();x.setLineDash([4,3]);x.strokeStyle='#ff3355';x.strokeRect(ES.bleed*k+.5,ES.bleed*k+.5,c.width-2*ES.bleed*k-1,c.height-2*ES.bleed*k-1);x.restore()}
+  if(ES.mode==='panel'){const pr=printRect(it.p);x.save();x.setLineDash([4,4]);x.strokeStyle='#ffd500';x.strokeRect((pr.x-it.r.x)*k,(pr.y-it.r.y)*k,pr.w*k,pr.h*k);x.restore()}
+  const fig=document.createElement('figure'),rows=pl.filter(r=>r.p===it.p).map(r=>`<span>${esc(r.L.name)}: ${cm1(r.w)} × ${cm1(r.h)} cm</span>`).join('');
+  fig.innerHTML=`<figcaption><b>${it.p.name}</b><span>File ${cm1(it.r.w)} × ${cm1(it.r.h)} cm (${cm2in(it.r.w)} × ${cm2in(it.r.h)} in)</span><span>${it.pw} × ${it.ph} px · ${it.dpi} dpi</span>${rows}</figcaption>`;fig.prepend(c);box.append(fig)})}
+async function runExport(btn){const out=$('#exout'),label=btn.textContent;btn.disabled=true;btn.textContent='Exporting…';out.innerHTML='<p class="hint">Making the files at full resolution. Large panels at 300 dpi take a few seconds.</p>';await tick();
+ const files=[],errs=[],base=slug(window._dn)+'_'+slug(G.name)+'_'+(sizeSel==='kids'?'kids':sizeSel).toLowerCase(),blobOf=c=>new Promise(r=>c.toBlob(r,'image/png')),F_=ES.fmt;
+ try{hiCache.clear();const plan=areaPlan(),pngs=[];
+  if(F_.png||F_.pdf)for(const it of plan){const c=renderArea(it.p,it.r,it.dpi,{bg:ES.bg,mirror:ES.mirror,bleed:ES.bleed,mode:ES.mode,hi:true}),blob=await blobOf(c);c.width=c.height=1;pngs.push({it,blob});
+   if(F_.png)files.push({path:`print-files/${base}_${slug(it.p.name)}_${it.dpi}dpi.png`,blob,label:`${it.p.name} print file (PNG)`,info:`${cm1(it.r.w)} × ${cm1(it.r.h)} cm · ${it.pw} × ${it.ph} px · ${it.dpi} dpi${ES.mirror?' · mirrored':''}`,thumb:true});await tick()}
+  if(F_.svg)for(const it of plan){files.push({path:`print-files/${base}_${slug(it.p.name)}.svg`,blob:areaSVG(it,window._dn||'Untitled design'),label:`${it.p.name} print file (SVG)`,info:`${cm1(it.r.w)} × ${cm1(it.r.h)} cm true size · images at ${it.dpi} dpi`});await tick()}
+  const pl=placements(),txt=specText(pl);let pack=null;
+  if(F_.spec||F_.pdf)pack=await techPack(pl);
+  if(F_.spec){files.push({path:`${base}_spec-sheet.png`,blob:await (await fetch(pack)).blob(),label:'Spec sheet (PNG)',info:'Placements, sizes, colours and notes',thumb:true});files.push({path:`${base}_spec.txt`,blob:new Blob([txt],{type:'text/plain'}),label:'Spec text',info:'Plain text for messages and emails'})}
+  if(F_.pdf){try{const{jsPDF}=await getPDF(),toData=b=>new Promise(r=>{const fr=new FileReader();fr.onload=()=>r(fr.result);fr.readAsDataURL(b)}),sheet=await (await fetch(pack)).blob(),im=await createImageBitmap(sheet),k=Math.min(27.7/im.width,40/im.height),doc=new jsPDF({unit:'cm',format:'a3'});
+    doc.addImage(await toData(sheet),'PNG',(29.7-im.width*k)/2,1,im.width*k,im.height*k,undefined,'FAST');
+    for(const{it,blob}of pngs){const w=it.r.w,h=it.r.h;doc.addPage([w+2,h+3],w>h?'l':'p');doc.setFontSize(9);doc.text(`${it.p.name} · print at 100% (actual size ${cm1(w)} × ${cm1(h)} cm)${ES.mirror?' · mirrored':''}`,1,1.2);doc.addImage(await toData(blob),'PNG',1,2,w,h,undefined,'FAST')}
+    files.push({path:`${base}_print-pack.pdf`,blob:doc.output('blob'),label:'PDF print pack',info:`Spec sheet + ${pngs.length} true-size page${pngs.length===1?'':'s'}`})}catch(err){console.error(err);errs.push('PDF could not be made here ('+err.message+'). The PNG files are the same artwork.')}}
+  if(F_.mock){const t=Math.tan(15*PI/180),w=1200,h=1500,Dm=Math.max(56/t,57/(t*w/h)),a=render3D(w,h,V3(0,-30,Dm)),b=render3D(w,h,V3(0,-30,-Dm)),c=mk(w*2,h),x=c.getContext('2d');x.drawImage(a,0,0);x.drawImage(b,w,0);files.push({path:`${base}_3d-mockup.png`,blob:await blobOf(c),label:'3D mockup, front and back',info:`${w*2} × ${h} px`,thumb:true});await tick()}
+  if(F_.hires){const sw=stage.clientWidth,sh=stage.clientHeight,k=2400/Math.max(sw,sh),c=render3D(Math.round(sw*k),Math.round(sh*k));files.push({path:`${base}_3d-preview.png`,blob:await blobOf(c),label:'High-resolution 3D preview',info:`${c.width} × ${c.height} px · current view`,thumb:true})}
+  let n=0;for(const L of vis()){if(L.type!=='img'||L.gen)continue;n++;if(L.file)files.push({path:`artwork/${String(n).padStart(2,'0')}_${L.file.name.replace(/[^\w.\-]+/g,'_')}`,blob:L.file,label:'Original: '+L.name,info:'As uploaded',extra:true});
+   if(!L.bgOff&&L.src)files.push({path:`artwork/${String(n).padStart(2,'0')}_${slug(L.name)}_background-removed.png`,blob:await blobOf(L.src),label:'Background removed: '+L.name,info:'PNG with transparency',extra:true})}
+ }catch(err){console.error(err);errs.push('Export failed: '+err.message)}
+ btn.disabled=false;btn.textContent=label;files.forEach(f=>f.url=URL.createObjectURL(f.blob));const folder=`${base}_print-pack`;
+ out.innerHTML=`${errs.map(e=>`<p class="warn">${esc(e)}</p>`).join('')}${files.length?`<h3 style="margin-top:6px">Files</h3><p class="hint">Save everything in one folder for your printer, or download single files.</p>
+  <div class="dl">${window.showDirectoryPicker?'<button class="primary" id="saveDir">Save to folder…</button>':''}<button class="${window.showDirectoryPicker?'':'primary'}" id="zipAll">Download all (.zip)</button></div>
+  <ul class="flist">${files.map(f=>{const ext=f.path.split('.').pop();return`<li>${f.thumb&&ext==='png'?`<img src="${f.url}" alt="">`:`<span class="fic">${esc(ext)}</span>`}<span><b>${esc(f.label)}</b><small>${esc(f.info||'')}</small></span>${dlLink(f.url,f.path.split('/').pop(),'Download','btn chip')}</li>`}).join('')}</ul>`:''}`;
+ if(!files.length)return;
+ if($('#saveDir'))$('#saveDir').onclick=async e=>{const b=e.currentTarget;try{const root=await window.showDirectoryPicker({mode:'readwrite',id:'phabrika-export'});b.disabled=true;b.textContent='Saving…';
+   const dir=await root.getDirectoryHandle(folder,{create:true});for(const f of files){const parts=f.path.split('/');let d=dir;for(const seg of parts.slice(0,-1))d=await d.getDirectoryHandle(seg,{create:true});const fh=await d.getFileHandle(parts.at(-1),{create:true}),w=await fh.createWritable();await w.write(f.blob);await w.close()}
+   b.textContent='Saved to '+folder}catch(err){b.textContent=err.name==='AbortError'?'Save to folder…':'Folder save failed: use the .zip'}finally{b.disabled=false}};
+ $('#zipAll').onclick=async e=>{const b=e.currentTarget;b.disabled=true;b.textContent='Zipping…';
+  try{const Z=await getZip(),z=new Z(),fd=z.folder(folder);files.forEach(f=>fd.file(f.path,f.blob));pauseGL=true;const zb=await z.generateAsync({type:'blob'}).finally(()=>pauseGL=false),a=document.createElement('a');a.href=URL.createObjectURL(zb);a.download=folder+'.zip';document.body.append(a);a.click();a.remove();b.textContent='Downloaded'}
+  catch(err){console.error(err);b.textContent='Zip failed: use the single downloads'}finally{b.disabled=false}}}
+$('#export').onclick=exportUI;
 
 layout();markColor();$('#style').value=style;
 buildShirt();renderProps();
 new ResizeObserver(()=>sizeEd()).observe(ed);new ResizeObserver(()=>sizeGL()).observe(stage);sizeEd();sizeGL();dirty();setMode(style);
+/* first view: the PHabrika logo on the Center chest preset of the T-shirt Men (a normal layer: move, resize or delete it) */
+(()=>{const im=new Image();im.onload=()=>{if(layers.length)return;const c=mk(im.naturalWidth,im.naturalHeight);c.getContext('2d').drawImage(im,0,0);const w=40,h=w*c.height/c.width;
+ layers.push({id:uid++,type:'img',name:'PHabrika logo',src:c,orig:c,bgOff:true,bgTol:22,x:0,y:0,w,h,rot:0,op:1,tile:0});place(layers[layers.length-1],PRESETS()[0]);renderProps();dirty()};im.src='img/logo-print.png'})();
 if('serviceWorker'in navigator&&location.protocol!=='file:')navigator.serviceWorker.register('sw.js').catch(()=>{});
 }
 </script>

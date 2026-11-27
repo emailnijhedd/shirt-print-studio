@@ -1,10 +1,10 @@
 // Phabrika — offline support.
 // After editing any file, bump VERSION so every device picks up the change.
-const VERSION = 'v3-2026-11-27';
+const VERSION = 'v23-2026-11-28';
 const CACHE = 'phabrika-' + VERSION;
 const SHELL = [
   './', 'index.html', 'manifest.webmanifest',
-  'lib/three.min.js', 'lib/OrbitControls.js', 'lib/jszip.min.js',
+  'lib/three.min.js', 'lib/OrbitControls.js', 'lib/jszip.min.js', 'lib/jspdf.umd.min.js',
   "fonts/anton-latin-400-normal.woff2",
   "fonts/archivo-black-latin-400-normal.woff2",
   "fonts/bebas-neue-latin-400-normal.woff2",
@@ -15,7 +15,7 @@ const SHELL = [
   "fonts/inter-tight-latin-600-normal.woff2",
   "fonts/inter-tight-latin-700-normal.woff2",
   "fonts/permanent-marker-latin-400-normal.woff2",
-  'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png',
+  'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png', 'img/logo.png', 'img/logo-print.png',
   'p/drip.jpg', 'p/tri.jpg'
 ];
 // Shirt models: fetched in the background after install so every style works offline.
@@ -25,7 +25,10 @@ const MODELS = [
   "s/polo.json",
   "s/polo_knit.png",
   "s/tee.json",
+  "s/tee_cotton.png",
+  "s/tee_drifit.png",
   "s/tee_knit.png",
+  "s/tee_poly.png",
   "s/vjersey.json",
   "s/vjersey_knit.png",
   "s/wpolo.json",
@@ -33,7 +36,11 @@ const MODELS = [
   "s/wtee.json",
   "s/wtee_knit.png",
   "s/wvjersey.json",
-  "s/wvjersey_knit.png"
+  "s/wvjersey_knit.png",
+  "b/beach.jpg",
+  "b/court.jpg",
+  "b/grass.jpg",
+  "b/indoor.jpg"
 ];
 
 self.addEventListener('install', e => {
