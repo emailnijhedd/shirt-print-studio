@@ -1,6 +1,6 @@
 // Phabrika — offline support.
 // After editing any file, bump VERSION so every device picks up the change.
-const VERSION = 'v54-2026-11-28';
+const VERSION = 'v55-2026-11-28';
 const CACHE = 'phabrika-' + VERSION;
 const SHELL = [
   './', 'index.html', 'manifest.webmanifest',
