@@ -71,7 +71,8 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
 .pane.view{position:sticky;top:calc(var(--hh,64px) + 10px);height:calc(100vh - var(--hh,64px) - 20px);height:calc(100dvh - var(--hh,64px) - 20px);min-height:460px;max-height:1200px}
 .pane.view.full,.pane.view:fullscreen{position:fixed;inset:0;z-index:70;height:auto;max-height:none;border-radius:0}.pane.view:fullscreen{position:static;height:100vh}
 #stage.tp{background:repeating-conic-gradient(#2c2e31 0 25%,#232528 0 50%) 0 0/20px 20px}
-.sheet{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#1b1c1e}
+.box{position:relative}.box::after,.pane::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:6;opacity:.5;background:linear-gradient(315deg,transparent 0 9px,#e8163c 9px 15px,#1f63e6 15px 21px,#ffd500 21px 27px,transparent 27px) right bottom/46px 46px no-repeat}
+.bgctl{position:absolute;top:10px;right:10px;z-index:8;display:flex;flex-direction:column;align-items:flex-end;gap:6px}.pane .bgbtn{min-height:32px;min-width:32px;padding:0;display:grid;place-items:center;border-radius:9px;background:rgba(20,21,23,.45);border:1px solid rgba(255,255,255,.16);color:#fff;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);cursor:pointer}.bgbtn svg{width:19px;height:19px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.bgbtn svg .f{fill:#fff;stroke:none}.pane .bgbtn[aria-expanded=true]{border-color:var(--ph-y)}.bgmenu{min-width:150px;max-height:min(60vh,360px);overflow:auto;padding:6px;border-radius:12px;background:rgba(20,21,23,.5);border:1px solid rgba(255,255,255,.14);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}.bgmenu[hidden]{display:none}.pane .bgmenu button{display:block;width:100%;min-height:28px;padding:0 10px;border:0;border-radius:7px;background:transparent;color:#fff;font:500 12px Inter,sans-serif;text-align:left;cursor:pointer}.pane .bgmenu button:hover{background:rgba(255,255,255,.12)}.pane .bgmenu button[aria-pressed=true]{background:rgba(255,213,0,.22)}.bgh{padding:6px 10px 2px;font:600 10.5px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.6)}.bgx{display:flex;gap:6px;align-items:center;padding:4px 4px 0}.sheet{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#1b1c1e}
 .etools{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin:0 0 8px}.tg{display:flex;gap:4px;align-items:center}
 .ib{min-height:36px;min-width:36px;padding:0 7px;justify-content:center}.ib svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .ib[aria-pressed=true]{border-color:var(--acc);color:#fff;background:#16284a}.ib[aria-pressed=false]{color:var(--mute)}.ib.sel[aria-pressed=false]{color:var(--ink)}
@@ -219,7 +220,7 @@ pre{white-space:pre-wrap;background:#141516;border:1px solid var(--line);border-
  </div>
  <div class="split" id="split" role="separator" aria-orientation="vertical" aria-label="Resize the 3D preview" tabindex="0" title="Drag to resize the preview (double-click to reset)"></div>
  <section class="pane view" id="viewPane" aria-label="Live 3D preview">
-  <div id="stage"><canvas id="bg"></canvas><div id="loading" class="cap" style="left:auto;right:0" hidden>Loading garment…</div></div>
+  <div id="stage"><canvas id="bg"></canvas><div id="loading" class="cap" hidden>Loading garment…</div><div class="bgctl"><button type="button" class="bgbtn" id="bgBtn" aria-label="Background" aria-expanded="false" title="Background"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3.5"/><circle cx="15.6" cy="8.6" r="1.7" class="f"/><path d="M6.4 16.6l3.8-4.4 2.6 2.8M10.4 15.4l2.4-2.6 4.6 4.6"/></svg></button><div class="bgmenu" id="bgMenu" hidden><select id="backdrop" hidden></select><div class="bgl"></div><div class="bgx"><input type="color" id="bgcol" value="#34495e" aria-label="Custom background colour" hidden><label class="btn chip" id="bgimgL" hidden>Image…<input type="file" id="bgimg" accept="image/*" hidden></label></div></div></div></div>
   <div class="vbar">
    <div class="vrow" role="group" aria-label="Camera">
     <span class="seg"><button class="chip" data-v="front">Front</button><button class="chip" data-v="back">Back</button><button class="chip" data-v="left">Left</button><button class="chip" data-v="right">Right</button><button class="chip" data-v="fl" aria-pressed="true">45°</button></span>
@@ -229,9 +230,8 @@ pre{white-space:pre-wrap;background:#141516;border:1px solid var(--line);border-
    <div class="vrow" role="group" aria-label="Zoom">
     <span class="seg"><button class="chip ib" data-cam="out" data-ic="zout" aria-label="Zoom out" title="Zoom out"></button><button class="chip ib" data-cam="in" data-ic="zin" aria-label="Zoom in" title="Zoom in"></button><button class="chip" data-cam="fit" title="Fit the whole garment in view">Fit</button></span>
     <button class="chip" data-cam="reset">Reset camera</button>
-    <button class="chip ib push" id="fs" data-ic="full" aria-pressed="false" aria-label="Full screen preview" title="Full screen"></button>
+    <span id="shotGrp" style="display:flex;gap:8px"><button class="chip ib" id="shot" data-ic="camera" aria-label="Take a snapshot" title="Snapshot"></button><button class="chip ib" id="fs" data-ic="full" aria-pressed="false" aria-label="Full screen preview" title="Full screen"></button></span>
    </div>
-   <div class="vrow"><label class="lbl" for="backdrop">Background</label><select id="backdrop"></select><input type="color" id="bgcol" value="#34495e" aria-label="Custom background colour" hidden><label class="btn chip" id="bgimgL" hidden>Image…<input type="file" id="bgimg" accept="image/*" hidden></label><button class="chip push" id="shot">Snapshot</button></div>
   </div>
  </section>
 </main>
@@ -278,9 +278,9 @@ function sizeSpec(){const b=BS(),{sx,sy}=sizeF(),g={...b};['W','NW','strap'].for
 function applySizeScale(){if(!shirtHolder||!shirtHolder.userData.sc)return;const{sx,sy}=sizeF(),k=shirtHolder.userData.sc;shirtHolder.scale.set(k*sx,k*sy,k*sx);shadow.position.y=-40-42.5*sy-3;shadow.scale.setScalar(.6+.4*sx);dirty()}
 function layout(){
  G=sizeSpec();const sl=G.sleeve||ST.tee.sleeve;RX=G.W*.395;RZ=RX*.55;
- F.x=2;F.y=2;F.w=G.W;F.h=G.H;B.x=G.W+8;B.y=2;B.w=G.W;B.h=G.H;
+ F.x=2;F.y=2;F.w=G.W;F.h=G.H;B.x=G.W+2;B.y=2;B.w=G.W;B.h=G.H;
  RS.w=LS.w=sl.w0;RS.h=LS.h=sl.l;RS.x=2+(G.W-sl.w0)/2;LS.x=B.x+(G.W-sl.w0)/2;RS.y=LS.y=G.H+12;
- RS.hidden=LS.hidden=!G.sleeve;SHEET.w=2*G.W+10;SHEET.h=G.sleeve?G.H+12+sl.l+9:G.H+6;
+ RS.hidden=LS.hidden=!G.sleeve;SHEET.w=2*G.W+4;SHEET.h=G.sleeve?G.H+12+sl.l+9:G.H+6;
  TH=[];AL=[];let L=0,px=0,pz=0;
  for(let i=0;i<=400;i++){const th=-PI/2+PI*i/400,x=RX*Math.sin(th),z=RZ*Math.cos(th);if(i)L+=Math.hypot(x-px,z-pz);TH.push(th);AL.push(L);px=x;pz=z}
  for(let i=0;i<=400;i++)AL[i]/=L;
@@ -823,7 +823,13 @@ function loadFiles(files){[...files].filter(f=>f.type.startsWith('image/')).forE
 $('#file').onchange=e=>{loadFiles(e.target.files);e.target.value=''};
 $('#backdrop').innerHTML=BDORD.map(k=>`<option value="${k}">${BD[k].name}</option>`).join('')+`<optgroup label="Scenes">${BDSCN.map(k=>`<option value="${k}">${BD[k].name}</option>`).join('')}</optgroup>`;$('#backdrop').value=backdrop;
 const setBackdrop=v=>{backdrop=v;$('#bgcol').hidden=$('#bgimgL').hidden=v!=='custom';stage.classList.toggle('tp',v==='transparent');drawBackdrop()};
-$('#backdrop').onchange=e=>setBackdrop(e.target.value);$('#bgcol').oninput=e=>{bgCol=e.target.value;bgImg=null;drawBackdrop()};
+$('#backdrop').onchange=e=>setBackdrop(e.target.value);
+{const m=$('#bgMenu'),btn=$('#bgBtn'),L_=m.querySelector('.bgl'),close=()=>{m.hidden=true;btn.setAttribute('aria-expanded','false')};
+ const render=()=>{L_.innerHTML=BDORD.map(k=>`<button type="button" data-bd="${k}" aria-pressed="${k===backdrop}">${BD[k].name}</button>`).join('')+`<div class="bgh">Scenes</div>`+BDSCN.map(k=>`<button type="button" data-bd="${k}" aria-pressed="${k===backdrop}">${BD[k].name}</button>`).join('')};render();
+ btn.onclick=e=>{e.stopPropagation();const o=m.hidden;m.hidden=!o;btn.setAttribute('aria-expanded',o)};
+ m.onclick=e=>{const b=e.target.closest('[data-bd]');if(!b)return;$('#backdrop').value=b.dataset.bd;setBackdrop(b.dataset.bd);render();if(b.dataset.bd!=='custom')close()};
+ document.addEventListener('click',e=>{if(!m.hidden&&!e.target.closest('#bgMenu,#bgBtn'))close()});addEventListener('keydown',e=>{if(e.key==='Escape'&&!m.hidden)close()})}
+$('#bgcol').oninput=e=>{bgCol=e.target.value;bgImg=null;drawBackdrop()};
 $('#bgimg').onchange=e=>{const f=e.target.files[0];e.target.value='';if(!f)return;const im=new Image();im.onload=()=>{bgImg=im;drawBackdrop()};im.src=URL.createObjectURL(f)};
 function setStyle(v){const old=PIECES.map(p=>({p,x:p.x,y:p.y,w:p.w,h:p.h}));
  const rel=layers.map(L=>{const o=old.find(q=>L.x>=q.x-2&&L.x<=q.x+q.w+2&&L.y>=q.y-2&&L.y<=q.y+q.h+2)||old[0];return{L,o,fx:(L.x-o.x)/o.w,fy:(L.y-o.y)/o.h,full:(L.tile||L.gen)&&Math.abs(L.w-o.w)<.5&&Math.abs(L.h-o.h)<.5}});
@@ -833,7 +839,7 @@ $('#style').onchange=e=>{commit();setStyle(e.target.value);syncPhoto()};
 $('#size').onchange=e=>{commit();sizeSel=e.target.value;setStyle(style);drawNeckTex()};
 
 /* ---------- icons (inline SVG, no icon font) ---------- */
-const IC={crop:'<path d="M7 3v13a1 1 0 001 1h13"/><path d="M3 7h13a1 1 0 011 1v13"/>',zin:'<circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M8.5 11h5M11 8.5v5"/>',zout:'<circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M8.5 11h5"/>',
+const IC={camera:'<path d="M4 8h3l1.6-2.2h6.8L17 8h3v11H4z"/><circle cx="12" cy="13.2" r="3.3"/>',crop:'<path d="M7 3v13a1 1 0 001 1h13"/><path d="M3 7h13a1 1 0 011 1v13"/>',zin:'<circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M8.5 11h5M11 8.5v5"/>',zout:'<circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M8.5 11h5"/>',
  fit:'<path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5"/><rect x="8.5" y="8.5" width="7" height="7" rx="1"/>',reset:'<path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3"/><path d="M4 4.5V8h3.5"/>',
  grid:'<rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M4 9.3h16M4 14.7h16M9.3 4v16M14.7 4v16"/>',snapc:'<path d="M12 3v5M12 16v5M3 12h5M16 12h5"/><circle cx="12" cy="12" r="3.2"/>',
  snapg:'<path d="M3 7h18M7 3v18" stroke-dasharray="2 2"/><rect x="10" y="10" width="9" height="9" rx="1.5"/>',lock:'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
